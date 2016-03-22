@@ -105,7 +105,7 @@ struct list
    name of the outer structure STRUCT and the member name MEMBER
    of the list element.  See the big comment at the top of the
    file for an example. */
-#define list_entry(LIST_ELEM, STRUCT, MEMBER)           \
+define list_entry(LIST_ELEM, STRUCT, MEMBER)           \
         ((STRUCT *) ((uint8_t *) &(LIST_ELEM)->next     \
                      - offsetof (STRUCT, MEMBER.next)))
 
@@ -151,7 +151,7 @@ void list_reverse (struct list *);
    false if A is greater than or equal to B. */
 typedef bool list_less_func (const struct list_elem *a,
                              const struct list_elem *b,
-                             void *aux);
+                             void *aux); 
 
 /* Operations on lists with ordered elements. */
 void list_sort (struct list *,

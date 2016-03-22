@@ -162,6 +162,17 @@ list_tail (struct list *list)
   return &list->tail;
 }
 
+/* Less function for alarm clock. Compares wakeup_time of
+ * the two threads and returns true or false.*/
+bool list_less_wakeup(const struct list_elem *A, 
+                      const struct list_elem *B,
+                      void *aux)
+{
+  struct thread *th_A = list_entry(A, struct thread, elem);
+  struct thread *th_B = list_entry(B, struct thread, elem);
+  return th_A->wakeup_time < th_B->wakeup_time;
+}
+
 /* Inserts ELEM just before BEFORE, which may be either an
    interior element or a tail.  The latter case is equivalent to
    list_push_back(). */
