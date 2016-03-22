@@ -101,14 +101,29 @@ timer_sleep (int64_t ticks)
   enum intr_level old_level;
   old_level = intr_disable();
   curr->wake_time = start + ticks;
-  if ( curr != idle_thread)
+  if ( curr != idle_thread){
     list_push_back(&sleep_list, &curr->elem);
+    //list_sort(&sleep_list,);
+  } 
 
   thread_block();
   intr_set_level(old_level);
   
 }
 
+void 
+timer_wakeup (int64_t ticks) 
+{
+  for(int i = 0; i < list_size(&sleep_list); i++){
+    if(sleep_list[i]->wake_time == ticks){
+      struct thread *wake = list_pop_front(&sleep_list);
+      thread_unblock(wake);
+    }
+    else 
+      break;
+  }
+  
+}
 /* Suspends execution for approximately MS milliseconds. */
 void
 timer_msleep (int64_t ms) 
@@ -136,7 +151,7 @@ timer_print_stats (void)
 {
   printf ("Timer: %"PRId64" ticks\n", timer_ticks ());
 }
-
+
 /* Timer interrupt handler. */
 static void
 timer_interrupt (struct intr_frame *args UNUSED)
