@@ -8,8 +8,6 @@
 #include "threads/synch.h"
 #include "threads/thread.h"
 #include "lib/kernel/list.h"  
-#include "lib/kernel/list.c"  
-#include "threads/thread.c"
 
 /* See [8254] for hardware details of the 8254 timer chip. */
 
@@ -41,7 +39,7 @@ timer_init (void)
   /* 8254 input frequency divided by TIMER_FREQ, rounded to
      nearest. */
   uint16_t count = (1193180 + TIMER_FREQ / 2) / TIMER_FREQ;
-
+  list_init(&sleep_list);
   outb (0x43, 0x34);    /* CW: counter 0, LSB then MSB, mode 2, binary. */
   outb (0x40, count & 0xff);
   outb (0x40, count >> 8);
@@ -114,15 +112,17 @@ timer_sleep (int64_t ticks)
 void
 timer_wakeup (int64_t ticks)
 {
-  for(int i = 0; i < list_size(&sleep_list); i++){
-    if(sleep_list[i]->wake_time == ticks){
-      struct thread *wake = list_pop_front(&sleep_list);
-      thread_unblock(wake);
+  struct thread *th_wake;
+  while (!list_empty(&sleep_list)){
+    th_wake = list_entry(list_front(&sleep_list), struct thread, elem);
+    printf("%d", th_wake->wake_time); 
+    if(th_wake->wake_time <= ticks){
+      list_pop_front(&sleep_list);
+      thread_unblock(th_wake);
     }
     else
       break;
   }
-
 }
 
 /* Suspends execution for approximately MS milliseconds. */
@@ -158,6 +158,7 @@ static void
 timer_interrupt (struct intr_frame *args UNUSED)
 {
   ticks++;
+  timer_wakeup(ticks);
   thread_tick ();
 }
 
