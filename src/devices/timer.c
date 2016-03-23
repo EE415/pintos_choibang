@@ -94,7 +94,7 @@ timer_elapsed (int64_t then)
 
 /* Suspends execution for approximately TICKS timer ticks. */
 void
-timer_sleep (int64_t ticks) 
+timer_sleep (int64_t ticks)
 {
   int64_t start = timer_ticks ();
   struct thread *curr = thread_current();
@@ -105,7 +105,21 @@ timer_sleep (int64_t ticks)
 
   thread_block();
   intr_set_level(old_level);
-  
+
+}
+
+void
+timer_wakeup (int64_t ticks)
+{
+  for(int i = 0; i < list_size(&sleep_list); i++){
+    if(sleep_list[i]->wake_time == ticks){
+      struct thread *wake = list_pop_front(&sleep_list);
+      thread_unblock(wake);
+    }
+    else
+      break;
+  }
+
 }
 
 /* Suspends execution for approximately MS milliseconds. */
