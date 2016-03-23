@@ -170,7 +170,7 @@ bool list_less_wakeup(const struct list_elem *A,
 {
   struct thread *th_A = list_entry(A, struct thread, elem);
   struct thread *th_B = list_entry(B, struct thread, elem);
-  return th_A->wakeup_time < th_B->wakeup_time;
+  return th_A->wake_time < th_B->wake_time;
 }
 
 /* Inserts ELEM just before BEFORE, which may be either an
