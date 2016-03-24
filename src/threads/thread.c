@@ -199,6 +199,11 @@ thread_create (const char *name, int priority,
   /* Add to run queue. */
   thread_unblock (t);
 
+  /* When the thread is first created, yields to the new one if 
+ * it has higher priority than the current thread */
+  if (priority > thread_current ()->priority)
+    thread_yield ();
+
   return tid;
 }
 
@@ -229,6 +234,7 @@ thread_block (void)
 void
 thread_unblock (struct thread *t) 
 {
+  struct thread *curr = thread_current ();
   enum intr_level old_level;
 
   ASSERT (is_thread (t));
@@ -314,7 +320,13 @@ thread_yield (void)
 void
 thread_set_priority (int new_priority) 
 {
-  thread_current ()->priority = new_priority;
+  if (new_priority < thread_current ()->priority)
+  {
+    thread_current ()->priority = new_priority;
+    thread_yield ();
+  }
+  else
+    thread_current ()->priority = new_priority;
 }
 
 /* Returns the current thread's priority. */
