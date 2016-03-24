@@ -180,7 +180,7 @@ bool list_higher_priority(const struct list_elem *A,
 {
   struct thread *th_A = list_entry(A, struct thread, elem);
   struct thread *th_B = list_entry(B, struct thread, elem);
-  return th_A->priority >= th_B->priority;
+  return th_A->priority > th_B->priority;
  
 }
 

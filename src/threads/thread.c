@@ -477,7 +477,10 @@ next_thread_to_run (void)
   if (list_empty (&ready_list))
     return idle_thread;
   else
+  {
+    list_sort (&ready_list, list_higher_priority, NULL);
     return list_entry (list_pop_front (&ready_list), struct thread, elem);
+  }
 }
 
 /* Completes a thread switch by activating the new thread's page
@@ -543,6 +546,10 @@ schedule (void)
   ASSERT (intr_get_level () == INTR_OFF);
   ASSERT (curr->status != THREAD_RUNNING);
   ASSERT (is_thread (next));
+
+  //Sort the list every time a new thread is being scheduled, 
+  //because the priority might change.
+  //list_sort (&ready_list, list_higher_priority, NULL);
 
   if (curr != next)
     prev = switch_threads (curr, next);
