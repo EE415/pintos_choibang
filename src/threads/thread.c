@@ -234,14 +234,13 @@ thread_block (void)
 void
 thread_unblock (struct thread *t) 
 {
-  struct thread *curr = thread_current ();
   enum intr_level old_level;
 
   ASSERT (is_thread (t));
 
   old_level = intr_disable ();
   ASSERT (t->status == THREAD_BLOCKED);
-  list_insert_ordered(&ready_list, &curr->elem, list_higher_priority, NULL);
+  list_insert_ordered(&ready_list, &t->elem, list_higher_priority, NULL);
   t->status = THREAD_READY;
   intr_set_level (old_level);
 }
