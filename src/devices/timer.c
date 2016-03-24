@@ -110,12 +110,12 @@ timer_sleep (int64_t ticks)
 }
 
 void
-timer_wakeup (int64_t ticks)
+timer_wakeup (void)
 {
   struct thread *th_wake;
   while (!list_empty(&sleep_list)){
     th_wake = list_entry(list_front(&sleep_list), struct thread, elem);
-    printf("%d", th_wake->wake_time); 
+    //printf("%d", th_wake->wake_time); 
     if(th_wake->wake_time <= ticks){
       list_pop_front(&sleep_list);
       thread_unblock(th_wake);
@@ -158,7 +158,7 @@ static void
 timer_interrupt (struct intr_frame *args UNUSED)
 {
   ticks++;
-  timer_wakeup(ticks);
+  timer_wakeup();
   thread_tick ();
 }
 
