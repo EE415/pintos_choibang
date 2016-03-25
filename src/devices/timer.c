@@ -119,10 +119,13 @@ timer_wakeup (void)
     if(th_wake->wake_time <= ticks){
       list_pop_front(&sleep_list);
       thread_unblock(th_wake);
+      if(th_wake->priority > thread_current()->priority)
+	intr_yield_on_return();
     }
     else
       break;
   }
+  
 }
 
 /* Suspends execution for approximately MS milliseconds. */
@@ -152,7 +155,7 @@ timer_print_stats (void)
 {
   printf ("Timer: %"PRId64" ticks\n", timer_ticks ());
 }
-
+
 /* Timer interrupt handler. */
 static void
 timer_interrupt (struct intr_frame *args UNUSED)
