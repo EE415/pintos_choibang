@@ -198,6 +198,8 @@ lock_acquire (struct lock *lock)
   ASSERT (!intr_context ());
   ASSERT (!lock_held_by_current_thread (lock));
 
+  
+  
   sema_down (&lock->semaphore);
   lock->holder = thread_current ();
 }
@@ -220,6 +222,28 @@ lock_try_acquire (struct lock *lock)
   if (success)
     lock->holder = thread_current ();
   return success;
+}
+
+void lock_donation (struct lock *lock)
+{
+  ASSERT(lock->holder != NULL);
+
+  struct thread *curr = thread_current ();
+  struct thread *lock_owner = lock->holder;
+
+  while (curr->wait_lock != NULL)
+  {
+    lock_owner = lock->holder;
+    if (curr->priority > lock_owner->priority)
+    { 
+      if (lock_owner->base_priority == 0)
+        lock_owner->base_priority = lock_owner->priority;
+      list_push_back(&lock_owner->waiting_list, &curr->elem);
+      curr->next = lock_owner;
+      lock_owner->priority = curr->priority;
+    }
+    curr = lock_owner;
+  } 
 }
 
 /* Releases LOCK, which must be owned by the current thread.
