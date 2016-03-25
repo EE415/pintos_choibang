@@ -94,7 +94,7 @@ struct thread
     int base_priority;
     struct thread *next;
     struct lock *wait_lock;
-    struct list waiting_list;
+    struct list lock_list;
 
     /* Shared between thread.c and synch.c. */
     struct list_elem elem;              /* List element. */
