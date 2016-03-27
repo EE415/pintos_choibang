@@ -253,6 +253,32 @@ void lock_donation (struct lock *lock)
   } 
 }
 
+void 
+lock_rollback (void) 
+{
+  struct thread *curr = thread_current();
+    
+  while(1)
+    {
+      if (!list_empty(&curr -> lock_list))
+    {
+      curr -> priority = curr->base_priority; 
+      curr = list_entry(list_pop_front(&curr->lock_list), struct lock, elem)->holder;
+    }
+    else 
+    { 
+      if ( curr -> wait_lock != NULL)
+	curr = curr->wait_lock->holder;
+      else 
+	break;
+    }
+  }
+
+      
+
+}
+
+
 /* Releases LOCK, which must be owned by the current thread.
    This is lock_release function.
 
@@ -264,7 +290,8 @@ lock_release (struct lock *lock)
 {
   ASSERT (lock != NULL);
   ASSERT (lock_held_by_current_thread (lock));
-
+  
+  lock_rollback();
   lock->holder = NULL;
   sema_up (&lock->semaphore);
 }
@@ -279,7 +306,7 @@ lock_held_by_current_thread (const struct lock *lock)
 
   return lock->holder == thread_current ();
 }
-
+
 /* One semaphore in a list. */
 struct semaphore_elem 
   {

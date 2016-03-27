@@ -92,7 +92,6 @@ struct thread
     /* added for project1 */
     int64_t wake_time;
     int base_priority;
-    struct thread *next;
     struct lock *wait_lock;
     struct list lock_list;
 
