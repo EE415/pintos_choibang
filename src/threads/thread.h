@@ -92,12 +92,13 @@ struct thread
     /* added for project1 */
     int64_t wake_time;
     int base_priority;
+    int lockTimes ;
     struct lock *wait_lock;
     struct list lock_list;
-
+    
     /* Shared between thread.c and synch.c. */
     struct list_elem elem;              /* List element. */
-
+    
 #ifdef USERPROG
     /* Owned by userprog/process.c. */
     uint32_t *pagedir;                  /* Page directory. */
