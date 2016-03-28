@@ -115,9 +115,12 @@ sema_up (struct semaphore *sema)
   ASSERT (sema != NULL);
 
   old_level = intr_disable ();
-  if (!list_empty (&sema->waiters)) 
+  if (!list_empty (&sema->waiters))
+  {
+    list_sort(&sema->waiters, list_higher_priority, NULL); 
     thread_unblock (list_entry (list_pop_front (&sema->waiters),
                                 struct thread, elem));
+  }
   sema->value++;
   intr_set_level (old_level);
 }
@@ -202,15 +205,14 @@ lock_acquire (struct lock *lock)
 
   if (lock->holder != NULL)
   {
-    curr->wait_lock = lock;
+    //curr->wait_lock = lock;
     lock_donation(lock);
   }
 
   sema_down (&lock->semaphore);
 
   // add to lock list
-  curr->wait_lock = NULL;
-  
+ 
   lock->holder = curr;
 }
 
@@ -239,7 +241,8 @@ void lock_donation (struct lock *lock)
   struct thread *curr = thread_current ();
   struct thread *lock_owner = lock->holder;
 
-  while (! list_empty(&curr->lock_list))
+  while (! list_empty(&curr->lock_list)) 
+
   {
     lock_owner = curr->wait_lock->holder;
     if (curr->priority > lock_owner->priority)
