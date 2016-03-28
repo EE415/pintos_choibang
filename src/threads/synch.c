@@ -209,7 +209,6 @@ lock_acquire (struct lock *lock)
   sema_down (&lock->semaphore);
 
   // add to lock list
-  list_push_back(&curr->lock_list, &lock->elem);
   curr->wait_lock = NULL;
   
   lock->holder = curr;
@@ -240,7 +239,7 @@ void lock_donation (struct lock *lock)
   struct thread *curr = thread_current ();
   struct thread *lock_owner = lock->holder;
 
-  while (curr->wait_lock != NULL)
+  while (! list_empty(&curr->lock_list))
   {
     lock_owner = curr->wait_lock->holder;
     if (curr->priority > lock_owner->priority)
@@ -249,19 +248,36 @@ void lock_donation (struct lock *lock)
         lock_owner->base_priority = lock_owner->priority;
       lock_owner->priority = curr->priority;
     }
+    list_push_back(&curr->lock_list, &lock->elem);
     curr = lock_owner;
   } 
 }
 
 void 
-lock_rollback (void) 
+lock_rollback (struct lock *lock) 
 {
-  struct thread *curr = thread_current();
+  struct thread *curr ;
+  struct thread *lock_owner = lock->holder ; 
+  struct lock *lck ;
+  struct list_elem *curr_elem;
+  
+  lock_owner->priority = lock_owner ->base_priority;
+
+  while(! list_empty(&lock_owner -> lock_list))
+  {
+    lck = list_entry(list_pop_front(&(lock_owner -> lock_list)), struct lock, elem);
+    list_sort(&lck->semaphore.waiters, list_higher_priority, NULL);
+    curr_elem = list_front(&lck->semaphore.waiters);
+    while( curr_elem != list_end(&lck->semaphore.waiters))
+    { 
+      curr = list_entry(curr_elem , struct thread, elem);
+      curr -> priority = curr -> base_priority;
+      curr_elem = list_next(curr_elem);
+    }
+  }     
+            
+/*if (!list_empty(&curr -> lock_list))
     
-  while(1)
-    {
-      if (!list_empty(&curr -> lock_list))
-    {
       curr -> priority = curr->base_priority; 
       curr = list_entry(list_pop_front(&curr->lock_list), struct lock, elem)->holder;
     }
@@ -271,8 +287,8 @@ lock_rollback (void)
 	curr = curr->wait_lock->holder;
       else 
 	break;
-    }
-  }
+    }*/
+  
 
       
 
@@ -291,8 +307,11 @@ lock_release (struct lock *lock)
   ASSERT (lock != NULL);
   ASSERT (lock_held_by_current_thread (lock));
   
-  lock_rollback();
-  lock->holder = NULL;
+  if (lock -> holder != NULL) 
+  {  
+    lock_rollback(lock);	
+    lock->holder = NULL;
+  }
   sema_up (&lock->semaphore);
 }
 
