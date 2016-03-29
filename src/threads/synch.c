@@ -209,7 +209,7 @@ lock_acquire (struct lock *lock)
 
   if (lock->holder != NULL)
   {
-    //curr->wait_lock = lock;
+    curr->wait_lock = lock;
     lock_donation(lock);
   }
 
@@ -217,7 +217,7 @@ lock_acquire (struct lock *lock)
 
   // add to lock list
   list_push_back(&curr->lock_list, &lock->elem);
-  //curr->wait_lock = NULL;
+  curr->wait_lock = NULL;
   
   lock->holder = curr;
 }
@@ -247,7 +247,7 @@ void lock_donation (struct lock *lock)
   struct thread *curr = thread_current ();
   struct thread *lock_owner = lock->holder;
 
-  while (!list_empty(&curr->lock_list))
+  while (curr->wait_lock != NULL)
   {
     lock_owner = curr->wait_lock->holder;
     if (curr->priority > lock_owner->priority)
@@ -272,8 +272,30 @@ lock_release (struct lock *lock)
   ASSERT (lock != NULL);
   ASSERT (lock_held_by_current_thread (lock));
 
+  // remove lock from the lock list and donation rollback.
+  list_remove(&lock->elem);
+  lock_rollback(lock);
+
   lock->holder = NULL;
   sema_up (&lock->semaphore);
+}
+
+void
+lock_rollback (struct lock *lock)
+{
+  //struct thread *curr = thread_current ();
+  struct list_elem *temp;
+  struct thread *t;
+
+  if (!list_empty(&lock->semaphore.waiters))
+    temp = list_front(&lock->semaphore.waiters);
+  
+  if (temp != NULL)
+  {
+    t = list_entry(temp, struct thread, elem);
+    if (t->base_priority != t->priority)
+      t->priority = t->base_priority;
+  }
 }
 
 /* Returns true if the current thread holds LOCK, false
