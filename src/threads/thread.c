@@ -327,6 +327,8 @@ thread_exit (void)
   /* Just set our status to dying and schedule another process.
      We will be destroyed during the call to schedule_tail(). */
   intr_disable ();
+  list_remove(&thread_current() -> all_elem);
+
   thread_current ()->status = THREAD_DYING;
   schedule ();
   NOT_REACHED ();
@@ -360,6 +362,9 @@ thread_yield (void)
 void
 thread_set_priority (int new_priority) 
 {
+  enum intr_level old_level;
+  old_level = intr_disable();
+
   if (!thread_mlfqs)
   {
     if (new_priority < thread_current ()->priority)
@@ -370,6 +375,9 @@ thread_set_priority (int new_priority)
     else
       thread_current ()->priority = new_priority;
   }
+
+  intr_set_level(old_level);
+
 }
 
 /* Returns the current thread's priority. */
@@ -502,10 +510,11 @@ void set_load_avg(int temp_load)
   load_avg = temp_load;
 }
 
+
 void all_thread_update(calc_func *f, void* aux) 
 {
   ASSERT(intr_get_level() == INTR_OFF);
-
+  
   struct list_elem *a;
 
   for(a= list_begin (&all_threads); a!= list_end(&all_threads); a = list_next(a))

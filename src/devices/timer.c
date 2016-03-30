@@ -29,7 +29,6 @@ static intr_handler_func timer_interrupt;
 static bool too_many_loops (unsigned loops);
 static void busy_wait (int64_t loops);
 static void real_time_sleep (int64_t num, int32_t denom);
-
 /* Sets up the 8254 Programmable Interval Timer (PIT) to
    interrupt PIT_FREQ times per second, and registers the
    corresponding interrupt. */
@@ -162,6 +161,34 @@ timer_interrupt (struct intr_frame *args UNUSED)
 {
   ticks++;
   timer_wakeup();
+  int par_load_avg = (int)(59 * f_value) / (int)(60); 
+  int par_ready_th = (int)(1 * f_value) / (int) (60);
+
+  /*mlfq : updating recent_cpu and load_avg per every ticks*/
+  if(thread_mlfqs)
+  {
+    struct thread* curr = thread_current(); 
+    if(curr != get_idle())
+      curr->recent_cpu = curr->recent_cpu + 1 * f_value;
+    
+    if( ticks % TIMER_FREQ == 0) 
+    {
+      int i = ((int64_t) par_load_avg) * get_load_avg() / f_value;
+      int j = par_ready_th * get_num_ready_threads();
+
+      set_load_avg( i+j );
+
+      all_thread_update(calc_recent_cpu,NULL);
+    } 
+
+    if(ticks % 4 == 0) 
+    {
+      all_thread_update(calc_priority,NULL);
+     
+      intr_yield_on_return ();  
+    }
+  }
+  
   thread_tick ();
 }
 

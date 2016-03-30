@@ -156,4 +156,5 @@ int get_load_avg(void);
 void set_load_avg(int);
 void all_thread_update(calc_func *, void* );
 
+
 #endif /* threads/thread.h */

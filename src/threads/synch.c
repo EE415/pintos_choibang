@@ -19,7 +19,7 @@
 
    THE UNIVERSITY OF CALIFORNIA SPECIFICALLY DISCLAIMS ANY
    WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-   WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+n   WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
    PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS ON AN "AS IS"
    BASIS, AND THE UNIVERSITY OF CALIFORNIA HAS NO OBLIGATION TO
    PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR
@@ -204,11 +204,11 @@ lock_acquire (struct lock *lock)
 
   struct thread *curr = thread_current();
 
-  if (lock->holder != NULL)
+  /*if (lock->holder != NULL)
   {
     curr->wait_lock = lock;
     //lock_donation(lock);
-  }  
+    } */ 
 
   sema_down (&lock->semaphore);
   lock->holder = curr;
