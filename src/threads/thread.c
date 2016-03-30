@@ -441,7 +441,58 @@ thread_get_recent_cpu (void)
   return round(thread_current ()->recent_cpu * 100);
 }
 
-//void calc_recent_cpu (struct )
+void calc_recent_cpu (struct thread *t)
+{
+  int i,j;
+  i = 2*load_avg;
+  j = i + (1*f_value);
+  i = ((int64_t)i) * f_value / j;
+  j = ((int64_t)i) * t->recent_cpu / f_value;
+  t->recent_cpu = j + f_value * t->nice;
+}
+
+void calc_priority (struct thread *t)
+{
+  int base_priority = t->priority;
+  priority_update(t);
+
+  if (t->priority != base_priority  && t->status == THREAD_READY)
+  {
+    list_remove(&t->elem);
+    list_push_back(&mlfqs_list[t->priority], &t->elem);
+  }
+}
+
+/* num_ready is the number of thread that are either running or 
+ * ready to run at time of update.  */
+int get_num_ready_threads(void)
+{
+  int i;
+  int num_ready=0;
+
+  for (i=0;i<64;i++)
+    num_ready  += list_size(&mlfqs_list[i]);
+  
+  if (running_thread () != idle_thread)
+    num_ready += 1;
+
+  return num_ready;
+}
+
+struct thread *get_idle(void)
+{
+  return idle_thread;
+}
+
+int get_load_avg(void)
+{
+  return load_avg;
+}
+
+void set_load_avg(int temp_load)
+{
+  load_avg = temp_load;
+}
 
 /* Idle thread.  Executes when no other thread is ready to run.
 
