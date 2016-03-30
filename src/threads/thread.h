@@ -123,7 +123,7 @@ void thread_tick (void);
 void thread_print_stats (void);
 
 typedef void thread_func (void *aux);
-typedef void calc_func (struct thread * t, void *aux);
+typedef void calc_func (struct thread * t);
 
 tid_t thread_create (const char *name, int priority, thread_func *, void *);
 
@@ -148,13 +148,13 @@ int thread_get_load_avg (void);
 /* additional functions */
 int round (int);
 void priority_update (struct thread *);
-void calc_recent_cpu (struct thread *, void* );
-void calc_priority (struct thread *, void* );
+void calc_recent_cpu (struct thread *);
+void calc_priority (struct thread *);
 int get_num_ready_threads (void);
 struct thread *get_idle(void);
 int get_load_avg(void);
 void set_load_avg(int);
-void all_thread_update(calc_func *, void* );
+void all_thread_update(calc_func *);
 
 
 #endif /* threads/thread.h */

@@ -107,14 +107,13 @@ timer_sleep (int64_t ticks)
   intr_set_level(old_level);
 
 }
-
+/*timer_wakeup : if the threads' wake time is equal to ticks then, remove it in the sleep list and insert it in the ready list as priority ordered*/
 void
 timer_wakeup (void)
 {
   struct thread *th_wake;
   while (!list_empty(&sleep_list)){
-    th_wake = list_entry(list_front(&sleep_list), struct thread, elem);
-    //printf("%d", th_wake->wake_time); 
+    th_wake = list_entry(list_front(&sleep_list), struct thread, elem);    
     if(th_wake->wake_time <= ticks){
       list_pop_front(&sleep_list);
       thread_unblock(th_wake);
@@ -178,12 +177,12 @@ timer_interrupt (struct intr_frame *args UNUSED)
 
       set_load_avg( i+j );
 
-      all_thread_update(calc_recent_cpu,NULL);
+      all_thread_update(calc_recent_cpu);
     } 
 
     if(ticks % 4 == 0) 
     {
-      all_thread_update(calc_priority,NULL);
+      all_thread_update(calc_priority);
      
       intr_yield_on_return ();  
     }
