@@ -88,10 +88,10 @@ struct thread
     char name[16];                      /* Name (for debugging purposes). */
     uint8_t *stack;                     /* Saved stack pointer. */
     int priority;                       /* Priority. */
+    int base_priority;
 
     /* added for project1 */
     int64_t wake_time;
-    int base_priority;
     struct thread *next;
     struct lock *wait_lock;
     struct list lock_list;
