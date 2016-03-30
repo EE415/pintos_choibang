@@ -99,6 +99,7 @@ struct thread
 
     /* Shared between thread.c and synch.c. */
     struct list_elem elem;              /* List element. */
+    struct list_elem all_elem;
 
 #ifdef USERPROG
     /* Owned by userprog/process.c. */
@@ -113,6 +114,7 @@ struct thread
    If true, use multi-level feedback queue scheduler.
    Controlled by kernel command-line option "-o mlfqs". */
 extern bool thread_mlfqs;
+extern int f_value;
 
 void thread_init (void);
 void thread_start (void);
@@ -121,6 +123,8 @@ void thread_tick (void);
 void thread_print_stats (void);
 
 typedef void thread_func (void *aux);
+typedef void calc_func (struct thread * t, void *aux);
+
 tid_t thread_create (const char *name, int priority, thread_func *, void *);
 
 void thread_block (void);
@@ -144,11 +148,12 @@ int thread_get_load_avg (void);
 /* additional functions */
 int round (int);
 void priority_update (struct thread *);
-void calc_recent_cpu (struct thread *);
-void calc_priority (struct thread *);
+void calc_recent_cpu (struct thread *, void* );
+void calc_priority (struct thread *, void* );
 int get_num_ready_threads (void);
 struct thread *get_idle(void);
 int get_load_avg(void);
 void set_load_avg(int);
+void all_thread_update(calc_func *, void* );
 
 #endif /* threads/thread.h */
