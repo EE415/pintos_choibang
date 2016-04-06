@@ -203,7 +203,12 @@ lock_acquire (struct lock *lock)
   ASSERT (!lock_held_by_current_thread (lock));
 
   struct thread *curr = thread_current();
-
+  
+  if (lock_try_acquire)
+  {
+    curr->wait_lock = lock;
+    lock_donation(lock);
+  }
   /*if (lock->holder != NULL)
   {
     curr->wait_lock = lock;
