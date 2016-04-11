@@ -70,6 +70,7 @@ sema_down (struct semaphore *sema)
   old_level = intr_disable ();
   while (sema->value == 0) 
     {
+      //list_push_back(&sema->waiters,&thread_current()->elem); 
       list_insert_ordered(&sema->waiters, &thread_current ()->elem, list_higher_priority, NULL);
       thread_block ();
     }
@@ -117,7 +118,7 @@ sema_up (struct semaphore *sema)
   old_level = intr_disable ();
   if (!list_empty (&sema->waiters))
   {
-    list_sort(&sema->waiters, list_higher_priority, NULL); 
+    //list_sort(&sema->waiters, list_higher_priority, NULL); 
     thread_unblock (list_entry (list_pop_front (&sema->waiters),
                                 struct thread, elem));
   }
@@ -201,7 +202,7 @@ lock_acquire(struct lock *lock)
   ASSERT (lock != NULL);
   ASSERT (!intr_context ());
   ASSERT (!lock_held_by_current_thread (lock));
-
+  
   struct thread *curr = thread_current();
   
   if (!lock_try_acquire(lock))
@@ -215,6 +216,8 @@ lock_acquire(struct lock *lock)
   {
     list_push_back(&curr->lock_list, &lock->elem);
   }
+  
+  //printf("lock acquire : %d, %d\n", thread_current()->priority, thread_current()->base_priority);
   
   //lock->holder = curr;
   
@@ -258,10 +261,11 @@ lock_release (struct lock *lock)
 {
   ASSERT (lock != NULL);
   ASSERT (lock_held_by_current_thread(lock));
-
+  
   // remove from lock_list and donation rollback
   donation_rollback(lock); 
   list_remove(&lock->elem);
+  //printf("lock_release : %d, %d\n", thread_current()->priority, thread_current()->base_priority);
   struct list_elem *e;
   if(!list_empty(&lock->semaphore.waiters))
   {
@@ -280,7 +284,9 @@ lock_donation (struct lock *lock)
 {
   struct thread *lock_owner = lock->holder ;
   struct thread *curr = thread_current();
-  
+  //enum intr_level old_level;
+  //old_level = intr_disable();
+
   if (curr->priority > lock_owner->priority)
   {
     if(lock_owner->base_priority == 0)
@@ -288,30 +294,38 @@ lock_donation (struct lock *lock)
     lock_owner->priority = curr->priority;
     //thread_yield();
   }
-  
+  //intr_set_level(old_level);
 }
 
 
 void 
 donation_rollback(struct lock *lock)
 {
-  
-  if(list_size(&lock->semaphore.waiters) >= 2 )
+  //enum intr_level old_level;
+  //old_level = intr_disable();
+  //printf("\nbefore rollback : %d, %d\n", thread_current()->priority, thread_current()->base_priority);
+  if(list_size(&lock->semaphore.waiters) >= 3 )
   {
     //list_sort(&lock->semaphore.waiters,list_higher_priority,NULL);
     struct list_elem *e = list_front(&lock->semaphore.waiters);
     e = list_next(e);
     int max_priority = list_entry(e, struct thread, elem)->priority;
     
-    if(lock->holder->base_priority < max_priority)
+    if(lock->holder->base_priority < max_priority){
+      //lock->holder->priority = lock->holder->base_priority;
       lock->holder->priority = max_priority;
+    }
+    else 
+      lock->holder->priority = lock->holder->base_priority;
   }
   else
   {
-    if(lock->holder->base_priority != 0)
+    if(lock->holder->base_priority != 0){
       lock->holder->priority = lock->holder->base_priority;
+      //printf("lock holder rollback : %d", thread_current()->priority);
+    }
   }
-  
+  //intr_set_level(old_level);
 }
 
 /* Returns true if the current thread holds LOCK, false
