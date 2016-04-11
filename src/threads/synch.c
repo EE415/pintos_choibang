@@ -251,24 +251,6 @@ lock_try_acquire (struct lock *lock)
   return success;
 }
 
-void lock_donation (struct lock *lock)
-{
-  struct thread *curr = thread_current ();
-  struct thread *lock_owner = lock->holder;
-
-  while (curr->wait_lock != NULL)
-  {
-    lock_owner = curr->wait_lock->holder;
-    if (curr->priority > lock_owner->priority)
-    { 
-      if (lock_owner->base_priority == 0)
-        lock_owner->base_priority = lock_owner->priority;
-      lock_owner->priority = curr->priority;
-    }
-    curr = lock_owner;
-  } 
-}
-
 /* Releases LOCK, which must be owned by the current thread.
    This is lock_release function.
 
@@ -345,25 +327,6 @@ donation_rollback(struct lock *lock)
     }
   }
   //intr_set_level(old_level);
-}
-
-void
-lock_rollback (void)
-{
-  //struct thread *curr = thread_current ();
-  struct list_elem *temp;
-  struct thread *t;
-  struct lock *curr_lock;
-
-  if (!list_empty(&lock->semaphore.waiters))
-    temp = list_front(&lock->semaphore.waiters);
-  
-  if (temp != NULL)
-  {
-    t = list_entry(temp, struct thread, elem);
-    if (t->base_priority != t->priority)
-      t->priority = t->base_priority;
-  }
 }
 
 /* Returns true if the current thread holds LOCK, false
