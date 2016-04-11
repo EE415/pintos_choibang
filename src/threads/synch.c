@@ -19,7 +19,7 @@
 
    THE UNIVERSITY OF CALIFORNIA SPECIFICALLY DISCLAIMS ANY
    WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-n   WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+   WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
    PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS ON AN "AS IS"
    BASIS, AND THE UNIVERSITY OF CALIFORNIA HAS NO OBLIGATION TO
    PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR
@@ -196,7 +196,7 @@ lock_init (struct lock *lock)
    interrupts disabled, but interrupts will be turned back on if
    we need to sleep. */
 void
-lock_acquire (struct lock *lock)
+lock_acquire(struct lock *lock)
 {
   ASSERT (lock != NULL);
   ASSERT (!intr_context ());
@@ -204,23 +204,23 @@ lock_acquire (struct lock *lock)
 
   struct thread *curr = thread_current();
   
-  if (lock_try_acquire)
+  if (!lock_try_acquire(lock))
   {
-    curr->wait_lock = lock;
+    //curr->wait_lock = lock;
     lock_donation(lock);
-  }
-  /*if (lock->holder != NULL)
+    sema_down (&lock->semaphore);
+    
+  } 
+  else
   {
-    curr->wait_lock = lock;
-    //lock_donation(lock);
-    } */ 
-
-  sema_down (&lock->semaphore);
-  lock->holder = curr;
-  //add to lock list
-  //list_push_back(&curr->lock_list, &lock->elem);
-  //curr->wait_lock = NULL;
+    list_push_back(&curr->lock_list, &lock->elem);
+  }
+  
   //lock->holder = curr;
+  
+  //add to lock list
+    
+  //curr->wait_lock = NULL;
 }
 
 /* Tries to acquires LOCK and returns true if successful or false
@@ -257,15 +257,61 @@ void
 lock_release (struct lock *lock) 
 {
   ASSERT (lock != NULL);
-  ASSERT (lock_held_by_current_thread (lock));
+  ASSERT (lock_held_by_current_thread(lock));
 
-
-  lock->holder = NULL;
   // remove from lock_list and donation rollback
-  //list_remove(&lock->elem);
-  //donation_rollback(lock);
-
+  donation_rollback(lock); 
+  list_remove(&lock->elem);
+  struct list_elem *e;
+  if(!list_empty(&lock->semaphore.waiters))
+  {
+    e = list_front(&lock->semaphore.waiters);
+    lock->holder = list_entry(e,struct thread,elem);
+  }
+  else 
+    lock->holder = NULL;
+ 
   sema_up (&lock->semaphore);
+  
+}
+
+void 
+lock_donation (struct lock *lock)
+{
+  struct thread *lock_owner = lock->holder ;
+  struct thread *curr = thread_current();
+  
+  if (curr->priority > lock_owner->priority)
+  {
+    if(lock_owner->base_priority == 0)
+      lock_owner->base_priority = lock_owner->priority;
+    lock_owner->priority = curr->priority;
+    //thread_yield();
+  }
+  
+}
+
+
+void 
+donation_rollback(struct lock *lock)
+{
+  
+  if(list_size(&lock->semaphore.waiters) >= 2 )
+  {
+    //list_sort(&lock->semaphore.waiters,list_higher_priority,NULL);
+    struct list_elem *e = list_front(&lock->semaphore.waiters);
+    e = list_next(e);
+    int max_priority = list_entry(e, struct thread, elem)->priority;
+    
+    if(lock->holder->base_priority < max_priority)
+      lock->holder->priority = max_priority;
+  }
+  else
+  {
+    if(lock->holder->base_priority != 0)
+      lock->holder->priority = lock->holder->base_priority;
+  }
+  
 }
 
 /* Returns true if the current thread holds LOCK, false
@@ -278,7 +324,7 @@ lock_held_by_current_thread (const struct lock *lock)
 
   return lock->holder == thread_current ();
 }
-
+
 /* One semaphore in a list. */
 struct semaphore_elem 
   {
