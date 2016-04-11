@@ -217,13 +217,7 @@ lock_acquire(struct lock *lock)
     list_push_back(&curr->lock_list, &lock->elem);
   }
   
-  //printf("lock acquire : %d, %d\n", thread_current()->priority, thread_current()->base_priority);
-  
-  //lock->holder = curr;
-  
-  //add to lock list
-    
-  //curr->wait_lock = NULL;
+ 
 }
 
 /* Tries to acquires LOCK and returns true if successful or false
@@ -263,8 +257,9 @@ lock_release (struct lock *lock)
   ASSERT (lock_held_by_current_thread(lock));
   
   // remove from lock_list and donation rollback
-  donation_rollback(lock); 
+   
   list_remove(&lock->elem);
+  donation_rollback(lock);
   //printf("lock_release : %d, %d\n", thread_current()->priority, thread_current()->base_priority);
   struct list_elem *e;
   if(!list_empty(&lock->semaphore.waiters))
@@ -304,7 +299,34 @@ donation_rollback(struct lock *lock)
   //enum intr_level old_level;
   //old_level = intr_disable();
   //printf("\nbefore rollback : %d, %d\n", thread_current()->priority, thread_current()->base_priority);
-  if(list_size(&lock->semaphore.waiters) >= 3 )
+  struct list_elem *e;
+  int max_priority = 0;
+  bool flag = false;
+
+  if(!list_empty(&thread_current()->lock_list))
+  {
+    
+    for(e = list_begin(&thread_current()->lock_list); e != list_end(&thread_current()->lock_list) ; e = list_next(e))
+    {
+      struct thread *cur = list_entry(list_begin(&list_entry(e, struct lock, elem)->semaphore.waiters), struct thread, elem);
+      if ( max_priority < cur->priority ) 
+	max_priority = cur->priority;
+    }
+  }
+  
+  if(lock->holder->base_priority != 0)
+  {
+    lock->holder->priority = lock->holder->base_priority;
+    //lock->holder->base_priority = 0;
+    flag = true; 
+  }
+  if(max_priority > lock->holder->priority && flag)
+    lock->holder->priority = max_priority;
+
+
+  //intr_set_level(old_level);
+ 
+  /*if(list_size(&lock->semaphore.waiters) >= 3 )
   {
     //list_sort(&lock->semaphore.waiters,list_higher_priority,NULL);
     struct list_elem *e = list_front(&lock->semaphore.waiters);
@@ -324,7 +346,7 @@ donation_rollback(struct lock *lock)
       lock->holder->priority = lock->holder->base_priority;
       //printf("lock holder rollback : %d", thread_current()->priority);
     }
-  }
+    }*/
   //intr_set_level(old_level);
 }
 
