@@ -63,14 +63,13 @@ void
 sema_down (struct semaphore *sema) 
 {
   enum intr_level old_level;
-
+  
   ASSERT (sema != NULL);
   ASSERT (!intr_context ());
 
   old_level = intr_disable ();
   while (sema->value == 0) 
     {
-      //list_push_back(&sema->waiters,&thread_current()->elem); 
       list_insert_ordered(&sema->waiters, &thread_current ()->elem, list_higher_priority, NULL);
       thread_block ();
     }
@@ -118,7 +117,7 @@ sema_up (struct semaphore *sema)
   old_level = intr_disable ();
   if (!list_empty (&sema->waiters))
   {
-    //list_sort(&sema->waiters, list_higher_priority, NULL); 
+    list_sort(&sema->waiters, list_higher_priority, NULL); 
     thread_unblock (list_entry (list_pop_front (&sema->waiters),
                                 struct thread, elem));
   }
@@ -202,21 +201,18 @@ lock_acquire(struct lock *lock)
   ASSERT (lock != NULL);
   ASSERT (!intr_context ());
   ASSERT (!lock_held_by_current_thread (lock));
-  
+
   struct thread *curr = thread_current();
-  
+
   if (!lock_try_acquire(lock))
   {
-    //curr->wait_lock = lock;
+    curr->wait_lock = lock;
     lock_donation(lock);
     sema_down (&lock->semaphore);
     
   } 
   else
-  {
     list_push_back(&curr->lock_list, &lock->elem);
-  }
-  
  
 }
 
@@ -260,7 +256,6 @@ lock_release (struct lock *lock)
    
   list_remove(&lock->elem);
   donation_rollback(lock);
-  //printf("lock_release : %d, %d\n", thread_current()->priority, thread_current()->base_priority);
   struct list_elem *e;
   if(!list_empty(&lock->semaphore.waiters))
   {
@@ -268,37 +263,38 @@ lock_release (struct lock *lock)
     lock->holder = list_entry(e,struct thread,elem);
   }
   else 
+  {
     lock->holder = NULL;
- 
+  }
   sema_up (&lock->semaphore);
+  
   
 }
 
 void 
 lock_donation (struct lock *lock)
 {
-  struct thread *lock_owner = lock->holder ;
+  struct thread *lock_owner;
   struct thread *curr = thread_current();
-  //enum intr_level old_level;
-  //old_level = intr_disable();
 
-  if (curr->priority > lock_owner->priority)
+  while (curr->wait_lock != NULL) 
   {
-    if(lock_owner->base_priority == 0)
-      lock_owner->base_priority = lock_owner->priority;
-    lock_owner->priority = curr->priority;
-    //thread_yield();
+    lock_owner = curr->wait_lock->holder;
+    if (curr->priority > lock_owner->priority)
+    {
+      if(lock_owner->base_priority == -1)
+	lock_owner->base_priority = lock_owner->priority;
+      lock_owner->priority = curr->priority;
+      
+    }
+    curr = curr->wait_lock->holder;
   }
-  //intr_set_level(old_level);
 }
 
 
 void 
 donation_rollback(struct lock *lock)
 {
-  //enum intr_level old_level;
-  //old_level = intr_disable();
-  //printf("\nbefore rollback : %d, %d\n", thread_current()->priority, thread_current()->base_priority);
   struct list_elem *e;
   int max_priority = 0;
   bool flag = false;
@@ -314,40 +310,14 @@ donation_rollback(struct lock *lock)
     }
   }
   
-  if(lock->holder->base_priority != 0)
+  if(lock->holder->base_priority != -1)
   {
     lock->holder->priority = lock->holder->base_priority;
-    //lock->holder->base_priority = 0;
     flag = true; 
   }
   if(max_priority > lock->holder->priority && flag)
     lock->holder->priority = max_priority;
-
-
-  //intr_set_level(old_level);
  
-  /*if(list_size(&lock->semaphore.waiters) >= 3 )
-  {
-    //list_sort(&lock->semaphore.waiters,list_higher_priority,NULL);
-    struct list_elem *e = list_front(&lock->semaphore.waiters);
-    e = list_next(e);
-    int max_priority = list_entry(e, struct thread, elem)->priority;
-    
-    if(lock->holder->base_priority < max_priority){
-      //lock->holder->priority = lock->holder->base_priority;
-      lock->holder->priority = max_priority;
-    }
-    else 
-      lock->holder->priority = lock->holder->base_priority;
-  }
-  else
-  {
-    if(lock->holder->base_priority != 0){
-      lock->holder->priority = lock->holder->base_priority;
-      //printf("lock holder rollback : %d", thread_current()->priority);
-    }
-    }*/
-  //intr_set_level(old_level);
 }
 
 /* Returns true if the current thread holds LOCK, false
