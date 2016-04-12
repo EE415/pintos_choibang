@@ -402,6 +402,7 @@ int round (int x)
     return (x-f_value/2)/f_value;
 }
 
+<<<<<<< HEAD:src/threads/thread.c
 /* set the priority when MLFQs */
 void priority_update(struct thread *t)
 {
@@ -677,8 +678,8 @@ next_thread_to_run (void)
     }
     return idle_thread;
   }
-
 }
+
 
 /* Completes a thread switch by activating the new thread's page
    tables, and, if the previous thread is dying, destroying it.
