@@ -375,7 +375,10 @@ thread_set_priority (int new_priority)
   {
     if (new_priority < thread_current ()->priority)
     {
-      thread_current ()->priority = new_priority;
+      if (!list_empty(&thread_current()->lock_list))
+	thread_current()->base_priority = new_priority;
+      else
+	thread_current ()->priority = new_priority;
       thread_yield ();
     }
     else
@@ -624,7 +627,7 @@ init_thread (struct thread *t, const char *name, int priority)
   strlcpy (t->name, name, sizeof t->name);
   t->stack = (uint8_t *) t + PGSIZE;
   t->priority = priority;
-  t->base_priority = 0;
+  t->base_priority = -1;
   t->magic = THREAD_MAGIC;
 
   /*adding priority update for mlfqs*/
