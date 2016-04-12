@@ -235,8 +235,8 @@ lock_try_acquire (struct lock *lock)
   if (success)
   {
     lock->holder = thread_current ();
-    list_push_back(&thread_current()->lock_list, &lock->elem);
-    thread_current()->wait_lock=NULL;
+    //list_push_back(&thread_current()->lock_list, &lock->elem);
+    //thread_current()->wait_lock=NULL;
   }
   return success;
 }
