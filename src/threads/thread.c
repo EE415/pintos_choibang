@@ -405,7 +405,6 @@ int round (int x)
     return (x-f_value/2)/f_value;
 }
 
-<<<<<<< HEAD:src/threads/thread.c
 /* set the priority when MLFQs */
 void priority_update(struct thread *t)
 {
