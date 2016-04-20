@@ -17,6 +17,7 @@ enum intr_level intr_enable (void);
 enum intr_level intr_disable (void);
 
 /* Interrupt stack frame. */
+
 struct intr_frame
   {
     /* Pushed by intr_entry in intr-stubs.S.

@@ -3,10 +3,11 @@
 #include <syscall-nr.h>
 #include "threads/interrupt.h"
 #include "threads/thread.h"
+#include "threads/vaddr.h"
 
 static void syscall_handler (struct intr_frame *);
 static int syscall_write(int fd, const void *buffer, unsigned size);
-
+static int syscall_exit(int status);
 
 void
 syscall_init (void) 
@@ -22,32 +23,62 @@ syscall_handler (struct intr_frame *f UNUSED)
   uint32_t* sysptr = (uint32_t *)f->esp;
   switch(*sysptr)
     {
+    case SYS_HALT:
+      power_off();
+      break;
+
+    case SYS_EXIT:
+      f->eax =syscall_exit(*(sysptr+1));
+      thread_exit();
+      break;
+
     case SYS_WRITE:
       f->eax = syscall_write(*(sysptr+1),*(sysptr+2),*(sysptr+3));
-      break; 
+      break;
+    default :
+      thread_exit();
+      break;
     }
-  f->eip = f->eax
 
   //printf ("system call!\n");
-  thread_exit ();
+  //thread_exit ();
 }
 
+static bool 
+get_access(const void *mem)
+{
+  if(mem ==NULL || !is_user_vaddr(mem))
+    {
+      thread_current() ->exit_value = -1; 
+      thread_exit();
+      return false;
+    }
+  return true;
+}
+static int
+syscall_exit(int status)
+{
+  thread_current()->exit_value = status;
+  return status;
+}
+  
 static int
 syscall_write(int fd, const void *buffer, unsigned size)
 {
-  
-  if(fd == 1)
+  if(get_access(buffer))
     {
-      putbuf(buffer, size);
-      return size;
+      if(fd == 1)
+	{
+	  putbuf(buffer, size);
+	  return size;
+	}
+      if(fd == 0)
+	return -1; 
+      else 
+	{
+	  printf("write syscall!");
+	  return -1;
+	}
     }
-  if(fd == 0)
-    return -1; 
-  else 
-    {
-      printf("write syscall!");
-      return -1;
-    }
-  
 }
 

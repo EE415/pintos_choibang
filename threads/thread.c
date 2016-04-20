@@ -237,8 +237,8 @@ thread_unblock (struct thread *t)
   list_push_back (&ready_list, &t->elem);
   t->status = THREAD_READY;
   intr_set_level (old_level);
-
   thread_yield();
+
 }
 
 /* Returns the name of the running thread. */
@@ -442,7 +442,7 @@ init_thread (struct thread *t, const char *name, int priority)
   t->magic = THREAD_MAGIC;
   /*[modified] project 2 : exit value */
 #ifdef USERPROG
-  t->exit_value = -1;
+  t->exit_value = 0;
 
 #endif
   /**********************************/
