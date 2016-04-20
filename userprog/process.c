@@ -241,7 +241,7 @@ load (const char *file_name, void (**eip) (void), void **esp)
   char *pass_copy;
   char *save_ptr;
   char *token;
-  char *argv[10];
+  char *argv[50];
   int argc = 0;
 
   /* Allocate and activate page directory. */
@@ -260,7 +260,7 @@ load (const char *file_name, void (**eip) (void), void **esp)
       argv[argc] = token;
       argc += 1;
     }
-  
+
   if(argc == 0)
     goto done;
 
@@ -485,20 +485,22 @@ setup_stack (void **esp, int argc, char* argv[])
       if (success)
 	{
 	  /*[modified] project 2: push argv to stack*/
+	
 	  int i ;
 	  //uint8_t buf = 100;
-	  uint32_t *addr[argc+1];
+	  uint32_t *addr[argc];
 	  int total_size = 0;
 	  *esp = PHYS_BASE;
 	  for(i = argc-1 ;i>=0; i--)
 	    {
+	      
 	      int size_argv = strlen(argv[i]) +1;
 	      *esp -= size_argv * sizeof(char);
 	      total_size += size_argv * sizeof(char);
 	      addr[i] = (uint32_t *)(*esp);
 	      strlcpy((char *)(*esp), argv[i], size_argv);
+	      
 	    }
-	  
 	  i = total_size % 4 ;
 	  *esp = *esp - (4-i);
 	  
@@ -518,7 +520,7 @@ setup_stack (void **esp, int argc, char* argv[])
 	  *(int *)(*esp) = argc;
 	  *esp -= 4;
 	  *(int *)(*esp) = 0;
-	  hex_dump(*esp, *esp, 100, true);
+	  //hex_dump(*esp, *esp, 100, true);
 	  /******************************************/
 	} 
       else
