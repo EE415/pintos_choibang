@@ -443,7 +443,7 @@ init_thread (struct thread *t, const char *name, int priority)
   /*[modified] project 2 : exit value */
 #ifdef USERPROG
   t->exit_value = 0;
-
+  list_init(&t->file_list);
 #endif
   /**********************************/
 }
