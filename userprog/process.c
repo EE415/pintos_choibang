@@ -117,7 +117,7 @@ process_exit (void)
   uint32_t *pd;
 
   /*[modified] project 2 : exit */
-  printf("%s: exit(%d)", curr->name, curr->exit_value);
+  printf("%s: exit(%d)\n", curr->name, curr->exit_value);
   /***********************************/
 
   /* Destroy the current process's page directory and switch back
@@ -502,6 +502,7 @@ setup_stack (void **esp, int argc, char* argv[])
 	  i = total_size % 4 ;
 	  *esp = *esp - (4-i);
 	  
+
 	  for(i = argc; i>=0; i--)
 	    {
 	      *esp -= 4;
@@ -509,6 +510,7 @@ setup_stack (void **esp, int argc, char* argv[])
 		*(int *)(*esp) = 0;
 	      else 
 		*(uint32_t **)(*esp) = addr[i];
+	     
 	    }
 	  *esp -= 4;
 	  *(uint32_t **)(*esp) = *esp + 4;
@@ -516,6 +518,7 @@ setup_stack (void **esp, int argc, char* argv[])
 	  *(int *)(*esp) = argc;
 	  *esp -= 4;
 	  *(int *)(*esp) = 0;
+	  hex_dump(*esp, *esp, 100, true);
 	  /******************************************/
 	} 
       else
