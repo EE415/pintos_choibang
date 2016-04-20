@@ -48,7 +48,7 @@ process_execute (const char *file_name)
   strlcpy(copy, file_name, PGSIZE);
   token = strtok_r(copy, " ", &save_ptr);
 
-  printf("  hello\n");
+ 
   /* Create a new thread to execute FILE_NAME. */
   tid = thread_create (token, PRI_DEFAULT, start_process, fn_copy);
   /************************************************/
@@ -58,7 +58,7 @@ process_execute (const char *file_name)
       palloc_free_page (copy);
     }
 
-  printf("  tid: %d\n", tid);
+ 
   return tid;
 }
 
@@ -67,7 +67,7 @@ process_execute (const char *file_name)
 static void
 start_process (void *f_name)
 {
-  printf("  start process\n");
+  
   char *file_name = f_name;
   struct intr_frame if_;
   bool success;
@@ -260,7 +260,7 @@ load (const char *file_name, void (**eip) (void), void **esp)
       argv[argc] = token;
       argc += 1;
     }
-
+  
   if(argc == 0)
     goto done;
 
@@ -273,7 +273,6 @@ load (const char *file_name, void (**eip) (void), void **esp)
       goto done; 
     }
 
-  file_deny_write(file);
 
   /* Read and verify executable header. */
   if (file_read (file, &ehdr, sizeof ehdr) != sizeof ehdr

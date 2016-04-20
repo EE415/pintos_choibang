@@ -47,7 +47,8 @@ process_execute (const char *file_name)
     return TID_ERROR;
   strlcpy(copy, file_name, PGSIZE);
   token = strtok_r(copy, " ", &save_ptr);
-  
+
+ 
   /* Create a new thread to execute FILE_NAME. */
   tid = thread_create (token, PRI_DEFAULT, start_process, fn_copy);
   /************************************************/
@@ -56,6 +57,8 @@ process_execute (const char *file_name)
       palloc_free_page (fn_copy);
       palloc_free_page (copy);
     }
+
+ 
   return tid;
 }
 
@@ -64,6 +67,7 @@ process_execute (const char *file_name)
 static void
 start_process (void *f_name)
 {
+  
   char *file_name = f_name;
   struct intr_frame if_;
   bool success;
@@ -256,7 +260,7 @@ load (const char *file_name, void (**eip) (void), void **esp)
       argv[argc] = token;
       argc += 1;
     }
-
+  printf("argc : %d", argc);
   if(argc == 0)
     goto done;
 
