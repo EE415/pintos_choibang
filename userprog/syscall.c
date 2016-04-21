@@ -21,6 +21,7 @@ static void syscall_seek(int fd, unsigned position);
 static unsigned syscall_tell(int fd);
 static void syscall_close(int fd);
 static bool is_code_segment(void *addr);
+static void check_bad_arg(uint32_t *sysptr, int num);
 
 #define start_addr 0x08048000
 void
@@ -35,7 +36,7 @@ static void
 syscall_handler (struct intr_frame *f UNUSED) 
 {
   uint32_t* sysptr = (uint32_t *)f->esp;
-  if(f->esp < start_addr)
+  if(f->esp < start_addr || !is_user_vaddr(f->esp))
     {
       syscall_exit(-1);
       thread_exit();
@@ -48,52 +49,63 @@ syscall_handler (struct intr_frame *f UNUSED)
       break;
 
     case SYS_EXIT:
+      check_bad_arg(sysptr,1);
       f->eax = syscall_exit(*(sysptr+1));
-      thread_exit();
-	
+      thread_exit();	
       break;
     
     case SYS_EXEC:
+      check_bad_arg(sysptr,1);
       f->eax = syscall_exec(*(sysptr+1));
       break;
       
     case SYS_WAIT:
+      check_bad_arg(sysptr,1);
       f->eax = syscall_wait(*(sysptr+1));
       break;
       
     case SYS_CREATE:
+      check_bad_arg(sysptr,2);
       f->eax = syscall_create(*(sysptr+1), *(sysptr+2));
       break;
       
     case SYS_REMOVE:
+      check_bad_arg(sysptr,1);
       f->eax = syscall_remove(*(sysptr+1));
       break;
       
     case SYS_OPEN:
+      check_bad_arg(sysptr,1);
       f->eax = syscall_open(*(sysptr+1));
       break;
       
     case SYS_FILESIZE:
+      check_bad_arg(sysptr,1);
       f->eax = syscall_filesize(*(sysptr+1));
       break;
 
     case SYS_READ:
+      check_bad_arg(sysptr,3);
       f->eax = syscall_read(*(sysptr+1), *(sysptr+2), *(sysptr+3));
       break;
       
     case SYS_WRITE:
+      check_bad_arg(sysptr,3);
       f->eax = syscall_write(*(sysptr+1), *(sysptr+2), *(sysptr+3));
       break;
 
     case SYS_SEEK:
+      check_bad_arg(sysptr,2);
       syscall_seek(*(sysptr+1), *(sysptr+2));
       break;
 
     case SYS_TELL:
+      check_bad_arg(sysptr,1);
       f->eax = syscall_tell(*(sysptr+1));
       break;
 
     case SYS_CLOSE:
+      check_bad_arg(sysptr,1);
       syscall_close(*(sysptr+1));
       break;
       
@@ -103,6 +115,17 @@ syscall_handler (struct intr_frame *f UNUSED)
     }
 
 }
+
+static void 
+check_bad_arg(uint32_t *sysptr, int num)
+{
+  if(sysptr+num >= PHYS_BASE)
+    {
+      syscall_exit(-1);
+      thread_exit();
+    }
+}
+
 static bool 
 is_code_segment(void *addr)
 {
@@ -268,15 +291,15 @@ syscall_write(int fd, const void *buffer, unsigned size)
 static void 
 syscall_seek(int fd, unsigned position)
 {
-  /*TO DO IMPLEMENT*/
-  return ;
+  struct file_set *fs = find_file(&thread_current()->file_list, fd);
+  file_seek(fs->f,position);
 }
 
 static unsigned 
 syscall_tell(int fd)
 {
-  /*TO DO IMPLEMENT*/
-  return 0;
+  struct file_set *fs = find_file(&thread_current()->file_list, fd);
+  return file_tell(fs->f);
 }
 
 static void 
@@ -288,3 +311,4 @@ syscall_close(int fd)
 }
 
 
+/****************************************************************************/
