@@ -20,7 +20,9 @@ static int syscall_write(int fd,const void *buffer, unsigned size);
 static void syscall_seek(int fd, unsigned position);
 static unsigned syscall_tell(int fd);
 static void syscall_close(int fd);
+static bool is_code_segment(void *addr);
 
+#define start_addr 0x08048000
 void
 syscall_init (void) 
 {
@@ -33,6 +35,12 @@ static void
 syscall_handler (struct intr_frame *f UNUSED) 
 {
   uint32_t* sysptr = (uint32_t *)f->esp;
+  if(f->esp < start_addr)
+    {
+      syscall_exit(-1);
+      thread_exit();
+    }
+
   switch(*sysptr)
     {
     case SYS_HALT:
@@ -40,8 +48,9 @@ syscall_handler (struct intr_frame *f UNUSED)
       break;
 
     case SYS_EXIT:
-      f->eax =syscall_exit(*(sysptr+1));
+      f->eax = syscall_exit(*(sysptr+1));
       thread_exit();
+	
       break;
     
     case SYS_EXEC:
@@ -93,6 +102,13 @@ syscall_handler (struct intr_frame *f UNUSED)
       break;
     }
 
+}
+static bool 
+is_code_segment(void *addr)
+{
+  if(addr < start_addr || addr > 0x08068000)
+    return false;
+  return true;
 }
 
 static struct file_set *
@@ -159,7 +175,7 @@ syscall_wait(pid_t pid)
 static bool 
 syscall_create(const char* file, unsigned initial_size)
 {
-  if(file == NULL || file < 0x08048000 || file > 0x08068000)
+  if(file == NULL || !is_code_segment(file))
     {
       syscall_exit(-1);
       thread_exit();
@@ -181,7 +197,7 @@ syscall_remove(const char* file)
 static int 
 syscall_open(const char* file)
 {
-  if(file == NULL || file < 0x08048000 ||file > 0x08068000) //code segment has 128M.
+  if(file == NULL || !is_code_segment(file)) //code segment has 128M.
     {
       syscall_exit(-1);
       thread_exit();
@@ -228,21 +244,22 @@ syscall_read(int fd, void *buffer, unsigned size)
 static int
 syscall_write(int fd, const void *buffer, unsigned size)
 {
+  
   if(size == 0)
     return 0;
-
+  
   if(fd == 1)
     {
       putbuf(buffer, size);
       return size;
     }
-
-  if(buffer < 0x08048000 ||buffer > 0x08068000)
+  
+  if(!is_code_segment(buffer))
     {
       syscall_exit(-1);
       thread_exit();
     }
-   
+  
   struct file_set *fs = find_file(&thread_current()->file_list, fd);
   return file_write(fs->f, buffer, size);
   
