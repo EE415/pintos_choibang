@@ -5,9 +5,9 @@
 #include "threads/thread.h"
 #include "threads/vaddr.h"
 
-static void syscall_handler (struct intr_frame *);
-static int syscall_write(int fd, const void *buffer, unsigned size);
-static int syscall_exit(int status);
+//static void syscall_handler (struct intr_frame *);
+//static int syscall_write(int fd, const void *buffer, unsigned size);
+//static int syscall_exit(int status);
 
 void
 syscall_init (void) 
@@ -47,7 +47,7 @@ syscall_handler (struct intr_frame *f UNUSED)
 static bool 
 get_access(const void *mem)
 {
-  if(mem ==NULL || !is_user_vaddr(mem))
+  if(mem ==NULL || !is_user_vaddr(mem) || pagedir_get_page(thread_current()->pagedir, mem)==NULL)
     {
       thread_current() ->exit_value = -1; 
       thread_exit();
