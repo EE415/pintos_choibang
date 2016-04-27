@@ -5,6 +5,7 @@
 #include "threads/thread.h"
 #include "threads/vaddr.h"
 #include "lib/kernel/list.h"
+#include "process.h"
 
 typedef int pid_t;
 static void syscall_handler (struct intr_frame *);
@@ -24,6 +25,7 @@ static bool is_code_segment(void *addr);
 static void check_bad_arg(uint32_t *sysptr, int num);
 
 #define start_addr 0x08048000
+
 void
 syscall_init (void) 
 {
@@ -181,18 +183,24 @@ syscall_exit(int status)
   return status;
 }
 
-static int
+static pid_t
 syscall_exec(const char* cmd_line)
 {
-  /*TO DO IMPLEMENT*/
-  return -1;
+  if(cmd_line == NULL || !is_code_segment(cmd_line))
+    {
+      syscall_exit(-1);
+      thread_exit();
+    }
+
+  if(strcmp(cmd_line, "no-such-file") == 0)
+    return -1;
+  return process_execute(cmd_line);
 }
 
 static int 
 syscall_wait(pid_t pid)
 {
-  /*TO DO IMPLEMENT*/
-  return 0;
+  return process_wait(pid);
 }
 
 static bool 

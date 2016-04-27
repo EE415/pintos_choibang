@@ -18,6 +18,7 @@
 #include "threads/thread.h"
 #include "threads/vaddr.h"
 #include "threads/synch.h"
+#inlcude "userprog/syscall.h"
 
 static thread_func start_process NO_RETURN;
 static bool load (const char *cmdline, void (**eip) (void), void **esp);
@@ -114,17 +115,63 @@ start_process (void *f_name)
    This function will be implemented in problem 2-2.  For now, it
    does nothing. */
 int
-process_wait (tid_t child_tid UNUSED) 
+process_wait (tid_t child_tid) 
 {
-  /*[modified] project 2 : wait */
-  printf("tid : %d\n",child_tid);
-  printf("cur tid : %d\n",thread_current()->tid);
-  struct thread *t = find_child_thread(child_tid);
-  ASSERT(list_empty(thread_current()->child_list)
-  if(child_tid == -1 || t == NULL) 
+  /*[modified] project 2 : wait*/ 
+  //printf("tid : %d\n",child_tid);
+  //printf("cur tid : %d\n",thread_current()->tid);
+  int exit;
+  struct list_elem *e; 
+  if(child_tid == TID_ERROR)
     return -1;
-  sema_down(&t->parent->parent_sema);
-  return 0;
+
+  enum intr_level old_level;
+  old_level = intr_disable();
+  struct thread *t ;
+  t = find_child_thread(child_tid);
+  intr_set_level (old_level);
+  
+  if(t == NULL) 
+    {
+      if(!list_empty(&thread_current()->terminated_child_list))
+	{
+	   for(e = list_begin(&thread_current()->terminated_child_list);
+	      e != list_end(&thread_current()->terminated_child_list);
+	      e = list_next(e))
+	    {
+	      struct terminated_child *child = list_entry(e, struct terminated_child, terminated_elem);
+	      if(child->tid == child_tid)
+		{
+		  list_remove(&child->terminated_elem);
+		  exit = child->exit_value;
+		  free(child);
+		  return exit;
+		}
+	    }
+	  return -1;
+	}
+    }
+  else 
+    {
+      sema_down(&t->parent_sema);
+      
+      for(e = list_begin(&thread_current()->terminated_child_list);
+	  e != list_end(&thread_current()->terminated_child_list);
+	  e = list_next(e))
+	{
+	  struct terminated_child *child = list_entry(e, struct terminated_child, terminated_elem);
+	  if(child->tid == child_tid)
+	    {
+	      list_remove(&child->terminated_elem);
+	      exit = child->exit_value;
+	      free(child);
+	      return exit;
+	    }
+	}      
+      return t->exit_value;
+    }
+		  
+  //printf("parent_down : %d , tid : %d\n",t->parent_sema.value, t->tid);
   /***********************************************************/
 }
 
@@ -138,6 +185,7 @@ find_child_thread(tid_t child_tid)
     {
       for(e = list_begin(&cur->child_list); e != list_end(&cur->child_list); e = list_next(e))
 	{
+	  //t = list_entry(e, struct thread, child_elem);
 	  t = list_entry(e, struct thread, elem);
 	  if(child_tid == t->tid)
 	    return t;
@@ -150,6 +198,7 @@ find_child_thread(tid_t child_tid)
 void
 process_exit (void)
 {
+  struct list_elem *e ;
   struct thread *curr = thread_current ();
   uint32_t *pd;
 
@@ -175,6 +224,36 @@ process_exit (void)
     
     }
   list_remove(&curr->elem);
+  struct terminated_child *child = malloc(sizeof(struct terminated_child *));
+  child->tid = curr->tid;
+  child->exit_value = curr->exit_value;
+  list_push_back(&curr->parent->terminated_child_list, &child->terminated_elem);
+  /*if(!list_empty(&curr->file_list))
+    {
+      for(e = list_begin(&curr->file_list);
+	  e != list_end(&curr->file_list);
+	  e = list_next(e))
+	{
+	  struct file_set *f = (struct file_set *)malloc(sizeof(struct file_set));
+	  f= list_entry(e, struct file_set, elem);
+	  list_remove(f->elem);
+	  file_close(f->f);
+	}
+    }*/
+	
+
+  if(!list_empty(&curr->terminated_child_list))
+    {
+      for(e = list_begin(&curr->terminated_child_list);
+	  e != list_end(&curr->terminated_child_list);
+	  e = list_next(e))
+	{
+	  struct terminated_child *child = list_entry(e, struct terminated_child, terminated_elem);
+	  list_remove(&child->terminated_elem);
+	  free(child);
+	}
+    }
+  
   sema_up(&curr->parent->parent_sema);
 }
 
@@ -305,6 +384,8 @@ load (const char *file_name, void (**eip) (void), void **esp)
 
   /* Open executable file. */
   file = filesys_open (argv[0]);
+
+  file_deny_write(file);
 
   if (file == NULL) 
     {

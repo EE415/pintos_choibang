@@ -196,6 +196,9 @@ thread_create (const char *name, int priority,
   sf = alloc_frame (t, sizeof *sf);
   sf->eip = switch_entry;
 
+//  if(strcmp(t->name, "main") && strcmp(t->name, "idle"))
+//          list_push_back(&thread_current()->child_list, &t->elem);
+
   /*[modified] project 2 : allocate parent */
   t->parent = thread_current();
   /***************************************/
@@ -295,6 +298,7 @@ thread_exit (void)
   thread_current ()->status = THREAD_DYING;
   schedule ();
   NOT_REACHED ();
+  ASSERT(0);
 }
 
 /* Yields the CPU.  The current thread is not put to sleep and
@@ -445,12 +449,13 @@ init_thread (struct thread *t, const char *name, int priority)
   t->priority = priority;
   t->magic = THREAD_MAGIC;
   /*[modified] project 2 : exit value */
-#ifdef USERPROG
+//#ifdef USERPROG
   t->exit_value = 0;
   list_init(&t->file_list);
   list_init(&t->child_list);
+  list_init(&t->terminated_child_list);
   sema_init(&t->parent_sema,0);
-#endif
+//#endif
   /**********************************/
 }
 

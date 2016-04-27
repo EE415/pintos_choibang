@@ -99,11 +99,15 @@ struct thread
     /*[modified] project 2: declare variable*/
     int exit_value;                /*exit code */
     struct list file_list;         /*file list */
+
+    struct list_elem child_elem;
+
     struct list child_list;        /*list of child process*/
+    struct list terminated_child_list; 
     struct thread *parent;         /*parent thread*/
     struct semaphore parent_sema;  /*sema for parent*/
-    //bool load_success = false;     /*process load successness*/ 
-    /***************************************/
+    
+   /***************************************/
 #endif
 
     /* Owned by thread.c. */
