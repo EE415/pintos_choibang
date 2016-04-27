@@ -17,9 +17,11 @@
 #include "threads/palloc.h"
 #include "threads/thread.h"
 #include "threads/vaddr.h"
+#include "threads/synch.h"
 
 static thread_func start_process NO_RETURN;
 static bool load (const char *cmdline, void (**eip) (void), void **esp);
+static struct thread* find_child_thread(tid_t child_tid);
 
 /* Starts a new thread running a user program loaded from
    FILENAME.  The new thread may be scheduled (and may even exit)
@@ -50,6 +52,7 @@ process_execute (const char *file_name)
 
  
   /* Create a new thread to execute FILE_NAME. */
+  //printf("thread name : %s\n", token);
   tid = thread_create (token, PRI_DEFAULT, start_process, fn_copy);
   /************************************************/
   if (tid == TID_ERROR)
@@ -83,6 +86,13 @@ start_process (void *f_name)
   palloc_free_page (file_name);
   if (!success) 
     thread_exit ();
+  /*[modified] project 2 : allocate child */
+  else 
+    {
+      if(thread_current() != thread_current()->parent)
+	list_push_back(&thread_current()->parent->child_list, &thread_current()->elem);
+    }
+  /***************************************************/
 
   /* Start the user process by simulating a return from an
      interrupt, implemented by intr_exit (in
@@ -106,7 +116,34 @@ start_process (void *f_name)
 int
 process_wait (tid_t child_tid UNUSED) 
 {
-  return -1;
+  /*[modified] project 2 : wait */
+  printf("tid : %d\n",child_tid);
+  printf("cur tid : %d\n",thread_current()->tid);
+  struct thread *t = find_child_thread(child_tid);
+  ASSERT(list_empty(thread_current()->child_list)
+  if(child_tid == -1 || t == NULL) 
+    return -1;
+  sema_down(&t->parent->parent_sema);
+  return 0;
+  /***********************************************************/
+}
+
+static struct thread * 
+find_child_thread(tid_t child_tid)
+{
+  struct list_elem *e;
+  struct thread *t;
+  struct thread *cur = thread_current();
+  if(!list_empty(&cur->child_list))
+    {
+      for(e = list_begin(&cur->child_list); e != list_end(&cur->child_list); e = list_next(e))
+	{
+	  t = list_entry(e, struct thread, elem);
+	  if(child_tid == t->tid)
+	    return t;
+	}
+    }
+  return NULL;
 }
 
 /* Free the current process's resources. */
@@ -119,7 +156,7 @@ process_exit (void)
   /*[modified] project 2 : exit */
   printf("%s: exit(%d)\n", curr->name, curr->exit_value);
   /***********************************/
-
+  
   /* Destroy the current process's page directory and switch back
      to the kernel-only page directory. */
   pd = curr->pagedir;
@@ -137,6 +174,8 @@ process_exit (void)
       pagedir_destroy (pd);
     
     }
+  list_remove(&curr->elem);
+  sema_up(&curr->parent->parent_sema);
 }
 
 /* Sets up the CPU for running user code in the current
