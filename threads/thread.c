@@ -196,6 +196,10 @@ thread_create (const char *name, int priority,
   sf = alloc_frame (t, sizeof *sf);
   sf->eip = switch_entry;
 
+  /*[modified] project 2 : allocate parent */
+  t->parent = thread_current();
+  /***************************************/
+
   /* Add to run queue. */
   thread_unblock (t);
   return tid;
@@ -444,6 +448,8 @@ init_thread (struct thread *t, const char *name, int priority)
 #ifdef USERPROG
   t->exit_value = 0;
   list_init(&t->file_list);
+  list_init(&t->child_list);
+  sema_init(&t->parent_sema,0);
 #endif
   /**********************************/
 }
