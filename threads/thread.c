@@ -205,6 +205,8 @@ thread_create (const char *name, int priority,
 
   /* Add to run queue. */
   thread_unblock (t);
+
+
   return tid;
 }
 
@@ -241,11 +243,12 @@ thread_unblock (struct thread *t)
 
   old_level = intr_disable ();
   ASSERT (t->status == THREAD_BLOCKED);
+  printf("[unblock] %d \n", t->tid);
+  printf("[unblock] listsize : %d \n", list_size(&ready_list));
   list_push_back (&ready_list, &t->elem);
+  printf("[unblock] listsize : %d \n", list_size(&ready_list));
   t->status = THREAD_READY;
   intr_set_level (old_level);
-  thread_yield();
-
 }
 
 /* Returns the name of the running thread. */
@@ -291,14 +294,14 @@ thread_exit (void)
 #ifdef USERPROG
   process_exit ();
 #endif
-
+  printf("thread_exit\n");
+  printf("ready_list size : %d \n", list_size(&ready_list));
   /* Just set our status to dying and schedule another process.
      We will be destroyed during the call to schedule_tail(). */
   intr_disable ();
   thread_current ()->status = THREAD_DYING;
   schedule ();
   NOT_REACHED ();
-  ASSERT(0);
 }
 
 /* Yields the CPU.  The current thread is not put to sleep and
@@ -324,6 +327,7 @@ void
 thread_set_priority (int new_priority) 
 {
   thread_current ()->priority = new_priority;
+  
 }
 
 /* Returns the current thread's priority. */
@@ -506,10 +510,8 @@ void
 schedule_tail (struct thread *prev) 
 {
   struct thread *curr = running_thread ();
-  
   ASSERT (intr_get_level () == INTR_OFF);
-
-  /* Mark us as running. */
+   /* Mark us as running. */
   curr->status = THREAD_RUNNING;
 
   /* Start new time slice. */
