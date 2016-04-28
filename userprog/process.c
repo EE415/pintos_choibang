@@ -18,7 +18,8 @@
 #include "threads/thread.h"
 #include "threads/vaddr.h"
 #include "threads/synch.h"
-#inlcude "userprog/syscall.h"
+#include "userprog/syscall.h"
+#include "threads/malloc.h"
 
 static thread_func start_process NO_RETURN;
 static bool load (const char *cmdline, void (**eip) (void), void **esp);
@@ -154,7 +155,6 @@ process_wait (tid_t child_tid)
   else 
     {
       sema_down(&t->parent_sema);
-      
       for(e = list_begin(&thread_current()->terminated_child_list);
 	  e != list_end(&thread_current()->terminated_child_list);
 	  e = list_next(e))
@@ -204,6 +204,7 @@ process_exit (void)
 
   /*[modified] project 2 : exit */
   printf("%s: exit(%d)\n", curr->name, curr->exit_value);
+
   /***********************************/
   
   /* Destroy the current process's page directory and switch back
@@ -223,6 +224,7 @@ process_exit (void)
       pagedir_destroy (pd);
     
     }
+  
   list_remove(&curr->elem);
   struct terminated_child *child = malloc(sizeof(struct terminated_child *));
   child->tid = curr->tid;
@@ -241,7 +243,6 @@ process_exit (void)
 	}
     }*/
 	
-
   if(!list_empty(&curr->terminated_child_list))
     {
       for(e = list_begin(&curr->terminated_child_list);
@@ -253,8 +254,8 @@ process_exit (void)
 	  free(child);
 	}
     }
+  sema_up(&curr->parent_sema);
   
-  sema_up(&curr->parent->parent_sema);
 }
 
 /* Sets up the CPU for running user code in the current
