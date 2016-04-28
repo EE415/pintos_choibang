@@ -7,8 +7,7 @@
 #include "threads/io.h"
 #include "threads/synch.h"
 #include "threads/thread.h"
-#include "lib/kernel/list.h"  
-
+  
 /* See [8254] for hardware details of the 8254 timer chip. */
 
 #if TIMER_FREQ < 19
@@ -29,6 +28,7 @@ static intr_handler_func timer_interrupt;
 static bool too_many_loops (unsigned loops);
 static void busy_wait (int64_t loops);
 static void real_time_sleep (int64_t num, int32_t denom);
+
 /* Sets up the 8254 Programmable Interval Timer (PIT) to
    interrupt PIT_FREQ times per second, and registers the
    corresponding interrupt. */
@@ -38,7 +38,7 @@ timer_init (void)
   /* 8254 input frequency divided by TIMER_FREQ, rounded to
      nearest. */
   uint16_t count = (1193180 + TIMER_FREQ / 2) / TIMER_FREQ;
-  list_init(&sleep_list);
+
   outb (0x43, 0x34);    /* CW: counter 0, LSB then MSB, mode 2, binary. */
   outb (0x40, count & 0xff);
   outb (0x40, count >> 8);
@@ -94,36 +94,13 @@ timer_elapsed (int64_t then)
 
 /* Suspends execution for approximately TICKS timer ticks. */
 void
-timer_sleep (int64_t ticks)
+timer_sleep (int64_t ticks) 
 {
   int64_t start = timer_ticks ();
-  struct thread *curr = thread_current();
-  enum intr_level old_level;
-  old_level = intr_disable();
-  curr->wake_time = start + ticks;
-  list_insert_ordered(&sleep_list, &curr->elem, list_less_wakeup, NULL);
 
-  thread_block();
-  intr_set_level(old_level);
-
-}
-/*timer_wakeup : if the threads' wake time is equal to ticks then, remove it in the sleep list and insert it in the ready list as priority ordered*/
-void
-timer_wakeup (void)
-{
-  struct thread *th_wake;
-  while (!list_empty(&sleep_list)){
-    th_wake = list_entry(list_front(&sleep_list), struct thread, elem);    
-    if(th_wake->wake_time <= ticks){
-      list_pop_front(&sleep_list);
-      thread_unblock(th_wake);
-      if(th_wake->priority > thread_current()->priority)
-	intr_yield_on_return();
-    }
-    else
-      break;
-  }
-  
+  ASSERT (intr_get_level () == INTR_ON);
+  while (timer_elapsed (start) < ticks) 
+    thread_yield ();
 }
 
 /* Suspends execution for approximately MS milliseconds. */
@@ -153,41 +130,12 @@ timer_print_stats (void)
 {
   printf ("Timer: %"PRId64" ticks\n", timer_ticks ());
 }
-
+
 /* Timer interrupt handler. */
 static void
 timer_interrupt (struct intr_frame *args UNUSED)
 {
   ticks++;
-  timer_wakeup();
-  int par_load_avg = (int)(59 * f_value) / (int)(60); 
-  int par_ready_th = (int)(1 * f_value) / (int) (60);
-
-  /*mlfq : updating recent_cpu and load_avg per every ticks*/
-  if(thread_mlfqs)
-  {
-    struct thread* curr = thread_current(); 
-    if(curr != get_idle())
-      curr->recent_cpu = curr->recent_cpu + 1 * f_value;
-    
-    if( ticks % TIMER_FREQ == 0) 
-    {
-      int i = ((int64_t) par_load_avg) * get_load_avg() / f_value;
-      int j = par_ready_th * get_num_ready_threads();
-
-      set_load_avg( i+j );
-
-      all_thread_update(calc_recent_cpu);
-    } 
-
-    if(ticks % 4 == 0) 
-    {
-      all_thread_update(calc_priority);
-     
-      intr_yield_on_return ();  
-    }
-  }
-  
   thread_tick ();
 }
 

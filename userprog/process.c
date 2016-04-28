@@ -119,8 +119,8 @@ int
 process_wait (tid_t child_tid) 
 {
   /*[modified] project 2 : wait*/ 
-  printf("tid : %d\n",child_tid);
-  printf("cur tid : %d\n",thread_current()->tid);
+  //printf("tid : %d\n",child_tid);
+  //printf("cur tid : %d\n",thread_current()->tid);
   int exit;
   struct list_elem *e; 
   if(child_tid == TID_ERROR)
@@ -134,7 +134,6 @@ process_wait (tid_t child_tid)
   
   if(t == NULL) 
     {
-      printf("size of terminated list : %d\n", list_size(&thread_current()->terminated_child_list));
       if(!list_empty(&thread_current()->terminated_child_list))
 	{
 	   for(e = list_begin(&thread_current()->terminated_child_list);
@@ -155,10 +154,7 @@ process_wait (tid_t child_tid)
     }
   else 
     {
-      printf("before sema down current : %d\n", thread_current()->tid);
       sema_down(&t->parent_sema);
-      printf("size of waiters : %d cur %d\n", list_size(&t->parent_sema.waiters), t->tid);
-      printf("implement sema down. current %d\n", thread_current()->tid);
       for(e = list_begin(&thread_current()->terminated_child_list);
 	  e != list_end(&thread_current()->terminated_child_list);
 	  e = list_next(e))
@@ -229,7 +225,6 @@ process_exit (void)
     
     }
   
-  printf("[exit]curr : %d \n", curr->tid);
   list_remove(&curr->elem);
   struct terminated_child *child = malloc(sizeof(struct terminated_child *));
   child->tid = curr->tid;
@@ -248,7 +243,6 @@ process_exit (void)
 	}
     }*/
 	
-  printf("free terminated child list\n");
   if(!list_empty(&curr->terminated_child_list))
     {
       for(e = list_begin(&curr->terminated_child_list);
@@ -260,10 +254,8 @@ process_exit (void)
 	  free(child);
 	}
     }
-  printf("before sema up curr : %d list size : %d\n",curr->tid, list_size(&curr->parent_sema.waiters));
   sema_up(&curr->parent_sema);
-  printf("after sema up curr: %d list size : %d\n",curr->tid, list_size(&curr->parent_sema.waiters));
-
+  
 }
 
 /* Sets up the CPU for running user code in the current
