@@ -614,7 +614,6 @@ setup_stack (void **esp, int argc, char* argv[])
           int size_argv;
 	  *esp = PHYS_BASE;
          
-          printf("argc: %s\n", *argv[0]); 
 	  for(i = argc-1 ;i>=0; i--)
 	    {
 	      int size_argv = strlen(argv[i]) +1;
@@ -625,7 +624,7 @@ setup_stack (void **esp, int argc, char* argv[])
 	      
 	    }
 	  i = total_size % 4 ;
-	  *esp = *esp - ((int)*esp%4);
+	  *esp = *esp - (4-i);
 
 	  for(i = argc; i>=0; i--)
 	    {
