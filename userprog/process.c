@@ -20,6 +20,7 @@
 #include "threads/synch.h"
 #include "userprog/syscall.h"
 #include "threads/malloc.h"
+#include "lib/kernel/list.h"
 
 static thread_func start_process NO_RETURN;
 static bool load (const char *cmdline, void (**eip) (void), void **esp);
@@ -38,7 +39,6 @@ process_execute (const char *file_name)
   char* copy ; 
   char* token;
   char* save_ptr;
-
   /* Make a copy of FILE_NAME.
      Otherwise there's a race between the caller and load(). */
   fn_copy = palloc_get_page (0);
@@ -48,22 +48,26 @@ process_execute (const char *file_name)
   /*[modified] project 2: passing argument*/
   copy = palloc_get_page(0);
   if (copy == NULL)
+  {
+    palloc_free_page(fn_copy);
     return TID_ERROR;
+  }
   strlcpy(copy, file_name, PGSIZE);
   token = strtok_r(copy, " ", &save_ptr);
 
- 
   /* Create a new thread to execute FILE_NAME. */
   //printf("thread name : %s\n", token);
   tid = thread_create (token, PRI_DEFAULT, start_process, fn_copy);
+  //sema_down(&thread_current()->load_sema);
   /************************************************/
+  palloc_free_page(copy);
   if (tid == TID_ERROR)
     {
       palloc_free_page (fn_copy);
-      palloc_free_page (copy);
+      //palloc_free_page (copy);
     }
-
- 
+  if (!thread_current()->child_load)
+     tid = TID_ERROR;
   return tid;
 }
 
@@ -86,13 +90,20 @@ start_process (void *f_name)
 
   /* If load failed, quit. */
   palloc_free_page (file_name);
+
+  thread_current()->parent->child_load = success;
   if (!success) 
+  {
     thread_exit ();
+  }
   /*[modified] project 2 : allocate child */
   else 
     {
-      if(thread_current() != thread_current()->parent)
-	list_push_back(&thread_current()->parent->child_list, &thread_current()->elem);
+      //if(thread_current() != thread_current()->parent)
+      //{
+      list_push_back(&thread_current()->parent->child_list, &thread_current()->child_elem);
+     // }
+      //sema_up(&thread_current()->parent->load_sema);
     }
   /***************************************************/
 
@@ -149,12 +160,13 @@ process_wait (tid_t child_tid)
 		  return exit;
 		}
 	    }
-	  return -1;
 	}
+      return -1;
     }
   else 
     {
       sema_down(&t->parent_sema);
+      old_level = intr_disable();
       for(e = list_begin(&thread_current()->terminated_child_list);
 	  e != list_end(&thread_current()->terminated_child_list);
 	  e = list_next(e))
@@ -167,7 +179,8 @@ process_wait (tid_t child_tid)
 	      free(child);
 	      return exit;
 	    }
-	}      
+	}
+        intr_set_level(old_level);      
       return t->exit_value;
     }
 		  
@@ -186,7 +199,7 @@ find_child_thread(tid_t child_tid)
       for(e = list_begin(&cur->child_list); e != list_end(&cur->child_list); e = list_next(e))
 	{
 	  //t = list_entry(e, struct thread, child_elem);
-	  t = list_entry(e, struct thread, elem);
+	  t = list_entry(e, struct thread, child_elem);
 	  if(child_tid == t->tid)
 	    return t;
 	}
@@ -202,9 +215,9 @@ process_exit (void)
   struct thread *curr = thread_current ();
   uint32_t *pd;
 
+  enum intr_level old_level = intr_disable();
   /*[modified] project 2 : exit */
   printf("%s: exit(%d)\n", curr->name, curr->exit_value);
-
   /***********************************/
   
   /* Destroy the current process's page directory and switch back
@@ -225,23 +238,29 @@ process_exit (void)
     
     }
   
-  list_remove(&curr->elem);
+  if (curr->child_elem.prev != NULL && curr->child_elem.next != NULL)
+    list_remove(&curr->child_elem);
   struct terminated_child *child = malloc(sizeof(struct terminated_child *));
   child->tid = curr->tid;
   child->exit_value = curr->exit_value;
   list_push_back(&curr->parent->terminated_child_list, &child->terminated_elem);
-  /*if(!list_empty(&curr->file_list))
+
+  struct file_set *f;
+  if(!list_empty(&curr->file_list))
     {
       for(e = list_begin(&curr->file_list);
 	  e != list_end(&curr->file_list);
 	  e = list_next(e))
 	{
-	  struct file_set *f = (struct file_set *)malloc(sizeof(struct file_set));
-	  f= list_entry(e, struct file_set, elem);
-	  list_remove(f->elem);
-	  file_close(f->f);
+	  //struct file_set *f = (struct file_set *)malloc(sizeof(struct file_set));
+	  f = list_entry(e, struct file_set, file_elem);
+	  e = list_remove(e);
+          e = list_prev(e);
+          file_close(f->f);
+          free(f);
 	}
-    }*/
+    }
+  file_close(curr->load_file);
 	
   if(!list_empty(&curr->terminated_child_list))
     {
@@ -249,13 +268,15 @@ process_exit (void)
 	  e != list_end(&curr->terminated_child_list);
 	  e = list_next(e))
 	{
-	  struct terminated_child *child = list_entry(e, struct terminated_child, terminated_elem);
-	  list_remove(&child->terminated_elem);
+	  child = list_entry(e, struct terminated_child, terminated_elem);
+	  e = list_remove(e);
+          e = list_prev(e);
 	  free(child);
 	}
     }
+  intr_set_level(old_level);
   sema_up(&curr->parent_sema);
-  
+  //file_close(curr->load_file);
 }
 
 /* Sets up the CPU for running user code in the current
@@ -374,7 +395,7 @@ load (const char *file_name, void (**eip) (void), void **esp)
   if(pass_copy == NULL)
     return TID_ERROR; 
   strlcpy(pass_copy, file_name, PGSIZE);
-  for (token = strtok_r(pass_copy, " ", &save_ptr); token != NULL ; token = strtok_r(NULL, " " , &save_ptr))
+  for (token = strtok_r(file_name, " ", &save_ptr); token != NULL ; token = strtok_r(NULL, " " , &save_ptr))
     {
       argv[argc] = token;
       argc += 1;
@@ -386,14 +407,11 @@ load (const char *file_name, void (**eip) (void), void **esp)
   /* Open executable file. */
   file = filesys_open (argv[0]);
 
-  file_deny_write(file);
-
   if (file == NULL) 
     {
       printf ("load: %s: open failed\n", argv[0]);
       goto done; 
     }
-
 
   /* Read and verify executable header. */
   if (file_read (file, &ehdr, sizeof ehdr) != sizeof ehdr
@@ -407,6 +425,7 @@ load (const char *file_name, void (**eip) (void), void **esp)
       printf ("load: %s: error loading executable\n", argv[0]);
       goto done; 
     }
+  
   /********************************************************/
 
   /* Read program headers. */
@@ -479,7 +498,15 @@ load (const char *file_name, void (**eip) (void), void **esp)
 
  done:
   /* We arrive here whether the load is successful or not. */
-  file_close (file);
+  //file_close (file);
+  if (success)
+  {
+    thread_current()->load_file = file;
+    file_deny_write(file);
+  }
+  else
+    file_close(file);
+  palloc_free_page(pass_copy);
   return success;
 }
 

@@ -142,7 +142,7 @@ find_file(struct list *list, int fd)
   struct list_elem *e;
   for(e = list_begin(list); e != list_end(list); e = list_next(e))
     {
-      struct file_set *fs = list_entry(e, struct file_set, elem);
+      struct file_set *fs = list_entry(e, struct file_set, file_elem);
       if(fd == fs->fd)
 	return fs;
     }
@@ -157,7 +157,7 @@ max_fd(struct list *list)
   struct list_elem *e;
   for (e = list_begin(list); e != list_end(list); e = list_next(e))
     {
-      int fd = list_entry(e, struct file_set, elem)->fd;
+      int fd = list_entry(e, struct file_set, file_elem)->fd;
       if( max <  fd)
 	max = fd;
     }
@@ -167,7 +167,7 @@ max_fd(struct list *list)
 static bool 
 get_access(const void *mem)
 {
-  if(mem ==NULL || !is_user_vaddr(mem) || pagedir_get_page(thread_current()->pagedir, mem)==NULL)
+  if(mem ==NULL || !is_user_vaddr(mem))
     {
       thread_current() ->exit_value = -1; 
       thread_exit();
@@ -186,7 +186,7 @@ syscall_exit(int status)
 static pid_t
 syscall_exec(const char* cmd_line)
 {
-  if(cmd_line == NULL || !is_code_segment(cmd_line))
+  if(cmd_line == NULL)
     {
       syscall_exit(-1);
       thread_exit();
@@ -206,7 +206,7 @@ syscall_wait(pid_t pid)
 static bool 
 syscall_create(const char* file, unsigned initial_size)
 {
-  if(file == NULL || !is_code_segment(file))
+  if(file == NULL||!is_code_segment(file))
     {
       syscall_exit(-1);
       thread_exit();
@@ -217,7 +217,7 @@ syscall_create(const char* file, unsigned initial_size)
 static bool 
 syscall_remove(const char* file)
 {
-  if(file == NULL)
+  if(file == NULL||!is_code_segment(file))
     {
       syscall_exit(-1);
       thread_exit();
@@ -228,7 +228,7 @@ syscall_remove(const char* file)
 static int 
 syscall_open(const char* file)
 {
-  if(file == NULL || !is_code_segment(file)) //code segment has 128M.
+  if(file == NULL) //code segment has 128M.
     {
       syscall_exit(-1);
       thread_exit();
@@ -245,7 +245,7 @@ syscall_open(const char* file)
     fs->fd = 2;
   else 
     fs->fd = max_fd(&thread_current()->file_list) +1;
-  list_push_back(&thread_current()->file_list, &fs->elem);
+  list_push_back(&thread_current()->file_list, &fs->file_elem);
   return fs->fd;
   
 }
@@ -285,12 +285,12 @@ syscall_write(int fd, const void *buffer, unsigned size)
       return size;
     }
   
-  if(!is_code_segment(buffer))
-    {
-      syscall_exit(-1);
-      thread_exit();
-    }
-  
+  /*if(!is_code_segment(buffer))
+ *     {
+ *           printf("code segment %x\n",buffer);
+ *                 syscall_exit(-1);
+ *                       thread_exit();
+ *                             }*/
   struct file_set *fs = find_file(&thread_current()->file_list, fd);
   return file_write(fs->f, buffer, size);
   
@@ -314,8 +314,9 @@ static void
 syscall_close(int fd)
 {
   struct file_set *fs = find_file(&thread_current()->file_list, fd);
-  list_remove(&fs->elem);
+  list_remove(&fs->file_elem);
   file_close(fs->f);
+  free(fs);
 }
 
 

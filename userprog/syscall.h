@@ -6,7 +6,7 @@ struct file_set
 {
   struct file *f;
   int fd;
-  struct list_elem elem;
+  struct list_elem file_elem;
 };
 
 void syscall_init (void);

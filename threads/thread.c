@@ -451,10 +451,12 @@ init_thread (struct thread *t, const char *name, int priority)
   /*[modified] project 2 : exit value */
 //#ifdef USERPROG
   t->exit_value = 0;
+  t->child_load = 0;
   list_init(&t->file_list);
   list_init(&t->child_list);
   list_init(&t->terminated_child_list);
   sema_init(&t->parent_sema,0);
+  sema_init(&t->load_sema, 0);
 //#endif
   /**********************************/
 }

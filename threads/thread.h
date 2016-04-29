@@ -106,7 +106,10 @@ struct thread
     struct list terminated_child_list; 
     struct thread *parent;         /*parent thread*/
     struct semaphore parent_sema;  /*sema for parent*/
-    
+
+    struct file *load_file;
+    struct semaphore load_sema;
+    bool child_load; /* 1 if child loaded successful, 0 if load fails*/ 
    /***************************************/
 #endif
 
