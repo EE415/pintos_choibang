@@ -103,12 +103,12 @@ struct thread
     struct list_elem child_elem;
 
     struct list child_list;        /*list of child process*/
-    struct list terminated_child_list; 
+    struct list terminated_child_list; /*list of terminated child process */ 
     struct thread *parent;         /*parent thread*/
     struct semaphore parent_sema;  /*sema for parent*/
 
-    struct file *load_file;
-    struct semaphore load_sema;
+    struct file *load_file; /* executable file */
+    struct semaphore load_sema; /* semaphore to wait for file load */
     bool child_load; /* 1 if child loaded successful, 0 if load fails*/ 
    /***************************************/
 #endif

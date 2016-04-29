@@ -45,6 +45,7 @@ process_execute (const char *file_name)
   if (fn_copy == NULL)
     return TID_ERROR;
   strlcpy (fn_copy, file_name, PGSIZE);
+
   /*[modified] project 2: passing argument*/
   copy = palloc_get_page(0);
   if (copy == NULL)
@@ -56,7 +57,6 @@ process_execute (const char *file_name)
   token = strtok_r(copy, " ", &save_ptr);
 
   /* Create a new thread to execute FILE_NAME. */
-  //printf("thread name : %s\n", token);
   tid = thread_create (token, PRI_DEFAULT, start_process, fn_copy);
   //sema_down(&thread_current()->load_sema);
   /************************************************/
@@ -64,8 +64,8 @@ process_execute (const char *file_name)
   if (tid == TID_ERROR)
     {
       palloc_free_page (fn_copy);
-      //palloc_free_page (copy);
     }
+  
   if (!thread_current()->child_load)
      tid = TID_ERROR;
   return tid;
@@ -96,13 +96,10 @@ start_process (void *f_name)
   {
     thread_exit ();
   }
-  /*[modified] project 2 : allocate child */
+  /*[modified] project 2 : allocate child in child_list */
   else 
     {
-      //if(thread_current() != thread_current()->parent)
-      //{
       list_push_back(&thread_current()->parent->child_list, &thread_current()->child_elem);
-     // }
       //sema_up(&thread_current()->parent->load_sema);
     }
   /***************************************************/
@@ -130,8 +127,6 @@ int
 process_wait (tid_t child_tid) 
 {
   /*[modified] project 2 : wait*/ 
-  //printf("tid : %d\n",child_tid);
-  //printf("cur tid : %d\n",thread_current()->tid);
   int exit;
   struct list_elem *e; 
   if(child_tid == TID_ERROR)
@@ -142,7 +137,9 @@ process_wait (tid_t child_tid)
   struct thread *t ;
   t = find_child_thread(child_tid);
   intr_set_level (old_level);
-  
+ 
+  /* If tid is not in the child_list, search through already terminated child list and
+ * returns exit value of the child */ 
   if(t == NULL) 
     {
       if(!list_empty(&thread_current()->terminated_child_list))
@@ -161,12 +158,16 @@ process_wait (tid_t child_tid)
 		}
 	    }
 	}
+      /* return -1 for not valid child */
       return -1;
     }
   else 
     {
+      /* Valid child, parent waits for child */
       sema_down(&t->parent_sema);
       old_level = intr_disable();
+ 
+      /* After child calls exit, child is moved to terminated_child_list */
       for(e = list_begin(&thread_current()->terminated_child_list);
 	  e != list_end(&thread_current()->terminated_child_list);
 	  e = list_next(e))
@@ -184,10 +185,10 @@ process_wait (tid_t child_tid)
       return t->exit_value;
     }
 		  
-  //printf("parent_down : %d , tid : %d\n",t->parent_sema.value, t->tid);
   /***********************************************************/
 }
 
+/* Returns child thread if it exits in the child_list, otherwise return NULL */
 static struct thread * 
 find_child_thread(tid_t child_tid)
 {
@@ -198,7 +199,6 @@ find_child_thread(tid_t child_tid)
     {
       for(e = list_begin(&cur->child_list); e != list_end(&cur->child_list); e = list_next(e))
 	{
-	  //t = list_entry(e, struct thread, child_elem);
 	  t = list_entry(e, struct thread, child_elem);
 	  if(child_tid == t->tid)
 	    return t;
@@ -216,6 +216,7 @@ process_exit (void)
   uint32_t *pd;
 
   enum intr_level old_level = intr_disable();
+
   /*[modified] project 2 : exit */
   printf("%s: exit(%d)\n", curr->name, curr->exit_value);
   /***********************************/
@@ -237,14 +238,17 @@ process_exit (void)
       pagedir_destroy (pd);
     
     }
-  
+
+  /* Remove from the child list, and add terminated_child to the terminated_child_list*/  
   if (curr->child_elem.prev != NULL && curr->child_elem.next != NULL)
     list_remove(&curr->child_elem);
+
   struct terminated_child *child = malloc(sizeof(struct terminated_child *));
   child->tid = curr->tid;
   child->exit_value = curr->exit_value;
   list_push_back(&curr->parent->terminated_child_list, &child->terminated_elem);
 
+  /* Close all the opened files and executable. */
   struct file_set *f;
   if(!list_empty(&curr->file_list))
     {
@@ -252,7 +256,6 @@ process_exit (void)
 	  e != list_end(&curr->file_list);
 	  e = list_next(e))
 	{
-	  //struct file_set *f = (struct file_set *)malloc(sizeof(struct file_set));
 	  f = list_entry(e, struct file_set, file_elem);
 	  e = list_remove(e);
           e = list_prev(e);
@@ -261,7 +264,8 @@ process_exit (void)
 	}
     }
   file_close(curr->load_file);
-	
+  
+  /* Free all the terminated children when parent exits */
   if(!list_empty(&curr->terminated_child_list))
     {
       for(e = list_begin(&curr->terminated_child_list);
@@ -276,7 +280,6 @@ process_exit (void)
     }
   intr_set_level(old_level);
   sema_up(&curr->parent_sema);
-  //file_close(curr->load_file);
 }
 
 /* Sets up the CPU for running user code in the current
