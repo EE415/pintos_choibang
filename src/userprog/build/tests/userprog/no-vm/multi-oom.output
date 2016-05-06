@@ -1,0 +1,3681 @@
+Copying tests/userprog/no-vm/multi-oom into /tmp/YJiDwOQ98n.dsk...
+Writing command line to /tmp/C8PQM8Spao.dsk...
+qemu -hda /tmp/C8PQM8Spao.dsk -hdb /tmp/0SO4xybK5l.dsk -hdc /tmp/YJiDwOQ98n.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put multi-oom run multi-oom
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  209,510,400 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 85 sector (42 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+Formatting file system...done.
+Boot complete.
+Putting 'multi-oom' into the file system...
+Executing 'multi-oom':
+(multi-oom) begin
+multi-oom 
+tid : 3 cur : 1 
+multi-oom 1 
+tid : 4 cur : 3 
+multi-oom 2 
+tid : 5 cur : 4 
+multi-oom 3 
+tid : 6 cur : 5 
+multi-oom 4 
+tid : 7 cur : 6 
+multi-oom 5 
+tid : 8 cur : 7 
+multi-oom 6 
+tid : 9 cur : 8 
+multi-oom 7 
+tid : 10 cur : 9 
+multi-oom 8 
+tid : 11 cur : 10 
+multi-oom 9 
+tid : 12 cur : 11 
+multi-oom 10 
+tid : 13 cur : 12 
+multi-oom 11 
+tid : 14 cur : 13 
+multi-oom 12 
+tid : 15 cur : 14 
+multi-oom 13 
+tid : 16 cur : 15 
+multi-oom 14 
+tid : 17 cur : 16 
+multi-oom 15 
+tid : 18 cur : 17 
+multi-oom 16 
+tid : 19 cur : 18 
+multi-oom 17 -k 
+multi-oom: exit(-1)
+tid : 20 cur : 19 
+!!!!terminated child list !!! 
+multi-oom 17 
+tid : 21 cur : 19 
+multi-oom 18 -k 
+multi-oom: exit(-1)
+tid : 22 cur : 21 
+!!!!terminated child list !!! 
+multi-oom 18 
+tid : 23 cur : 21 
+multi-oom 19 -k 
+multi-oom: exit(-1)
+tid : 24 cur : 23 
+!!!!terminated child list !!! 
+multi-oom 19 
+tid : 25 cur : 23 
+multi-oom 20 -k 
+multi-oom: exit(-1)
+tid : 26 cur : 25 
+!!!!terminated child list !!! 
+multi-oom 20 
+tid : 27 cur : 25 
+multi-oom 21 -k 
+multi-oom: exit(-1)
+tid : 28 cur : 27 
+!!!!terminated child list !!! 
+multi-oom 21 
+tid : 29 cur : 27 
+multi-oom 22 -k 
+multi-oom: exit(-1)
+tid : 30 cur : 29 
+!!!!terminated child list !!! 
+multi-oom 22 
+tid : 31 cur : 29 
+multi-oom 23 -k 
+multi-oom: exit(-1)
+tid : 32 cur : 31 
+!!!!terminated child list !!! 
+multi-oom 23 
+tid : 33 cur : 31 
+multi-oom 24 -k 
+multi-oom: exit(-1)
+tid : 34 cur : 33 
+!!!!terminated child list !!! 
+multi-oom 24 
+tid : 35 cur : 33 
+multi-oom 25 -k 
+multi-oom: exit(-1)
+tid : 36 cur : 35 
+!!!!terminated child list !!! 
+multi-oom 25 
+tid : 37 cur : 35 
+multi-oom 26 -k 
+multi-oom: exit(-1)
+tid : 38 cur : 37 
+!!!!terminated child list !!! 
+multi-oom 26 
+tid : 39 cur : 37 
+multi-oom 27 -k 
+multi-oom: exit(-1)
+tid : 40 cur : 39 
+!!!!terminated child list !!! 
+multi-oom 27 
+tid : 41 cur : 39 
+multi-oom 28 -k 
+multi-oom: exit(-1)
+tid : 42 cur : 41 
+!!!!terminated child list !!! 
+multi-oom 28 
+tid : 43 cur : 41 
+multi-oom 29 -k 
+multi-oom: exit(-1)
+tid : 44 cur : 43 
+!!!!terminated child list !!! 
+multi-oom 29 
+tid : 45 cur : 43 
+multi-oom 30 -k 
+multi-oom: exit(-1)
+tid : 46 cur : 45 
+!!!!terminated child list !!! 
+multi-oom 30 
+tid : 47 cur : 45 
+multi-oom 31 -k 
+multi-oom: exit(-1)
+tid : 48 cur : 47 
+!!!!terminated child list !!! 
+multi-oom 31 
+tid : 49 cur : 47 
+multi-oom 32 -k 
+multi-oom: exit(-1)
+tid : 50 cur : 49 
+!!!!terminated child list !!! 
+multi-oom 32 
+tid : 51 cur : 49 
+multi-oom 33 -k 
+multi-oom: exit(-1)
+tid : 52 cur : 51 
+!!!!terminated child list !!! 
+multi-oom 33 
+tid : 53 cur : 51 
+multi-oom 34 -k 
+multi-oom: exit(-1)
+tid : 54 cur : 53 
+!!!!terminated child list !!! 
+multi-oom 34 
+tid : 55 cur : 53 
+multi-oom 35 -k 
+multi-oom: exit(-1)
+tid : 56 cur : 55 
+!!!!terminated child list !!! 
+multi-oom 35 
+tid : 57 cur : 55 
+multi-oom 36 -k 
+multi-oom: exit(-1)
+tid : 58 cur : 57 
+!!!!terminated child list !!! 
+multi-oom 36 
+tid : 59 cur : 57 
+multi-oom 37 -k 
+multi-oom: exit(-1)
+tid : 60 cur : 59 
+!!!!terminated child list !!! 
+multi-oom 37 
+tid : 61 cur : 59 
+multi-oom 38 -k 
+multi-oom: exit(-1)
+tid : 62 cur : 61 
+!!!!terminated child list !!! 
+multi-oom 38 
+tid : 63 cur : 61 
+multi-oom 39 -k 
+multi-oom: exit(-1)
+tid : 64 cur : 63 
+!!!!terminated child list !!! 
+multi-oom 39 
+tid : 65 cur : 63 
+multi-oom 40 -k 
+multi-oom: exit(-1)
+tid : 66 cur : 65 
+!!!!terminated child list !!! 
+multi-oom 40 
+tid : 67 cur : 65 
+multi-oom 41 -k 
+multi-oom: exit(-1)
+tid : 68 cur : 67 
+!!!!terminated child list !!! 
+multi-oom 41 
+tid : 69 cur : 67 
+multi-oom 42 -k 
+multi-oom: exit(-1)
+tid : 70 cur : 69 
+!!!!terminated child list !!! 
+multi-oom 42 
+tid : 71 cur : 69 
+multi-oom 43 -k 
+multi-oom: exit(-1)
+tid : 72 cur : 71 
+!!!!terminated child list !!! 
+multi-oom 43 
+tid : 73 cur : 71 
+multi-oom 44 -k 
+multi-oom: exit(-1)
+tid : 74 cur : 73 
+!!!!terminated child list !!! 
+multi-oom 44 
+tid : 75 cur : 73 
+multi-oom 45 -k 
+multi-oom: exit(-1)
+tid : 76 cur : 75 
+!!!!terminated child list !!! 
+multi-oom 45 
+tid : 77 cur : 75 
+multi-oom 46 -k 
+multi-oom: exit(-1)
+tid : 78 cur : 77 
+!!!!terminated child list !!! 
+multi-oom 46 
+tid : 79 cur : 77 
+multi-oom 47 -k 
+multi-oom: exit(-1)
+tid : 80 cur : 79 
+!!!!terminated child list !!! 
+multi-oom 47 
+tid : 81 cur : 79 
+multi-oom 48 -k 
+multi-oom: exit(-1)
+tid : 82 cur : 81 
+!!!!terminated child list !!! 
+multi-oom 48 
+tid : 83 cur : 81 
+multi-oom 49 -k 
+multi-oom: exit(-1)
+tid : 84 cur : 83 
+!!!!terminated child list !!! 
+multi-oom 49 
+tid : 85 cur : 83 
+multi-oom 50 -k 
+multi-oom: exit(-1)
+tid : 86 cur : 85 
+!!!!terminated child list !!! 
+multi-oom 50 
+tid : 87 cur : 85 
+multi-oom 51 -k 
+multi-oom: exit(-1)
+tid : 88 cur : 87 
+!!!!terminated child list !!! 
+multi-oom 51 
+tid : 89 cur : 87 
+multi-oom 52 -k 
+multi-oom: exit(-1)
+tid : 90 cur : 89 
+!!!!terminated child list !!! 
+multi-oom 52 
+tid : 91 cur : 89 
+multi-oom 53 -k 
+multi-oom: exit(-1)
+tid : 92 cur : 91 
+!!!!terminated child list !!! 
+multi-oom 53 
+tid : 93 cur : 91 
+multi-oom 54 -k 
+multi-oom: exit(-1)
+tid : 94 cur : 93 
+!!!!terminated child list !!! 
+multi-oom 54 
+tid : 95 cur : 93 
+multi-oom 55 -k 
+multi-oom: exit(-1)
+tid : 96 cur : 95 
+!!!!terminated child list !!! 
+multi-oom 55 
+tid : 97 cur : 95 
+multi-oom 56 -k 
+multi-oom: exit(-1)
+tid : 98 cur : 97 
+!!!!terminated child list !!! 
+multi-oom 56 
+tid : 99 cur : 97 
+multi-oom 57 -k 
+multi-oom: exit(-1)
+tid : 100 cur : 99 
+!!!!terminated child list !!! 
+multi-oom 57 
+tid : 101 cur : 99 
+multi-oom 58 -k 
+multi-oom: exit(-1)
+tid : 102 cur : 101 
+!!!!terminated child list !!! 
+multi-oom 58 
+tid : 103 cur : 101 
+multi-oom 59 -k 
+multi-oom: exit(-1)
+tid : 104 cur : 103 
+!!!!terminated child list !!! 
+multi-oom 59 
+tid : 105 cur : 103 
+multi-oom 60 -k 
+multi-oom: exit(-1)
+tid : 106 cur : 105 
+!!!!terminated child list !!! 
+multi-oom 60 
+tid : 107 cur : 105 
+multi-oom 61 -k 
+multi-oom: exit(-1)
+tid : 108 cur : 107 
+!!!!terminated child list !!! 
+multi-oom 61 
+tid : 109 cur : 107 
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom 1 
+tid : 112 cur : 3 
+multi-oom 2 
+tid : 113 cur : 112 
+multi-oom 3 
+tid : 114 cur : 113 
+multi-oom 4 
+tid : 115 cur : 114 
+multi-oom 5 
+tid : 116 cur : 115 
+multi-oom 6 
+tid : 117 cur : 116 
+multi-oom 7 
+tid : 118 cur : 117 
+multi-oom 8 
+tid : 119 cur : 118 
+multi-oom 9 
+tid : 120 cur : 119 
+multi-oom 10 
+tid : 121 cur : 120 
+multi-oom 11 
+tid : 122 cur : 121 
+multi-oom 12 
+tid : 123 cur : 122 
+multi-oom 13 
+tid : 124 cur : 123 
+multi-oom 14 
+tid : 125 cur : 124 
+multi-oom 15 
+tid : 126 cur : 125 
+multi-oom 16 
+tid : 127 cur : 126 
+multi-oom 17 -k 
+multi-oom: exit(-1)
+tid : 128 cur : 127 
+!!!!terminated child list !!! 
+multi-oom 17 
+tid : 129 cur : 127 
+multi-oom 18 -k 
+multi-oom: exit(-1)
+tid : 130 cur : 129 
+!!!!terminated child list !!! 
+multi-oom 18 
+tid : 131 cur : 129 
+multi-oom 19 -k 
+multi-oom: exit(-1)
+tid : 132 cur : 131 
+!!!!terminated child list !!! 
+multi-oom 19 
+tid : 133 cur : 131 
+multi-oom 20 -k 
+multi-oom: exit(-1)
+tid : 134 cur : 133 
+!!!!terminated child list !!! 
+multi-oom 20 
+tid : 135 cur : 133 
+multi-oom 21 -k 
+multi-oom: exit(-1)
+tid : 136 cur : 135 
+!!!!terminated child list !!! 
+multi-oom 21 
+tid : 137 cur : 135 
+multi-oom 22 -k 
+multi-oom: exit(-1)
+tid : 138 cur : 137 
+!!!!terminated child list !!! 
+multi-oom 22 
+tid : 139 cur : 137 
+multi-oom 23 -k 
+multi-oom: exit(-1)
+tid : 140 cur : 139 
+!!!!terminated child list !!! 
+multi-oom 23 
+tid : 141 cur : 139 
+multi-oom 24 -k 
+multi-oom: exit(-1)
+tid : 142 cur : 141 
+!!!!terminated child list !!! 
+multi-oom 24 
+tid : 143 cur : 141 
+multi-oom 25 -k 
+multi-oom: exit(-1)
+tid : 144 cur : 143 
+!!!!terminated child list !!! 
+multi-oom 25 
+tid : 145 cur : 143 
+multi-oom 26 -k 
+multi-oom: exit(-1)
+tid : 146 cur : 145 
+!!!!terminated child list !!! 
+multi-oom 26 
+tid : 147 cur : 145 
+multi-oom 27 -k 
+multi-oom: exit(-1)
+tid : 148 cur : 147 
+!!!!terminated child list !!! 
+multi-oom 27 
+tid : 149 cur : 147 
+multi-oom 28 -k 
+multi-oom: exit(-1)
+tid : 150 cur : 149 
+!!!!terminated child list !!! 
+multi-oom 28 
+tid : 151 cur : 149 
+multi-oom 29 -k 
+multi-oom: exit(-1)
+tid : 152 cur : 151 
+!!!!terminated child list !!! 
+multi-oom 29 
+tid : 153 cur : 151 
+multi-oom 30 -k 
+multi-oom: exit(-1)
+tid : 154 cur : 153 
+!!!!terminated child list !!! 
+multi-oom 30 
+tid : 155 cur : 153 
+multi-oom 31 -k 
+multi-oom: exit(-1)
+tid : 156 cur : 155 
+!!!!terminated child list !!! 
+multi-oom 31 
+tid : 157 cur : 155 
+multi-oom 32 -k 
+multi-oom: exit(-1)
+tid : 158 cur : 157 
+!!!!terminated child list !!! 
+multi-oom 32 
+tid : 159 cur : 157 
+multi-oom 33 -k 
+multi-oom: exit(-1)
+tid : 160 cur : 159 
+!!!!terminated child list !!! 
+multi-oom 33 
+tid : 161 cur : 159 
+multi-oom 34 -k 
+multi-oom: exit(-1)
+tid : 162 cur : 161 
+!!!!terminated child list !!! 
+multi-oom 34 
+tid : 163 cur : 161 
+multi-oom 35 -k 
+multi-oom: exit(-1)
+tid : 164 cur : 163 
+!!!!terminated child list !!! 
+multi-oom 35 
+tid : 165 cur : 163 
+multi-oom 36 -k 
+multi-oom: exit(-1)
+tid : 166 cur : 165 
+!!!!terminated child list !!! 
+multi-oom 36 
+tid : 167 cur : 165 
+multi-oom 37 -k 
+multi-oom: exit(-1)
+tid : 168 cur : 167 
+!!!!terminated child list !!! 
+multi-oom 37 
+tid : 169 cur : 167 
+multi-oom 38 -k 
+multi-oom: exit(-1)
+tid : 170 cur : 169 
+!!!!terminated child list !!! 
+multi-oom 38 
+tid : 171 cur : 169 
+multi-oom 39 -k 
+multi-oom: exit(-1)
+tid : 172 cur : 171 
+!!!!terminated child list !!! 
+multi-oom 39 
+tid : 173 cur : 171 
+multi-oom 40 -k 
+multi-oom: exit(-1)
+tid : 174 cur : 173 
+!!!!terminated child list !!! 
+multi-oom 40 
+tid : 175 cur : 173 
+multi-oom 41 -k 
+multi-oom: exit(-1)
+tid : 176 cur : 175 
+!!!!terminated child list !!! 
+multi-oom 41 
+tid : 177 cur : 175 
+multi-oom 42 -k 
+multi-oom: exit(-1)
+tid : 178 cur : 177 
+!!!!terminated child list !!! 
+multi-oom 42 
+tid : 179 cur : 177 
+multi-oom 43 -k 
+multi-oom: exit(-1)
+tid : 180 cur : 179 
+!!!!terminated child list !!! 
+multi-oom 43 
+tid : 181 cur : 179 
+multi-oom 44 -k 
+multi-oom: exit(-1)
+tid : 182 cur : 181 
+!!!!terminated child list !!! 
+multi-oom 44 
+tid : 183 cur : 181 
+multi-oom 45 -k 
+multi-oom: exit(-1)
+tid : 184 cur : 183 
+!!!!terminated child list !!! 
+multi-oom 45 
+tid : 185 cur : 183 
+multi-oom 46 -k 
+multi-oom: exit(-1)
+tid : 186 cur : 185 
+!!!!terminated child list !!! 
+multi-oom 46 
+tid : 187 cur : 185 
+multi-oom 47 -k 
+multi-oom: exit(-1)
+tid : 188 cur : 187 
+!!!!terminated child list !!! 
+multi-oom 47 
+tid : 189 cur : 187 
+multi-oom 48 -k 
+multi-oom: exit(-1)
+tid : 190 cur : 189 
+!!!!terminated child list !!! 
+multi-oom 48 
+tid : 191 cur : 189 
+multi-oom 49 -k 
+multi-oom: exit(-1)
+tid : 192 cur : 191 
+!!!!terminated child list !!! 
+multi-oom 49 
+tid : 193 cur : 191 
+multi-oom 50 -k 
+multi-oom: exit(-1)
+tid : 194 cur : 193 
+!!!!terminated child list !!! 
+multi-oom 50 
+tid : 195 cur : 193 
+multi-oom 51 -k 
+multi-oom: exit(-1)
+tid : 196 cur : 195 
+!!!!terminated child list !!! 
+multi-oom 51 
+tid : 197 cur : 195 
+multi-oom 52 -k 
+multi-oom: exit(-1)
+tid : 198 cur : 197 
+!!!!terminated child list !!! 
+multi-oom 52 
+tid : 199 cur : 197 
+multi-oom 53 -k 
+multi-oom: exit(-1)
+tid : 200 cur : 199 
+!!!!terminated child list !!! 
+multi-oom 53 
+tid : 201 cur : 199 
+multi-oom 54 -k 
+multi-oom: exit(-1)
+tid : 202 cur : 201 
+!!!!terminated child list !!! 
+multi-oom 54 
+tid : 203 cur : 201 
+multi-oom 55 -k 
+multi-oom: exit(-1)
+tid : 204 cur : 203 
+!!!!terminated child list !!! 
+multi-oom 55 
+tid : 205 cur : 203 
+multi-oom 56 -k 
+multi-oom: exit(-1)
+tid : 206 cur : 205 
+!!!!terminated child list !!! 
+multi-oom 56 
+tid : 207 cur : 205 
+multi-oom 57 -k 
+multi-oom: exit(-1)
+tid : 208 cur : 207 
+!!!!terminated child list !!! 
+multi-oom 57 
+tid : 209 cur : 207 
+multi-oom 58 -k 
+multi-oom: exit(-1)
+tid : 210 cur : 209 
+!!!!terminated child list !!! 
+multi-oom 58 
+tid : 211 cur : 209 
+multi-oom 59 -k 
+multi-oom: exit(-1)
+tid : 212 cur : 211 
+!!!!terminated child list !!! 
+multi-oom 59 
+tid : 213 cur : 211 
+multi-oom 60 -k 
+multi-oom: exit(-1)
+tid : 214 cur : 213 
+!!!!terminated child list !!! 
+multi-oom 60 
+tid : 215 cur : 213 
+multi-oom 61 -k 
+multi-oom: exit(-1)
+tid : 216 cur : 215 
+!!!!terminated child list !!! 
+multi-oom 61 
+tid : 217 cur : 215 
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom 1 
+tid : 220 cur : 3 
+multi-oom 2 
+tid : 221 cur : 220 
+multi-oom 3 
+tid : 222 cur : 221 
+multi-oom 4 
+tid : 223 cur : 222 
+multi-oom 5 
+tid : 224 cur : 223 
+multi-oom 6 
+tid : 225 cur : 224 
+multi-oom 7 
+tid : 226 cur : 225 
+multi-oom 8 
+tid : 227 cur : 226 
+multi-oom 9 
+tid : 228 cur : 227 
+multi-oom 10 
+tid : 229 cur : 228 
+multi-oom 11 
+tid : 230 cur : 229 
+multi-oom 12 
+tid : 231 cur : 230 
+multi-oom 13 
+tid : 232 cur : 231 
+multi-oom 14 
+tid : 233 cur : 232 
+multi-oom 15 
+tid : 234 cur : 233 
+multi-oom 16 
+tid : 235 cur : 234 
+multi-oom 17 -k 
+multi-oom: exit(-1)
+tid : 236 cur : 235 
+!!!!terminated child list !!! 
+multi-oom 17 
+tid : 237 cur : 235 
+multi-oom 18 -k 
+multi-oom: exit(-1)
+tid : 238 cur : 237 
+!!!!terminated child list !!! 
+multi-oom 18 
+tid : 239 cur : 237 
+multi-oom 19 -k 
+multi-oom: exit(-1)
+tid : 240 cur : 239 
+!!!!terminated child list !!! 
+multi-oom 19 
+tid : 241 cur : 239 
+multi-oom 20 -k 
+multi-oom: exit(-1)
+tid : 242 cur : 241 
+!!!!terminated child list !!! 
+multi-oom 20 
+tid : 243 cur : 241 
+multi-oom 21 -k 
+multi-oom: exit(-1)
+tid : 244 cur : 243 
+!!!!terminated child list !!! 
+multi-oom 21 
+tid : 245 cur : 243 
+multi-oom 22 -k 
+multi-oom: exit(-1)
+tid : 246 cur : 245 
+!!!!terminated child list !!! 
+multi-oom 22 
+tid : 247 cur : 245 
+multi-oom 23 -k 
+multi-oom: exit(-1)
+tid : 248 cur : 247 
+!!!!terminated child list !!! 
+multi-oom 23 
+tid : 249 cur : 247 
+multi-oom 24 -k 
+multi-oom: exit(-1)
+tid : 250 cur : 249 
+!!!!terminated child list !!! 
+multi-oom 24 
+tid : 251 cur : 249 
+multi-oom 25 -k 
+multi-oom: exit(-1)
+tid : 252 cur : 251 
+!!!!terminated child list !!! 
+multi-oom 25 
+tid : 253 cur : 251 
+multi-oom 26 -k 
+multi-oom: exit(-1)
+tid : 254 cur : 253 
+!!!!terminated child list !!! 
+multi-oom 26 
+tid : 255 cur : 253 
+multi-oom 27 -k 
+multi-oom: exit(-1)
+tid : 256 cur : 255 
+!!!!terminated child list !!! 
+multi-oom 27 
+tid : 257 cur : 255 
+multi-oom 28 -k 
+multi-oom: exit(-1)
+tid : 258 cur : 257 
+!!!!terminated child list !!! 
+multi-oom 28 
+tid : 259 cur : 257 
+multi-oom 29 -k 
+multi-oom: exit(-1)
+tid : 260 cur : 259 
+!!!!terminated child list !!! 
+multi-oom 29 
+tid : 261 cur : 259 
+multi-oom 30 -k 
+multi-oom: exit(-1)
+tid : 262 cur : 261 
+!!!!terminated child list !!! 
+multi-oom 30 
+tid : 263 cur : 261 
+multi-oom 31 -k 
+multi-oom: exit(-1)
+tid : 264 cur : 263 
+!!!!terminated child list !!! 
+multi-oom 31 
+tid : 265 cur : 263 
+multi-oom 32 -k 
+multi-oom: exit(-1)
+tid : 266 cur : 265 
+!!!!terminated child list !!! 
+multi-oom 32 
+tid : 267 cur : 265 
+multi-oom 33 -k 
+multi-oom: exit(-1)
+tid : 268 cur : 267 
+!!!!terminated child list !!! 
+multi-oom 33 
+tid : 269 cur : 267 
+multi-oom 34 -k 
+multi-oom: exit(-1)
+tid : 270 cur : 269 
+!!!!terminated child list !!! 
+multi-oom 34 
+tid : 271 cur : 269 
+multi-oom 35 -k 
+multi-oom: exit(-1)
+tid : 272 cur : 271 
+!!!!terminated child list !!! 
+multi-oom 35 
+tid : 273 cur : 271 
+multi-oom 36 -k 
+multi-oom: exit(-1)
+tid : 274 cur : 273 
+!!!!terminated child list !!! 
+multi-oom 36 
+tid : 275 cur : 273 
+multi-oom 37 -k 
+multi-oom: exit(-1)
+tid : 276 cur : 275 
+!!!!terminated child list !!! 
+multi-oom 37 
+tid : 277 cur : 275 
+multi-oom 38 -k 
+multi-oom: exit(-1)
+tid : 278 cur : 277 
+!!!!terminated child list !!! 
+multi-oom 38 
+tid : 279 cur : 277 
+multi-oom 39 -k 
+multi-oom: exit(-1)
+tid : 280 cur : 279 
+!!!!terminated child list !!! 
+multi-oom 39 
+tid : 281 cur : 279 
+multi-oom 40 -k 
+multi-oom: exit(-1)
+tid : 282 cur : 281 
+!!!!terminated child list !!! 
+multi-oom 40 
+tid : 283 cur : 281 
+multi-oom 41 -k 
+multi-oom: exit(-1)
+tid : 284 cur : 283 
+!!!!terminated child list !!! 
+multi-oom 41 
+tid : 285 cur : 283 
+multi-oom 42 -k 
+multi-oom: exit(-1)
+tid : 286 cur : 285 
+!!!!terminated child list !!! 
+multi-oom 42 
+tid : 287 cur : 285 
+multi-oom 43 -k 
+multi-oom: exit(-1)
+tid : 288 cur : 287 
+!!!!terminated child list !!! 
+multi-oom 43 
+tid : 289 cur : 287 
+multi-oom 44 -k 
+multi-oom: exit(-1)
+tid : 290 cur : 289 
+!!!!terminated child list !!! 
+multi-oom 44 
+tid : 291 cur : 289 
+multi-oom 45 -k 
+multi-oom: exit(-1)
+tid : 292 cur : 291 
+!!!!terminated child list !!! 
+multi-oom 45 
+tid : 293 cur : 291 
+multi-oom 46 -k 
+multi-oom: exit(-1)
+tid : 294 cur : 293 
+!!!!terminated child list !!! 
+multi-oom 46 
+tid : 295 cur : 293 
+multi-oom 47 -k 
+multi-oom: exit(-1)
+tid : 296 cur : 295 
+!!!!terminated child list !!! 
+multi-oom 47 
+tid : 297 cur : 295 
+multi-oom 48 -k 
+multi-oom: exit(-1)
+tid : 298 cur : 297 
+!!!!terminated child list !!! 
+multi-oom 48 
+tid : 299 cur : 297 
+multi-oom 49 -k 
+multi-oom: exit(-1)
+tid : 300 cur : 299 
+!!!!terminated child list !!! 
+multi-oom 49 
+tid : 301 cur : 299 
+multi-oom 50 -k 
+multi-oom: exit(-1)
+tid : 302 cur : 301 
+!!!!terminated child list !!! 
+multi-oom 50 
+tid : 303 cur : 301 
+multi-oom 51 -k 
+multi-oom: exit(-1)
+tid : 304 cur : 303 
+!!!!terminated child list !!! 
+multi-oom 51 
+tid : 305 cur : 303 
+multi-oom 52 -k 
+multi-oom: exit(-1)
+tid : 306 cur : 305 
+!!!!terminated child list !!! 
+multi-oom 52 
+tid : 307 cur : 305 
+multi-oom 53 -k 
+multi-oom: exit(-1)
+tid : 308 cur : 307 
+!!!!terminated child list !!! 
+multi-oom 53 
+tid : 309 cur : 307 
+multi-oom 54 -k 
+multi-oom: exit(-1)
+tid : 310 cur : 309 
+!!!!terminated child list !!! 
+multi-oom 54 
+tid : 311 cur : 309 
+multi-oom 55 -k 
+multi-oom: exit(-1)
+tid : 312 cur : 311 
+!!!!terminated child list !!! 
+multi-oom 55 
+tid : 313 cur : 311 
+multi-oom 56 -k 
+multi-oom: exit(-1)
+tid : 314 cur : 313 
+!!!!terminated child list !!! 
+multi-oom 56 
+tid : 315 cur : 313 
+multi-oom 57 -k 
+multi-oom: exit(-1)
+tid : 316 cur : 315 
+!!!!terminated child list !!! 
+multi-oom 57 
+tid : 317 cur : 315 
+multi-oom 58 -k 
+multi-oom: exit(-1)
+tid : 318 cur : 317 
+!!!!terminated child list !!! 
+multi-oom 58 
+tid : 319 cur : 317 
+multi-oom 59 -k 
+multi-oom: exit(-1)
+tid : 320 cur : 319 
+!!!!terminated child list !!! 
+multi-oom 59 
+tid : 321 cur : 319 
+multi-oom 60 -k 
+multi-oom: exit(-1)
+tid : 322 cur : 321 
+!!!!terminated child list !!! 
+multi-oom 60 
+tid : 323 cur : 321 
+multi-oom 61 -k 
+multi-oom: exit(-1)
+tid : 324 cur : 323 
+!!!!terminated child list !!! 
+multi-oom 61 
+tid : 325 cur : 323 
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom 1 
+tid : 328 cur : 3 
+multi-oom 2 
+tid : 329 cur : 328 
+multi-oom 3 
+tid : 330 cur : 329 
+multi-oom 4 
+tid : 331 cur : 330 
+multi-oom 5 
+tid : 332 cur : 331 
+multi-oom 6 
+tid : 333 cur : 332 
+multi-oom 7 
+tid : 334 cur : 333 
+multi-oom 8 
+tid : 335 cur : 334 
+multi-oom 9 
+tid : 336 cur : 335 
+multi-oom 10 
+tid : 337 cur : 336 
+multi-oom 11 
+tid : 338 cur : 337 
+multi-oom 12 
+tid : 339 cur : 338 
+multi-oom 13 
+tid : 340 cur : 339 
+multi-oom 14 
+tid : 341 cur : 340 
+multi-oom 15 
+tid : 342 cur : 341 
+multi-oom 16 
+tid : 343 cur : 342 
+multi-oom 17 -k 
+multi-oom: exit(-1)
+tid : 344 cur : 343 
+!!!!terminated child list !!! 
+multi-oom 17 
+tid : 345 cur : 343 
+multi-oom 18 -k 
+multi-oom: exit(-1)
+tid : 346 cur : 345 
+!!!!terminated child list !!! 
+multi-oom 18 
+tid : 347 cur : 345 
+multi-oom 19 -k 
+multi-oom: exit(-1)
+tid : 348 cur : 347 
+!!!!terminated child list !!! 
+multi-oom 19 
+tid : 349 cur : 347 
+multi-oom 20 -k 
+multi-oom: exit(-1)
+tid : 350 cur : 349 
+!!!!terminated child list !!! 
+multi-oom 20 
+tid : 351 cur : 349 
+multi-oom 21 -k 
+multi-oom: exit(-1)
+tid : 352 cur : 351 
+!!!!terminated child list !!! 
+multi-oom 21 
+tid : 353 cur : 351 
+multi-oom 22 -k 
+multi-oom: exit(-1)
+tid : 354 cur : 353 
+!!!!terminated child list !!! 
+multi-oom 22 
+tid : 355 cur : 353 
+multi-oom 23 -k 
+multi-oom: exit(-1)
+tid : 356 cur : 355 
+!!!!terminated child list !!! 
+multi-oom 23 
+tid : 357 cur : 355 
+multi-oom 24 -k 
+multi-oom: exit(-1)
+tid : 358 cur : 357 
+!!!!terminated child list !!! 
+multi-oom 24 
+tid : 359 cur : 357 
+multi-oom 25 -k 
+multi-oom: exit(-1)
+tid : 360 cur : 359 
+!!!!terminated child list !!! 
+multi-oom 25 
+tid : 361 cur : 359 
+multi-oom 26 -k 
+multi-oom: exit(-1)
+tid : 362 cur : 361 
+!!!!terminated child list !!! 
+multi-oom 26 
+tid : 363 cur : 361 
+multi-oom 27 -k 
+multi-oom: exit(-1)
+tid : 364 cur : 363 
+!!!!terminated child list !!! 
+multi-oom 27 
+tid : 365 cur : 363 
+multi-oom 28 -k 
+multi-oom: exit(-1)
+tid : 366 cur : 365 
+!!!!terminated child list !!! 
+multi-oom 28 
+tid : 367 cur : 365 
+multi-oom 29 -k 
+multi-oom: exit(-1)
+tid : 368 cur : 367 
+!!!!terminated child list !!! 
+multi-oom 29 
+tid : 369 cur : 367 
+multi-oom 30 -k 
+multi-oom: exit(-1)
+tid : 370 cur : 369 
+!!!!terminated child list !!! 
+multi-oom 30 
+tid : 371 cur : 369 
+multi-oom 31 -k 
+multi-oom: exit(-1)
+tid : 372 cur : 371 
+!!!!terminated child list !!! 
+multi-oom 31 
+tid : 373 cur : 371 
+multi-oom 32 -k 
+multi-oom: exit(-1)
+tid : 374 cur : 373 
+!!!!terminated child list !!! 
+multi-oom 32 
+tid : 375 cur : 373 
+multi-oom 33 -k 
+multi-oom: exit(-1)
+tid : 376 cur : 375 
+!!!!terminated child list !!! 
+multi-oom 33 
+tid : 377 cur : 375 
+multi-oom 34 -k 
+multi-oom: exit(-1)
+tid : 378 cur : 377 
+!!!!terminated child list !!! 
+multi-oom 34 
+tid : 379 cur : 377 
+multi-oom 35 -k 
+multi-oom: exit(-1)
+tid : 380 cur : 379 
+!!!!terminated child list !!! 
+multi-oom 35 
+tid : 381 cur : 379 
+multi-oom 36 -k 
+multi-oom: exit(-1)
+tid : 382 cur : 381 
+!!!!terminated child list !!! 
+multi-oom 36 
+tid : 383 cur : 381 
+multi-oom 37 -k 
+multi-oom: exit(-1)
+tid : 384 cur : 383 
+!!!!terminated child list !!! 
+multi-oom 37 
+tid : 385 cur : 383 
+multi-oom 38 -k 
+multi-oom: exit(-1)
+tid : 386 cur : 385 
+!!!!terminated child list !!! 
+multi-oom 38 
+tid : 387 cur : 385 
+multi-oom 39 -k 
+multi-oom: exit(-1)
+tid : 388 cur : 387 
+!!!!terminated child list !!! 
+multi-oom 39 
+tid : 389 cur : 387 
+multi-oom 40 -k 
+multi-oom: exit(-1)
+tid : 390 cur : 389 
+!!!!terminated child list !!! 
+multi-oom 40 
+tid : 391 cur : 389 
+multi-oom 41 -k 
+multi-oom: exit(-1)
+tid : 392 cur : 391 
+!!!!terminated child list !!! 
+multi-oom 41 
+tid : 393 cur : 391 
+multi-oom 42 -k 
+multi-oom: exit(-1)
+tid : 394 cur : 393 
+!!!!terminated child list !!! 
+multi-oom 42 
+tid : 395 cur : 393 
+multi-oom 43 -k 
+multi-oom: exit(-1)
+tid : 396 cur : 395 
+!!!!terminated child list !!! 
+multi-oom 43 
+tid : 397 cur : 395 
+multi-oom 44 -k 
+multi-oom: exit(-1)
+tid : 398 cur : 397 
+!!!!terminated child list !!! 
+multi-oom 44 
+tid : 399 cur : 397 
+multi-oom 45 -k 
+multi-oom: exit(-1)
+tid : 400 cur : 399 
+!!!!terminated child list !!! 
+multi-oom 45 
+tid : 401 cur : 399 
+multi-oom 46 -k 
+multi-oom: exit(-1)
+tid : 402 cur : 401 
+!!!!terminated child list !!! 
+multi-oom 46 
+tid : 403 cur : 401 
+multi-oom 47 -k 
+multi-oom: exit(-1)
+tid : 404 cur : 403 
+!!!!terminated child list !!! 
+multi-oom 47 
+tid : 405 cur : 403 
+multi-oom 48 -k 
+multi-oom: exit(-1)
+tid : 406 cur : 405 
+!!!!terminated child list !!! 
+multi-oom 48 
+tid : 407 cur : 405 
+multi-oom 49 -k 
+multi-oom: exit(-1)
+tid : 408 cur : 407 
+!!!!terminated child list !!! 
+multi-oom 49 
+tid : 409 cur : 407 
+multi-oom 50 -k 
+multi-oom: exit(-1)
+tid : 410 cur : 409 
+!!!!terminated child list !!! 
+multi-oom 50 
+tid : 411 cur : 409 
+multi-oom 51 -k 
+multi-oom: exit(-1)
+tid : 412 cur : 411 
+!!!!terminated child list !!! 
+multi-oom 51 
+tid : 413 cur : 411 
+multi-oom 52 -k 
+multi-oom: exit(-1)
+tid : 414 cur : 413 
+!!!!terminated child list !!! 
+multi-oom 52 
+tid : 415 cur : 413 
+multi-oom 53 -k 
+multi-oom: exit(-1)
+tid : 416 cur : 415 
+!!!!terminated child list !!! 
+multi-oom 53 
+tid : 417 cur : 415 
+multi-oom 54 -k 
+multi-oom: exit(-1)
+tid : 418 cur : 417 
+!!!!terminated child list !!! 
+multi-oom 54 
+tid : 419 cur : 417 
+multi-oom 55 -k 
+multi-oom: exit(-1)
+tid : 420 cur : 419 
+!!!!terminated child list !!! 
+multi-oom 55 
+tid : 421 cur : 419 
+multi-oom 56 -k 
+multi-oom: exit(-1)
+tid : 422 cur : 421 
+!!!!terminated child list !!! 
+multi-oom 56 
+tid : 423 cur : 421 
+multi-oom 57 -k 
+multi-oom: exit(-1)
+tid : 424 cur : 423 
+!!!!terminated child list !!! 
+multi-oom 57 
+tid : 425 cur : 423 
+multi-oom 58 -k 
+multi-oom: exit(-1)
+tid : 426 cur : 425 
+!!!!terminated child list !!! 
+multi-oom 58 
+tid : 427 cur : 425 
+multi-oom 59 -k 
+multi-oom: exit(-1)
+tid : 428 cur : 427 
+!!!!terminated child list !!! 
+multi-oom 59 
+tid : 429 cur : 427 
+multi-oom 60 -k 
+multi-oom: exit(-1)
+tid : 430 cur : 429 
+!!!!terminated child list !!! 
+multi-oom 60 
+tid : 431 cur : 429 
+multi-oom 61 -k 
+multi-oom: exit(-1)
+tid : 432 cur : 431 
+!!!!terminated child list !!! 
+multi-oom 61 
+tid : 433 cur : 431 
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom 1 
+tid : 436 cur : 3 
+multi-oom 2 
+tid : 437 cur : 436 
+multi-oom 3 
+tid : 438 cur : 437 
+multi-oom 4 
+tid : 439 cur : 438 
+multi-oom 5 
+tid : 440 cur : 439 
+multi-oom 6 
+tid : 441 cur : 440 
+multi-oom 7 
+tid : 442 cur : 441 
+multi-oom 8 
+tid : 443 cur : 442 
+multi-oom 9 
+tid : 444 cur : 443 
+multi-oom 10 
+tid : 445 cur : 444 
+multi-oom 11 
+tid : 446 cur : 445 
+multi-oom 12 
+tid : 447 cur : 446 
+multi-oom 13 
+tid : 448 cur : 447 
+multi-oom 14 
+tid : 449 cur : 448 
+multi-oom 15 
+tid : 450 cur : 449 
+multi-oom 16 
+tid : 451 cur : 450 
+multi-oom 17 -k 
+multi-oom: exit(-1)
+tid : 452 cur : 451 
+!!!!terminated child list !!! 
+multi-oom 17 
+tid : 453 cur : 451 
+multi-oom 18 -k 
+multi-oom: exit(-1)
+tid : 454 cur : 453 
+!!!!terminated child list !!! 
+multi-oom 18 
+tid : 455 cur : 453 
+multi-oom 19 -k 
+multi-oom: exit(-1)
+tid : 456 cur : 455 
+!!!!terminated child list !!! 
+multi-oom 19 
+tid : 457 cur : 455 
+multi-oom 20 -k 
+multi-oom: exit(-1)
+tid : 458 cur : 457 
+!!!!terminated child list !!! 
+multi-oom 20 
+tid : 459 cur : 457 
+multi-oom 21 -k 
+multi-oom: exit(-1)
+tid : 460 cur : 459 
+!!!!terminated child list !!! 
+multi-oom 21 
+tid : 461 cur : 459 
+multi-oom 22 -k 
+multi-oom: exit(-1)
+tid : 462 cur : 461 
+!!!!terminated child list !!! 
+multi-oom 22 
+tid : 463 cur : 461 
+multi-oom 23 -k 
+multi-oom: exit(-1)
+tid : 464 cur : 463 
+!!!!terminated child list !!! 
+multi-oom 23 
+tid : 465 cur : 463 
+multi-oom 24 -k 
+multi-oom: exit(-1)
+tid : 466 cur : 465 
+!!!!terminated child list !!! 
+multi-oom 24 
+tid : 467 cur : 465 
+multi-oom 25 -k 
+multi-oom: exit(-1)
+tid : 468 cur : 467 
+!!!!terminated child list !!! 
+multi-oom 25 
+tid : 469 cur : 467 
+multi-oom 26 -k 
+multi-oom: exit(-1)
+tid : 470 cur : 469 
+!!!!terminated child list !!! 
+multi-oom 26 
+tid : 471 cur : 469 
+multi-oom 27 -k 
+multi-oom: exit(-1)
+tid : 472 cur : 471 
+!!!!terminated child list !!! 
+multi-oom 27 
+tid : 473 cur : 471 
+multi-oom 28 -k 
+multi-oom: exit(-1)
+tid : 474 cur : 473 
+!!!!terminated child list !!! 
+multi-oom 28 
+tid : 475 cur : 473 
+multi-oom 29 -k 
+multi-oom: exit(-1)
+tid : 476 cur : 475 
+!!!!terminated child list !!! 
+multi-oom 29 
+tid : 477 cur : 475 
+multi-oom 30 -k 
+multi-oom: exit(-1)
+tid : 478 cur : 477 
+!!!!terminated child list !!! 
+multi-oom 30 
+tid : 479 cur : 477 
+multi-oom 31 -k 
+multi-oom: exit(-1)
+tid : 480 cur : 479 
+!!!!terminated child list !!! 
+multi-oom 31 
+tid : 481 cur : 479 
+multi-oom 32 -k 
+multi-oom: exit(-1)
+tid : 482 cur : 481 
+!!!!terminated child list !!! 
+multi-oom 32 
+tid : 483 cur : 481 
+multi-oom 33 -k 
+multi-oom: exit(-1)
+tid : 484 cur : 483 
+!!!!terminated child list !!! 
+multi-oom 33 
+tid : 485 cur : 483 
+multi-oom 34 -k 
+multi-oom: exit(-1)
+tid : 486 cur : 485 
+!!!!terminated child list !!! 
+multi-oom 34 
+tid : 487 cur : 485 
+multi-oom 35 -k 
+multi-oom: exit(-1)
+tid : 488 cur : 487 
+!!!!terminated child list !!! 
+multi-oom 35 
+tid : 489 cur : 487 
+multi-oom 36 -k 
+multi-oom: exit(-1)
+tid : 490 cur : 489 
+!!!!terminated child list !!! 
+multi-oom 36 
+tid : 491 cur : 489 
+multi-oom 37 -k 
+multi-oom: exit(-1)
+tid : 492 cur : 491 
+!!!!terminated child list !!! 
+multi-oom 37 
+tid : 493 cur : 491 
+multi-oom 38 -k 
+multi-oom: exit(-1)
+tid : 494 cur : 493 
+!!!!terminated child list !!! 
+multi-oom 38 
+tid : 495 cur : 493 
+multi-oom 39 -k 
+multi-oom: exit(-1)
+tid : 496 cur : 495 
+!!!!terminated child list !!! 
+multi-oom 39 
+tid : 497 cur : 495 
+multi-oom 40 -k 
+multi-oom: exit(-1)
+tid : 498 cur : 497 
+!!!!terminated child list !!! 
+multi-oom 40 
+tid : 499 cur : 497 
+multi-oom 41 -k 
+multi-oom: exit(-1)
+tid : 500 cur : 499 
+!!!!terminated child list !!! 
+multi-oom 41 
+tid : 501 cur : 499 
+multi-oom 42 -k 
+multi-oom: exit(-1)
+tid : 502 cur : 501 
+!!!!terminated child list !!! 
+multi-oom 42 
+tid : 503 cur : 501 
+multi-oom 43 -k 
+multi-oom: exit(-1)
+tid : 504 cur : 503 
+!!!!terminated child list !!! 
+multi-oom 43 
+tid : 505 cur : 503 
+multi-oom 44 -k 
+multi-oom: exit(-1)
+tid : 506 cur : 505 
+!!!!terminated child list !!! 
+multi-oom 44 
+tid : 507 cur : 505 
+multi-oom 45 -k 
+multi-oom: exit(-1)
+tid : 508 cur : 507 
+!!!!terminated child list !!! 
+multi-oom 45 
+tid : 509 cur : 507 
+multi-oom 46 -k 
+multi-oom: exit(-1)
+tid : 510 cur : 509 
+!!!!terminated child list !!! 
+multi-oom 46 
+tid : 511 cur : 509 
+multi-oom 47 -k 
+multi-oom: exit(-1)
+tid : 512 cur : 511 
+!!!!terminated child list !!! 
+multi-oom 47 
+tid : 513 cur : 511 
+multi-oom 48 -k 
+multi-oom: exit(-1)
+tid : 514 cur : 513 
+!!!!terminated child list !!! 
+multi-oom 48 
+tid : 515 cur : 513 
+multi-oom 49 -k 
+multi-oom: exit(-1)
+tid : 516 cur : 515 
+!!!!terminated child list !!! 
+multi-oom 49 
+tid : 517 cur : 515 
+multi-oom 50 -k 
+multi-oom: exit(-1)
+tid : 518 cur : 517 
+!!!!terminated child list !!! 
+multi-oom 50 
+tid : 519 cur : 517 
+multi-oom 51 -k 
+multi-oom: exit(-1)
+tid : 520 cur : 519 
+!!!!terminated child list !!! 
+multi-oom 51 
+tid : 521 cur : 519 
+multi-oom 52 -k 
+multi-oom: exit(-1)
+tid : 522 cur : 521 
+!!!!terminated child list !!! 
+multi-oom 52 
+tid : 523 cur : 521 
+multi-oom 53 -k 
+multi-oom: exit(-1)
+tid : 524 cur : 523 
+!!!!terminated child list !!! 
+multi-oom 53 
+tid : 525 cur : 523 
+multi-oom 54 -k 
+multi-oom: exit(-1)
+tid : 526 cur : 525 
+!!!!terminated child list !!! 
+multi-oom 54 
+tid : 527 cur : 525 
+multi-oom 55 -k 
+multi-oom: exit(-1)
+tid : 528 cur : 527 
+!!!!terminated child list !!! 
+multi-oom 55 
+tid : 529 cur : 527 
+multi-oom 56 -k 
+multi-oom: exit(-1)
+tid : 530 cur : 529 
+!!!!terminated child list !!! 
+multi-oom 56 
+tid : 531 cur : 529 
+multi-oom 57 -k 
+multi-oom: exit(-1)
+tid : 532 cur : 531 
+!!!!terminated child list !!! 
+multi-oom 57 
+tid : 533 cur : 531 
+multi-oom 58 -k 
+multi-oom: exit(-1)
+tid : 534 cur : 533 
+!!!!terminated child list !!! 
+multi-oom 58 
+tid : 535 cur : 533 
+multi-oom 59 -k 
+multi-oom: exit(-1)
+tid : 536 cur : 535 
+!!!!terminated child list !!! 
+multi-oom 59 
+tid : 537 cur : 535 
+multi-oom 60 -k 
+multi-oom: exit(-1)
+tid : 538 cur : 537 
+!!!!terminated child list !!! 
+multi-oom 60 
+tid : 539 cur : 537 
+multi-oom 61 -k 
+multi-oom: exit(-1)
+tid : 540 cur : 539 
+!!!!terminated child list !!! 
+multi-oom 61 
+tid : 541 cur : 539 
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom 1 
+tid : 544 cur : 3 
+multi-oom 2 
+tid : 545 cur : 544 
+multi-oom 3 
+tid : 546 cur : 545 
+multi-oom 4 
+tid : 547 cur : 546 
+multi-oom 5 
+tid : 548 cur : 547 
+multi-oom 6 
+tid : 549 cur : 548 
+multi-oom 7 
+tid : 550 cur : 549 
+multi-oom 8 
+tid : 551 cur : 550 
+multi-oom 9 
+tid : 552 cur : 551 
+multi-oom 10 
+tid : 553 cur : 552 
+multi-oom 11 
+tid : 554 cur : 553 
+multi-oom 12 
+tid : 555 cur : 554 
+multi-oom 13 
+tid : 556 cur : 555 
+multi-oom 14 
+tid : 557 cur : 556 
+multi-oom 15 
+tid : 558 cur : 557 
+multi-oom 16 
+tid : 559 cur : 558 
+multi-oom 17 -k 
+multi-oom: exit(-1)
+tid : 560 cur : 559 
+!!!!terminated child list !!! 
+multi-oom 17 
+tid : 561 cur : 559 
+multi-oom 18 -k 
+multi-oom: exit(-1)
+tid : 562 cur : 561 
+!!!!terminated child list !!! 
+multi-oom 18 
+tid : 563 cur : 561 
+multi-oom 19 -k 
+multi-oom: exit(-1)
+tid : 564 cur : 563 
+!!!!terminated child list !!! 
+multi-oom 19 
+tid : 565 cur : 563 
+multi-oom 20 -k 
+multi-oom: exit(-1)
+tid : 566 cur : 565 
+!!!!terminated child list !!! 
+multi-oom 20 
+tid : 567 cur : 565 
+multi-oom 21 -k 
+multi-oom: exit(-1)
+tid : 568 cur : 567 
+!!!!terminated child list !!! 
+multi-oom 21 
+tid : 569 cur : 567 
+multi-oom 22 -k 
+multi-oom: exit(-1)
+tid : 570 cur : 569 
+!!!!terminated child list !!! 
+multi-oom 22 
+tid : 571 cur : 569 
+multi-oom 23 -k 
+multi-oom: exit(-1)
+tid : 572 cur : 571 
+!!!!terminated child list !!! 
+multi-oom 23 
+tid : 573 cur : 571 
+multi-oom 24 -k 
+multi-oom: exit(-1)
+tid : 574 cur : 573 
+!!!!terminated child list !!! 
+multi-oom 24 
+tid : 575 cur : 573 
+multi-oom 25 -k 
+multi-oom: exit(-1)
+tid : 576 cur : 575 
+!!!!terminated child list !!! 
+multi-oom 25 
+tid : 577 cur : 575 
+multi-oom 26 -k 
+multi-oom: exit(-1)
+tid : 578 cur : 577 
+!!!!terminated child list !!! 
+multi-oom 26 
+tid : 579 cur : 577 
+multi-oom 27 -k 
+multi-oom: exit(-1)
+tid : 580 cur : 579 
+!!!!terminated child list !!! 
+multi-oom 27 
+tid : 581 cur : 579 
+multi-oom 28 -k 
+multi-oom: exit(-1)
+tid : 582 cur : 581 
+!!!!terminated child list !!! 
+multi-oom 28 
+tid : 583 cur : 581 
+multi-oom 29 -k 
+multi-oom: exit(-1)
+tid : 584 cur : 583 
+!!!!terminated child list !!! 
+multi-oom 29 
+tid : 585 cur : 583 
+multi-oom 30 -k 
+multi-oom: exit(-1)
+tid : 586 cur : 585 
+!!!!terminated child list !!! 
+multi-oom 30 
+tid : 587 cur : 585 
+multi-oom 31 -k 
+multi-oom: exit(-1)
+tid : 588 cur : 587 
+!!!!terminated child list !!! 
+multi-oom 31 
+tid : 589 cur : 587 
+multi-oom 32 -k 
+multi-oom: exit(-1)
+tid : 590 cur : 589 
+!!!!terminated child list !!! 
+multi-oom 32 
+tid : 591 cur : 589 
+multi-oom 33 -k 
+multi-oom: exit(-1)
+tid : 592 cur : 591 
+!!!!terminated child list !!! 
+multi-oom 33 
+tid : 593 cur : 591 
+multi-oom 34 -k 
+multi-oom: exit(-1)
+tid : 594 cur : 593 
+!!!!terminated child list !!! 
+multi-oom 34 
+tid : 595 cur : 593 
+multi-oom 35 -k 
+multi-oom: exit(-1)
+tid : 596 cur : 595 
+!!!!terminated child list !!! 
+multi-oom 35 
+tid : 597 cur : 595 
+multi-oom 36 -k 
+multi-oom: exit(-1)
+tid : 598 cur : 597 
+!!!!terminated child list !!! 
+multi-oom 36 
+tid : 599 cur : 597 
+multi-oom 37 -k 
+multi-oom: exit(-1)
+tid : 600 cur : 599 
+!!!!terminated child list !!! 
+multi-oom 37 
+tid : 601 cur : 599 
+multi-oom 38 -k 
+multi-oom: exit(-1)
+tid : 602 cur : 601 
+!!!!terminated child list !!! 
+multi-oom 38 
+tid : 603 cur : 601 
+multi-oom 39 -k 
+multi-oom: exit(-1)
+tid : 604 cur : 603 
+!!!!terminated child list !!! 
+multi-oom 39 
+tid : 605 cur : 603 
+multi-oom 40 -k 
+multi-oom: exit(-1)
+tid : 606 cur : 605 
+!!!!terminated child list !!! 
+multi-oom 40 
+tid : 607 cur : 605 
+multi-oom 41 -k 
+multi-oom: exit(-1)
+tid : 608 cur : 607 
+!!!!terminated child list !!! 
+multi-oom 41 
+tid : 609 cur : 607 
+multi-oom 42 -k 
+multi-oom: exit(-1)
+tid : 610 cur : 609 
+!!!!terminated child list !!! 
+multi-oom 42 
+tid : 611 cur : 609 
+multi-oom 43 -k 
+multi-oom: exit(-1)
+tid : 612 cur : 611 
+!!!!terminated child list !!! 
+multi-oom 43 
+tid : 613 cur : 611 
+multi-oom 44 -k 
+multi-oom: exit(-1)
+tid : 614 cur : 613 
+!!!!terminated child list !!! 
+multi-oom 44 
+tid : 615 cur : 613 
+multi-oom 45 -k 
+multi-oom: exit(-1)
+tid : 616 cur : 615 
+!!!!terminated child list !!! 
+multi-oom 45 
+tid : 617 cur : 615 
+multi-oom 46 -k 
+multi-oom: exit(-1)
+tid : 618 cur : 617 
+!!!!terminated child list !!! 
+multi-oom 46 
+tid : 619 cur : 617 
+multi-oom 47 -k 
+multi-oom: exit(-1)
+tid : 620 cur : 619 
+!!!!terminated child list !!! 
+multi-oom 47 
+tid : 621 cur : 619 
+multi-oom 48 -k 
+multi-oom: exit(-1)
+tid : 622 cur : 621 
+!!!!terminated child list !!! 
+multi-oom 48 
+tid : 623 cur : 621 
+multi-oom 49 -k 
+multi-oom: exit(-1)
+tid : 624 cur : 623 
+!!!!terminated child list !!! 
+multi-oom 49 
+tid : 625 cur : 623 
+multi-oom 50 -k 
+multi-oom: exit(-1)
+tid : 626 cur : 625 
+!!!!terminated child list !!! 
+multi-oom 50 
+tid : 627 cur : 625 
+multi-oom 51 -k 
+multi-oom: exit(-1)
+tid : 628 cur : 627 
+!!!!terminated child list !!! 
+multi-oom 51 
+tid : 629 cur : 627 
+multi-oom 52 -k 
+multi-oom: exit(-1)
+tid : 630 cur : 629 
+!!!!terminated child list !!! 
+multi-oom 52 
+tid : 631 cur : 629 
+multi-oom 53 -k 
+multi-oom: exit(-1)
+tid : 632 cur : 631 
+!!!!terminated child list !!! 
+multi-oom 53 
+tid : 633 cur : 631 
+multi-oom 54 -k 
+multi-oom: exit(-1)
+tid : 634 cur : 633 
+!!!!terminated child list !!! 
+multi-oom 54 
+tid : 635 cur : 633 
+multi-oom 55 -k 
+multi-oom: exit(-1)
+tid : 636 cur : 635 
+!!!!terminated child list !!! 
+multi-oom 55 
+tid : 637 cur : 635 
+multi-oom 56 -k 
+multi-oom: exit(-1)
+tid : 638 cur : 637 
+!!!!terminated child list !!! 
+multi-oom 56 
+tid : 639 cur : 637 
+multi-oom 57 -k 
+multi-oom: exit(-1)
+tid : 640 cur : 639 
+!!!!terminated child list !!! 
+multi-oom 57 
+tid : 641 cur : 639 
+multi-oom 58 -k 
+multi-oom: exit(-1)
+tid : 642 cur : 641 
+!!!!terminated child list !!! 
+multi-oom 58 
+tid : 643 cur : 641 
+multi-oom 59 -k 
+multi-oom: exit(-1)
+tid : 644 cur : 643 
+!!!!terminated child list !!! 
+multi-oom 59 
+tid : 645 cur : 643 
+multi-oom 60 -k 
+multi-oom: exit(-1)
+tid : 646 cur : 645 
+!!!!terminated child list !!! 
+multi-oom 60 
+tid : 647 cur : 645 
+multi-oom 61 -k 
+multi-oom: exit(-1)
+tid : 648 cur : 647 
+!!!!terminated child list !!! 
+multi-oom 61 
+tid : 649 cur : 647 
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom 1 
+tid : 652 cur : 3 
+multi-oom 2 
+tid : 653 cur : 652 
+multi-oom 3 
+tid : 654 cur : 653 
+multi-oom 4 
+tid : 655 cur : 654 
+multi-oom 5 
+tid : 656 cur : 655 
+multi-oom 6 
+tid : 657 cur : 656 
+multi-oom 7 
+tid : 658 cur : 657 
+multi-oom 8 
+tid : 659 cur : 658 
+multi-oom 9 
+tid : 660 cur : 659 
+multi-oom 10 
+tid : 661 cur : 660 
+multi-oom 11 
+tid : 662 cur : 661 
+multi-oom 12 
+tid : 663 cur : 662 
+multi-oom 13 
+tid : 664 cur : 663 
+multi-oom 14 
+tid : 665 cur : 664 
+multi-oom 15 
+tid : 666 cur : 665 
+multi-oom 16 
+tid : 667 cur : 666 
+multi-oom 17 -k 
+multi-oom: exit(-1)
+tid : 668 cur : 667 
+!!!!terminated child list !!! 
+multi-oom 17 
+tid : 669 cur : 667 
+multi-oom 18 -k 
+multi-oom: exit(-1)
+tid : 670 cur : 669 
+!!!!terminated child list !!! 
+multi-oom 18 
+tid : 671 cur : 669 
+multi-oom 19 -k 
+multi-oom: exit(-1)
+tid : 672 cur : 671 
+!!!!terminated child list !!! 
+multi-oom 19 
+tid : 673 cur : 671 
+multi-oom 20 -k 
+multi-oom: exit(-1)
+tid : 674 cur : 673 
+!!!!terminated child list !!! 
+multi-oom 20 
+tid : 675 cur : 673 
+multi-oom 21 -k 
+multi-oom: exit(-1)
+tid : 676 cur : 675 
+!!!!terminated child list !!! 
+multi-oom 21 
+tid : 677 cur : 675 
+multi-oom 22 -k 
+multi-oom: exit(-1)
+tid : 678 cur : 677 
+!!!!terminated child list !!! 
+multi-oom 22 
+tid : 679 cur : 677 
+multi-oom 23 -k 
+multi-oom: exit(-1)
+tid : 680 cur : 679 
+!!!!terminated child list !!! 
+multi-oom 23 
+tid : 681 cur : 679 
+multi-oom 24 -k 
+multi-oom: exit(-1)
+tid : 682 cur : 681 
+!!!!terminated child list !!! 
+multi-oom 24 
+tid : 683 cur : 681 
+multi-oom 25 -k 
+multi-oom: exit(-1)
+tid : 684 cur : 683 
+!!!!terminated child list !!! 
+multi-oom 25 
+tid : 685 cur : 683 
+multi-oom 26 -k 
+multi-oom: exit(-1)
+tid : 686 cur : 685 
+!!!!terminated child list !!! 
+multi-oom 26 
+tid : 687 cur : 685 
+multi-oom 27 -k 
+multi-oom: exit(-1)
+tid : 688 cur : 687 
+!!!!terminated child list !!! 
+multi-oom 27 
+tid : 689 cur : 687 
+multi-oom 28 -k 
+multi-oom: exit(-1)
+tid : 690 cur : 689 
+!!!!terminated child list !!! 
+multi-oom 28 
+tid : 691 cur : 689 
+multi-oom 29 -k 
+multi-oom: exit(-1)
+tid : 692 cur : 691 
+!!!!terminated child list !!! 
+multi-oom 29 
+tid : 693 cur : 691 
+multi-oom 30 -k 
+multi-oom: exit(-1)
+tid : 694 cur : 693 
+!!!!terminated child list !!! 
+multi-oom 30 
+tid : 695 cur : 693 
+multi-oom 31 -k 
+multi-oom: exit(-1)
+tid : 696 cur : 695 
+!!!!terminated child list !!! 
+multi-oom 31 
+tid : 697 cur : 695 
+multi-oom 32 -k 
+multi-oom: exit(-1)
+tid : 698 cur : 697 
+!!!!terminated child list !!! 
+multi-oom 32 
+tid : 699 cur : 697 
+multi-oom 33 -k 
+multi-oom: exit(-1)
+tid : 700 cur : 699 
+!!!!terminated child list !!! 
+multi-oom 33 
+tid : 701 cur : 699 
+multi-oom 34 -k 
+multi-oom: exit(-1)
+tid : 702 cur : 701 
+!!!!terminated child list !!! 
+multi-oom 34 
+tid : 703 cur : 701 
+multi-oom 35 -k 
+multi-oom: exit(-1)
+tid : 704 cur : 703 
+!!!!terminated child list !!! 
+multi-oom 35 
+tid : 705 cur : 703 
+multi-oom 36 -k 
+multi-oom: exit(-1)
+tid : 706 cur : 705 
+!!!!terminated child list !!! 
+multi-oom 36 
+tid : 707 cur : 705 
+multi-oom 37 -k 
+multi-oom: exit(-1)
+tid : 708 cur : 707 
+!!!!terminated child list !!! 
+multi-oom 37 
+tid : 709 cur : 707 
+multi-oom 38 -k 
+multi-oom: exit(-1)
+tid : 710 cur : 709 
+!!!!terminated child list !!! 
+multi-oom 38 
+tid : 711 cur : 709 
+multi-oom 39 -k 
+multi-oom: exit(-1)
+tid : 712 cur : 711 
+!!!!terminated child list !!! 
+multi-oom 39 
+tid : 713 cur : 711 
+multi-oom 40 -k 
+multi-oom: exit(-1)
+tid : 714 cur : 713 
+!!!!terminated child list !!! 
+multi-oom 40 
+tid : 715 cur : 713 
+multi-oom 41 -k 
+multi-oom: exit(-1)
+tid : 716 cur : 715 
+!!!!terminated child list !!! 
+multi-oom 41 
+tid : 717 cur : 715 
+multi-oom 42 -k 
+multi-oom: exit(-1)
+tid : 718 cur : 717 
+!!!!terminated child list !!! 
+multi-oom 42 
+tid : 719 cur : 717 
+multi-oom 43 -k 
+multi-oom: exit(-1)
+tid : 720 cur : 719 
+!!!!terminated child list !!! 
+multi-oom 43 
+tid : 721 cur : 719 
+multi-oom 44 -k 
+multi-oom: exit(-1)
+tid : 722 cur : 721 
+!!!!terminated child list !!! 
+multi-oom 44 
+tid : 723 cur : 721 
+multi-oom 45 -k 
+multi-oom: exit(-1)
+tid : 724 cur : 723 
+!!!!terminated child list !!! 
+multi-oom 45 
+tid : 725 cur : 723 
+multi-oom 46 -k 
+multi-oom: exit(-1)
+tid : 726 cur : 725 
+!!!!terminated child list !!! 
+multi-oom 46 
+tid : 727 cur : 725 
+multi-oom 47 -k 
+multi-oom: exit(-1)
+tid : 728 cur : 727 
+!!!!terminated child list !!! 
+multi-oom 47 
+tid : 729 cur : 727 
+multi-oom 48 -k 
+multi-oom: exit(-1)
+tid : 730 cur : 729 
+!!!!terminated child list !!! 
+multi-oom 48 
+tid : 731 cur : 729 
+multi-oom 49 -k 
+multi-oom: exit(-1)
+tid : 732 cur : 731 
+!!!!terminated child list !!! 
+multi-oom 49 
+tid : 733 cur : 731 
+multi-oom 50 -k 
+multi-oom: exit(-1)
+tid : 734 cur : 733 
+!!!!terminated child list !!! 
+multi-oom 50 
+tid : 735 cur : 733 
+multi-oom 51 -k 
+multi-oom: exit(-1)
+tid : 736 cur : 735 
+!!!!terminated child list !!! 
+multi-oom 51 
+tid : 737 cur : 735 
+multi-oom 52 -k 
+multi-oom: exit(-1)
+tid : 738 cur : 737 
+!!!!terminated child list !!! 
+multi-oom 52 
+tid : 739 cur : 737 
+multi-oom 53 -k 
+multi-oom: exit(-1)
+tid : 740 cur : 739 
+!!!!terminated child list !!! 
+multi-oom 53 
+tid : 741 cur : 739 
+multi-oom 54 -k 
+multi-oom: exit(-1)
+tid : 742 cur : 741 
+!!!!terminated child list !!! 
+multi-oom 54 
+tid : 743 cur : 741 
+multi-oom 55 -k 
+multi-oom: exit(-1)
+tid : 744 cur : 743 
+!!!!terminated child list !!! 
+multi-oom 55 
+tid : 745 cur : 743 
+multi-oom 56 -k 
+multi-oom: exit(-1)
+tid : 746 cur : 745 
+!!!!terminated child list !!! 
+multi-oom 56 
+tid : 747 cur : 745 
+multi-oom 57 -k 
+multi-oom: exit(-1)
+tid : 748 cur : 747 
+!!!!terminated child list !!! 
+multi-oom 57 
+tid : 749 cur : 747 
+multi-oom 58 -k 
+multi-oom: exit(-1)
+tid : 750 cur : 749 
+!!!!terminated child list !!! 
+multi-oom 58 
+tid : 751 cur : 749 
+multi-oom 59 -k 
+multi-oom: exit(-1)
+tid : 752 cur : 751 
+!!!!terminated child list !!! 
+multi-oom 59 
+tid : 753 cur : 751 
+multi-oom 60 -k 
+multi-oom: exit(-1)
+tid : 754 cur : 753 
+!!!!terminated child list !!! 
+multi-oom 60 
+tid : 755 cur : 753 
+multi-oom 61 -k 
+multi-oom: exit(-1)
+tid : 756 cur : 755 
+!!!!terminated child list !!! 
+multi-oom 61 
+tid : 757 cur : 755 
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom 1 
+tid : 760 cur : 3 
+multi-oom 2 
+tid : 761 cur : 760 
+multi-oom 3 
+tid : 762 cur : 761 
+multi-oom 4 
+tid : 763 cur : 762 
+multi-oom 5 
+tid : 764 cur : 763 
+multi-oom 6 
+tid : 765 cur : 764 
+multi-oom 7 
+tid : 766 cur : 765 
+multi-oom 8 
+tid : 767 cur : 766 
+multi-oom 9 
+tid : 768 cur : 767 
+multi-oom 10 
+tid : 769 cur : 768 
+multi-oom 11 
+tid : 770 cur : 769 
+multi-oom 12 
+tid : 771 cur : 770 
+multi-oom 13 
+tid : 772 cur : 771 
+multi-oom 14 
+tid : 773 cur : 772 
+multi-oom 15 
+tid : 774 cur : 773 
+multi-oom 16 
+tid : 775 cur : 774 
+multi-oom 17 -k 
+multi-oom: exit(-1)
+tid : 776 cur : 775 
+!!!!terminated child list !!! 
+multi-oom 17 
+tid : 777 cur : 775 
+multi-oom 18 -k 
+multi-oom: exit(-1)
+tid : 778 cur : 777 
+!!!!terminated child list !!! 
+multi-oom 18 
+tid : 779 cur : 777 
+multi-oom 19 -k 
+multi-oom: exit(-1)
+tid : 780 cur : 779 
+!!!!terminated child list !!! 
+multi-oom 19 
+tid : 781 cur : 779 
+multi-oom 20 -k 
+multi-oom: exit(-1)
+tid : 782 cur : 781 
+!!!!terminated child list !!! 
+multi-oom 20 
+tid : 783 cur : 781 
+multi-oom 21 -k 
+multi-oom: exit(-1)
+tid : 784 cur : 783 
+!!!!terminated child list !!! 
+multi-oom 21 
+tid : 785 cur : 783 
+multi-oom 22 -k 
+multi-oom: exit(-1)
+tid : 786 cur : 785 
+!!!!terminated child list !!! 
+multi-oom 22 
+tid : 787 cur : 785 
+multi-oom 23 -k 
+multi-oom: exit(-1)
+tid : 788 cur : 787 
+!!!!terminated child list !!! 
+multi-oom 23 
+tid : 789 cur : 787 
+multi-oom 24 -k 
+multi-oom: exit(-1)
+tid : 790 cur : 789 
+!!!!terminated child list !!! 
+multi-oom 24 
+tid : 791 cur : 789 
+multi-oom 25 -k 
+multi-oom: exit(-1)
+tid : 792 cur : 791 
+!!!!terminated child list !!! 
+multi-oom 25 
+tid : 793 cur : 791 
+multi-oom 26 -k 
+multi-oom: exit(-1)
+tid : 794 cur : 793 
+!!!!terminated child list !!! 
+multi-oom 26 
+tid : 795 cur : 793 
+multi-oom 27 -k 
+multi-oom: exit(-1)
+tid : 796 cur : 795 
+!!!!terminated child list !!! 
+multi-oom 27 
+tid : 797 cur : 795 
+multi-oom 28 -k 
+multi-oom: exit(-1)
+tid : 798 cur : 797 
+!!!!terminated child list !!! 
+multi-oom 28 
+tid : 799 cur : 797 
+multi-oom 29 -k 
+multi-oom: exit(-1)
+tid : 800 cur : 799 
+!!!!terminated child list !!! 
+multi-oom 29 
+tid : 801 cur : 799 
+multi-oom 30 -k 
+multi-oom: exit(-1)
+tid : 802 cur : 801 
+!!!!terminated child list !!! 
+multi-oom 30 
+tid : 803 cur : 801 
+multi-oom 31 -k 
+multi-oom: exit(-1)
+tid : 804 cur : 803 
+!!!!terminated child list !!! 
+multi-oom 31 
+tid : 805 cur : 803 
+multi-oom 32 -k 
+multi-oom: exit(-1)
+tid : 806 cur : 805 
+!!!!terminated child list !!! 
+multi-oom 32 
+tid : 807 cur : 805 
+multi-oom 33 -k 
+multi-oom: exit(-1)
+tid : 808 cur : 807 
+!!!!terminated child list !!! 
+multi-oom 33 
+tid : 809 cur : 807 
+multi-oom 34 -k 
+multi-oom: exit(-1)
+tid : 810 cur : 809 
+!!!!terminated child list !!! 
+multi-oom 34 
+tid : 811 cur : 809 
+multi-oom 35 -k 
+multi-oom: exit(-1)
+tid : 812 cur : 811 
+!!!!terminated child list !!! 
+multi-oom 35 
+tid : 813 cur : 811 
+multi-oom 36 -k 
+multi-oom: exit(-1)
+tid : 814 cur : 813 
+!!!!terminated child list !!! 
+multi-oom 36 
+tid : 815 cur : 813 
+multi-oom 37 -k 
+multi-oom: exit(-1)
+tid : 816 cur : 815 
+!!!!terminated child list !!! 
+multi-oom 37 
+tid : 817 cur : 815 
+multi-oom 38 -k 
+multi-oom: exit(-1)
+tid : 818 cur : 817 
+!!!!terminated child list !!! 
+multi-oom 38 
+tid : 819 cur : 817 
+multi-oom 39 -k 
+multi-oom: exit(-1)
+tid : 820 cur : 819 
+!!!!terminated child list !!! 
+multi-oom 39 
+tid : 821 cur : 819 
+multi-oom 40 -k 
+multi-oom: exit(-1)
+tid : 822 cur : 821 
+!!!!terminated child list !!! 
+multi-oom 40 
+tid : 823 cur : 821 
+multi-oom 41 -k 
+multi-oom: exit(-1)
+tid : 824 cur : 823 
+!!!!terminated child list !!! 
+multi-oom 41 
+tid : 825 cur : 823 
+multi-oom 42 -k 
+multi-oom: exit(-1)
+tid : 826 cur : 825 
+!!!!terminated child list !!! 
+multi-oom 42 
+tid : 827 cur : 825 
+multi-oom 43 -k 
+multi-oom: exit(-1)
+tid : 828 cur : 827 
+!!!!terminated child list !!! 
+multi-oom 43 
+tid : 829 cur : 827 
+multi-oom 44 -k 
+multi-oom: exit(-1)
+tid : 830 cur : 829 
+!!!!terminated child list !!! 
+multi-oom 44 
+tid : 831 cur : 829 
+multi-oom 45 -k 
+multi-oom: exit(-1)
+tid : 832 cur : 831 
+!!!!terminated child list !!! 
+multi-oom 45 
+tid : 833 cur : 831 
+multi-oom 46 -k 
+multi-oom: exit(-1)
+tid : 834 cur : 833 
+!!!!terminated child list !!! 
+multi-oom 46 
+tid : 835 cur : 833 
+multi-oom 47 -k 
+multi-oom: exit(-1)
+tid : 836 cur : 835 
+!!!!terminated child list !!! 
+multi-oom 47 
+tid : 837 cur : 835 
+multi-oom 48 -k 
+multi-oom: exit(-1)
+tid : 838 cur : 837 
+!!!!terminated child list !!! 
+multi-oom 48 
+tid : 839 cur : 837 
+multi-oom 49 -k 
+multi-oom: exit(-1)
+tid : 840 cur : 839 
+!!!!terminated child list !!! 
+multi-oom 49 
+tid : 841 cur : 839 
+multi-oom 50 -k 
+multi-oom: exit(-1)
+tid : 842 cur : 841 
+!!!!terminated child list !!! 
+multi-oom 50 
+tid : 843 cur : 841 
+multi-oom 51 -k 
+multi-oom: exit(-1)
+tid : 844 cur : 843 
+!!!!terminated child list !!! 
+multi-oom 51 
+tid : 845 cur : 843 
+multi-oom 52 -k 
+multi-oom: exit(-1)
+tid : 846 cur : 845 
+!!!!terminated child list !!! 
+multi-oom 52 
+tid : 847 cur : 845 
+multi-oom 53 -k 
+multi-oom: exit(-1)
+tid : 848 cur : 847 
+!!!!terminated child list !!! 
+multi-oom 53 
+tid : 849 cur : 847 
+multi-oom 54 -k 
+multi-oom: exit(-1)
+tid : 850 cur : 849 
+!!!!terminated child list !!! 
+multi-oom 54 
+tid : 851 cur : 849 
+multi-oom 55 -k 
+multi-oom: exit(-1)
+tid : 852 cur : 851 
+!!!!terminated child list !!! 
+multi-oom 55 
+tid : 853 cur : 851 
+multi-oom 56 -k 
+multi-oom: exit(-1)
+tid : 854 cur : 853 
+!!!!terminated child list !!! 
+multi-oom 56 
+tid : 855 cur : 853 
+multi-oom 57 -k 
+multi-oom: exit(-1)
+tid : 856 cur : 855 
+!!!!terminated child list !!! 
+multi-oom 57 
+tid : 857 cur : 855 
+multi-oom 58 -k 
+multi-oom: exit(-1)
+tid : 858 cur : 857 
+!!!!terminated child list !!! 
+multi-oom 58 
+tid : 859 cur : 857 
+multi-oom 59 -k 
+multi-oom: exit(-1)
+tid : 860 cur : 859 
+!!!!terminated child list !!! 
+multi-oom 59 
+tid : 861 cur : 859 
+multi-oom 60 -k 
+multi-oom: exit(-1)
+tid : 862 cur : 861 
+!!!!terminated child list !!! 
+multi-oom 60 
+tid : 863 cur : 861 
+multi-oom 61 -k 
+multi-oom: exit(-1)
+tid : 864 cur : 863 
+!!!!terminated child list !!! 
+multi-oom 61 
+tid : 865 cur : 863 
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom 1 
+tid : 868 cur : 3 
+multi-oom 2 
+tid : 869 cur : 868 
+multi-oom 3 
+tid : 870 cur : 869 
+multi-oom 4 
+tid : 871 cur : 870 
+multi-oom 5 
+tid : 872 cur : 871 
+multi-oom 6 
+tid : 873 cur : 872 
+multi-oom 7 
+tid : 874 cur : 873 
+multi-oom 8 
+tid : 875 cur : 874 
+multi-oom 9 
+tid : 876 cur : 875 
+multi-oom 10 
+tid : 877 cur : 876 
+multi-oom 11 
+tid : 878 cur : 877 
+multi-oom 12 
+tid : 879 cur : 878 
+multi-oom 13 
+tid : 880 cur : 879 
+multi-oom 14 
+tid : 881 cur : 880 
+multi-oom 15 
+tid : 882 cur : 881 
+multi-oom 16 
+tid : 883 cur : 882 
+multi-oom 17 -k 
+multi-oom: exit(-1)
+tid : 884 cur : 883 
+!!!!terminated child list !!! 
+multi-oom 17 
+tid : 885 cur : 883 
+multi-oom 18 -k 
+multi-oom: exit(-1)
+tid : 886 cur : 885 
+!!!!terminated child list !!! 
+multi-oom 18 
+tid : 887 cur : 885 
+multi-oom 19 -k 
+multi-oom: exit(-1)
+tid : 888 cur : 887 
+!!!!terminated child list !!! 
+multi-oom 19 
+tid : 889 cur : 887 
+multi-oom 20 -k 
+multi-oom: exit(-1)
+tid : 890 cur : 889 
+!!!!terminated child list !!! 
+multi-oom 20 
+tid : 891 cur : 889 
+multi-oom 21 -k 
+multi-oom: exit(-1)
+tid : 892 cur : 891 
+!!!!terminated child list !!! 
+multi-oom 21 
+tid : 893 cur : 891 
+multi-oom 22 -k 
+multi-oom: exit(-1)
+tid : 894 cur : 893 
+!!!!terminated child list !!! 
+multi-oom 22 
+tid : 895 cur : 893 
+multi-oom 23 -k 
+multi-oom: exit(-1)
+tid : 896 cur : 895 
+!!!!terminated child list !!! 
+multi-oom 23 
+tid : 897 cur : 895 
+multi-oom 24 -k 
+multi-oom: exit(-1)
+tid : 898 cur : 897 
+!!!!terminated child list !!! 
+multi-oom 24 
+tid : 899 cur : 897 
+multi-oom 25 -k 
+multi-oom: exit(-1)
+tid : 900 cur : 899 
+!!!!terminated child list !!! 
+multi-oom 25 
+tid : 901 cur : 899 
+multi-oom 26 -k 
+multi-oom: exit(-1)
+tid : 902 cur : 901 
+!!!!terminated child list !!! 
+multi-oom 26 
+tid : 903 cur : 901 
+multi-oom 27 -k 
+multi-oom: exit(-1)
+tid : 904 cur : 903 
+!!!!terminated child list !!! 
+multi-oom 27 
+tid : 905 cur : 903 
+multi-oom 28 -k 
+multi-oom: exit(-1)
+tid : 906 cur : 905 
+!!!!terminated child list !!! 
+multi-oom 28 
+tid : 907 cur : 905 
+multi-oom 29 -k 
+multi-oom: exit(-1)
+tid : 908 cur : 907 
+!!!!terminated child list !!! 
+multi-oom 29 
+tid : 909 cur : 907 
+multi-oom 30 -k 
+multi-oom: exit(-1)
+tid : 910 cur : 909 
+!!!!terminated child list !!! 
+multi-oom 30 
+tid : 911 cur : 909 
+multi-oom 31 -k 
+multi-oom: exit(-1)
+tid : 912 cur : 911 
+!!!!terminated child list !!! 
+multi-oom 31 
+tid : 913 cur : 911 
+multi-oom 32 -k 
+multi-oom: exit(-1)
+tid : 914 cur : 913 
+!!!!terminated child list !!! 
+multi-oom 32 
+tid : 915 cur : 913 
+multi-oom 33 -k 
+multi-oom: exit(-1)
+tid : 916 cur : 915 
+!!!!terminated child list !!! 
+multi-oom 33 
+tid : 917 cur : 915 
+multi-oom 34 -k 
+multi-oom: exit(-1)
+tid : 918 cur : 917 
+!!!!terminated child list !!! 
+multi-oom 34 
+tid : 919 cur : 917 
+multi-oom 35 -k 
+multi-oom: exit(-1)
+tid : 920 cur : 919 
+!!!!terminated child list !!! 
+multi-oom 35 
+tid : 921 cur : 919 
+multi-oom 36 -k 
+multi-oom: exit(-1)
+tid : 922 cur : 921 
+!!!!terminated child list !!! 
+multi-oom 36 
+tid : 923 cur : 921 
+multi-oom 37 -k 
+multi-oom: exit(-1)
+tid : 924 cur : 923 
+!!!!terminated child list !!! 
+multi-oom 37 
+tid : 925 cur : 923 
+multi-oom 38 -k 
+multi-oom: exit(-1)
+tid : 926 cur : 925 
+!!!!terminated child list !!! 
+multi-oom 38 
+tid : 927 cur : 925 
+multi-oom 39 -k 
+multi-oom: exit(-1)
+tid : 928 cur : 927 
+!!!!terminated child list !!! 
+multi-oom 39 
+tid : 929 cur : 927 
+multi-oom 40 -k 
+multi-oom: exit(-1)
+tid : 930 cur : 929 
+!!!!terminated child list !!! 
+multi-oom 40 
+tid : 931 cur : 929 
+multi-oom 41 -k 
+multi-oom: exit(-1)
+tid : 932 cur : 931 
+!!!!terminated child list !!! 
+multi-oom 41 
+tid : 933 cur : 931 
+multi-oom 42 -k 
+multi-oom: exit(-1)
+tid : 934 cur : 933 
+!!!!terminated child list !!! 
+multi-oom 42 
+tid : 935 cur : 933 
+multi-oom 43 -k 
+multi-oom: exit(-1)
+tid : 936 cur : 935 
+!!!!terminated child list !!! 
+multi-oom 43 
+tid : 937 cur : 935 
+multi-oom 44 -k 
+multi-oom: exit(-1)
+tid : 938 cur : 937 
+!!!!terminated child list !!! 
+multi-oom 44 
+tid : 939 cur : 937 
+multi-oom 45 -k 
+multi-oom: exit(-1)
+tid : 940 cur : 939 
+!!!!terminated child list !!! 
+multi-oom 45 
+tid : 941 cur : 939 
+multi-oom 46 -k 
+multi-oom: exit(-1)
+tid : 942 cur : 941 
+!!!!terminated child list !!! 
+multi-oom 46 
+tid : 943 cur : 941 
+multi-oom 47 -k 
+multi-oom: exit(-1)
+tid : 944 cur : 943 
+!!!!terminated child list !!! 
+multi-oom 47 
+tid : 945 cur : 943 
+multi-oom 48 -k 
+multi-oom: exit(-1)
+tid : 946 cur : 945 
+!!!!terminated child list !!! 
+multi-oom 48 
+tid : 947 cur : 945 
+multi-oom 49 -k 
+multi-oom: exit(-1)
+tid : 948 cur : 947 
+!!!!terminated child list !!! 
+multi-oom 49 
+tid : 949 cur : 947 
+multi-oom 50 -k 
+multi-oom: exit(-1)
+tid : 950 cur : 949 
+!!!!terminated child list !!! 
+multi-oom 50 
+tid : 951 cur : 949 
+multi-oom 51 -k 
+multi-oom: exit(-1)
+tid : 952 cur : 951 
+!!!!terminated child list !!! 
+multi-oom 51 
+tid : 953 cur : 951 
+multi-oom 52 -k 
+multi-oom: exit(-1)
+tid : 954 cur : 953 
+!!!!terminated child list !!! 
+multi-oom 52 
+tid : 955 cur : 953 
+multi-oom 53 -k 
+multi-oom: exit(-1)
+tid : 956 cur : 955 
+!!!!terminated child list !!! 
+multi-oom 53 
+tid : 957 cur : 955 
+multi-oom 54 -k 
+multi-oom: exit(-1)
+tid : 958 cur : 957 
+!!!!terminated child list !!! 
+multi-oom 54 
+tid : 959 cur : 957 
+multi-oom 55 -k 
+multi-oom: exit(-1)
+tid : 960 cur : 959 
+!!!!terminated child list !!! 
+multi-oom 55 
+tid : 961 cur : 959 
+multi-oom 56 -k 
+multi-oom: exit(-1)
+tid : 962 cur : 961 
+!!!!terminated child list !!! 
+multi-oom 56 
+tid : 963 cur : 961 
+multi-oom 57 -k 
+multi-oom: exit(-1)
+tid : 964 cur : 963 
+!!!!terminated child list !!! 
+multi-oom 57 
+tid : 965 cur : 963 
+multi-oom 58 -k 
+multi-oom: exit(-1)
+tid : 966 cur : 965 
+!!!!terminated child list !!! 
+multi-oom 58 
+tid : 967 cur : 965 
+multi-oom 59 -k 
+multi-oom: exit(-1)
+tid : 968 cur : 967 
+!!!!terminated child list !!! 
+multi-oom 59 
+tid : 969 cur : 967 
+multi-oom 60 -k 
+multi-oom: exit(-1)
+tid : 970 cur : 969 
+!!!!terminated child list !!! 
+multi-oom 60 
+tid : 971 cur : 969 
+multi-oom 61 -k 
+multi-oom: exit(-1)
+tid : 972 cur : 971 
+!!!!terminated child list !!! 
+multi-oom 61 
+tid : 973 cur : 971 
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom 1 
+tid : 976 cur : 3 
+multi-oom 2 
+tid : 977 cur : 976 
+multi-oom 3 
+tid : 978 cur : 977 
+multi-oom 4 
+tid : 979 cur : 978 
+multi-oom 5 
+tid : 980 cur : 979 
+multi-oom 6 
+tid : 981 cur : 980 
+multi-oom 7 
+tid : 982 cur : 981 
+multi-oom 8 
+tid : 983 cur : 982 
+multi-oom 9 
+tid : 984 cur : 983 
+multi-oom 10 
+tid : 985 cur : 984 
+multi-oom 11 
+tid : 986 cur : 985 
+multi-oom 12 
+tid : 987 cur : 986 
+multi-oom 13 
+tid : 988 cur : 987 
+multi-oom 14 
+tid : 989 cur : 988 
+multi-oom 15 
+tid : 990 cur : 989 
+multi-oom 16 
+tid : 991 cur : 990 
+multi-oom 17 -k 
+multi-oom: exit(-1)
+tid : 992 cur : 991 
+!!!!terminated child list !!! 
+multi-oom 17 
+tid : 993 cur : 991 
+multi-oom 18 -k 
+multi-oom: exit(-1)
+tid : 994 cur : 993 
+!!!!terminated child list !!! 
+multi-oom 18 
+tid : 995 cur : 993 
+multi-oom 19 -k 
+multi-oom: exit(-1)
+tid : 996 cur : 995 
+!!!!terminated child list !!! 
+multi-oom 19 
+tid : 997 cur : 995 
+multi-oom 20 -k 
+multi-oom: exit(-1)
+tid : 998 cur : 997 
+!!!!terminated child list !!! 
+multi-oom 20 
+tid : 999 cur : 997 
+multi-oom 21 -k 
+multi-oom: exit(-1)
+tid : 1000 cur : 999 
+!!!!terminated child list !!! 
+multi-oom 21 
+tid : 1001 cur : 999 
+multi-oom 22 -k 
+multi-oom: exit(-1)
+tid : 1002 cur : 1001 
+!!!!terminated child list !!! 
+multi-oom 22 
+tid : 1003 cur : 1001 
+multi-oom 23 -k 
+multi-oom: exit(-1)
+tid : 1004 cur : 1003 
+!!!!terminated child list !!! 
+multi-oom 23 
+tid : 1005 cur : 1003 
+multi-oom 24 -k 
+multi-oom: exit(-1)
+tid : 1006 cur : 1005 
+!!!!terminated child list !!! 
+multi-oom 24 
+tid : 1007 cur : 1005 
+multi-oom 25 -k 
+multi-oom: exit(-1)
+tid : 1008 cur : 1007 
+!!!!terminated child list !!! 
+multi-oom 25 
+tid : 1009 cur : 1007 
+multi-oom 26 -k 
+multi-oom: exit(-1)
+tid : 1010 cur : 1009 
+!!!!terminated child list !!! 
+multi-oom 26 
+tid : 1011 cur : 1009 
+multi-oom 27 -k 
+multi-oom: exit(-1)
+tid : 1012 cur : 1011 
+!!!!terminated child list !!! 
+multi-oom 27 
+tid : 1013 cur : 1011 
+multi-oom 28 -k 
+multi-oom: exit(-1)
+tid : 1014 cur : 1013 
+!!!!terminated child list !!! 
+multi-oom 28 
+tid : 1015 cur : 1013 
+multi-oom 29 -k 
+multi-oom: exit(-1)
+tid : 1016 cur : 1015 
+!!!!terminated child list !!! 
+multi-oom 29 
+tid : 1017 cur : 1015 
+multi-oom 30 -k 
+multi-oom: exit(-1)
+tid : 1018 cur : 1017 
+!!!!terminated child list !!! 
+multi-oom 30 
+tid : 1019 cur : 1017 
+multi-oom 31 -k 
+multi-oom: exit(-1)
+tid : 1020 cur : 1019 
+!!!!terminated child list !!! 
+multi-oom 31 
+tid : 1021 cur : 1019 
+multi-oom 32 -k 
+multi-oom: exit(-1)
+tid : 1022 cur : 1021 
+!!!!terminated child list !!! 
+multi-oom 32 
+tid : 1023 cur : 1021 
+multi-oom 33 -k 
+multi-oom: exit(-1)
+tid : 1024 cur : 1023 
+!!!!terminated child list !!! 
+multi-oom 33 
+tid : 1025 cur : 1023 
+multi-oom 34 -k 
+multi-oom: exit(-1)
+tid : 1026 cur : 1025 
+!!!!terminated child list !!! 
+multi-oom 34 
+tid : 1027 cur : 1025 
+multi-oom 35 -k 
+multi-oom: exit(-1)
+tid : 1028 cur : 1027 
+!!!!terminated child list !!! 
+multi-oom 35 
+tid : 1029 cur : 1027 
+multi-oom 36 -k 
+multi-oom: exit(-1)
+tid : 1030 cur : 1029 
+!!!!terminated child list !!! 
+multi-oom 36 
+tid : 1031 cur : 1029 
+multi-oom 37 -k 
+multi-oom: exit(-1)
+tid : 1032 cur : 1031 
+!!!!terminated child list !!! 
+multi-oom 37 
+tid : 1033 cur : 1031 
+multi-oom 38 -k 
+multi-oom: exit(-1)
+tid : 1034 cur : 1033 
+!!!!terminated child list !!! 
+multi-oom 38 
+tid : 1035 cur : 1033 
+multi-oom 39 -k 
+multi-oom: exit(-1)
+tid : 1036 cur : 1035 
+!!!!terminated child list !!! 
+multi-oom 39 
+tid : 1037 cur : 1035 
+multi-oom 40 -k 
+multi-oom: exit(-1)
+tid : 1038 cur : 1037 
+!!!!terminated child list !!! 
+multi-oom 40 
+tid : 1039 cur : 1037 
+multi-oom 41 -k 
+multi-oom: exit(-1)
+tid : 1040 cur : 1039 
+!!!!terminated child list !!! 
+multi-oom 41 
+tid : 1041 cur : 1039 
+multi-oom 42 -k 
+multi-oom: exit(-1)
+tid : 1042 cur : 1041 
+!!!!terminated child list !!! 
+multi-oom 42 
+tid : 1043 cur : 1041 
+multi-oom 43 -k 
+multi-oom: exit(-1)
+tid : 1044 cur : 1043 
+!!!!terminated child list !!! 
+multi-oom 43 
+tid : 1045 cur : 1043 
+multi-oom 44 -k 
+multi-oom: exit(-1)
+tid : 1046 cur : 1045 
+!!!!terminated child list !!! 
+multi-oom 44 
+tid : 1047 cur : 1045 
+multi-oom 45 -k 
+multi-oom: exit(-1)
+tid : 1048 cur : 1047 
+!!!!terminated child list !!! 
+multi-oom 45 
+tid : 1049 cur : 1047 
+multi-oom 46 -k 
+multi-oom: exit(-1)
+tid : 1050 cur : 1049 
+!!!!terminated child list !!! 
+multi-oom 46 
+tid : 1051 cur : 1049 
+multi-oom 47 -k 
+multi-oom: exit(-1)
+tid : 1052 cur : 1051 
+!!!!terminated child list !!! 
+multi-oom 47 
+tid : 1053 cur : 1051 
+multi-oom 48 -k 
+multi-oom: exit(-1)
+tid : 1054 cur : 1053 
+!!!!terminated child list !!! 
+multi-oom 48 
+tid : 1055 cur : 1053 
+multi-oom 49 -k 
+multi-oom: exit(-1)
+tid : 1056 cur : 1055 
+!!!!terminated child list !!! 
+multi-oom 49 
+tid : 1057 cur : 1055 
+multi-oom 50 -k 
+multi-oom: exit(-1)
+tid : 1058 cur : 1057 
+!!!!terminated child list !!! 
+multi-oom 50 
+tid : 1059 cur : 1057 
+multi-oom 51 -k 
+multi-oom: exit(-1)
+tid : 1060 cur : 1059 
+!!!!terminated child list !!! 
+multi-oom 51 
+tid : 1061 cur : 1059 
+multi-oom 52 -k 
+multi-oom: exit(-1)
+tid : 1062 cur : 1061 
+!!!!terminated child list !!! 
+multi-oom 52 
+tid : 1063 cur : 1061 
+multi-oom 53 -k 
+multi-oom: exit(-1)
+tid : 1064 cur : 1063 
+!!!!terminated child list !!! 
+multi-oom 53 
+tid : 1065 cur : 1063 
+multi-oom 54 -k 
+multi-oom: exit(-1)
+tid : 1066 cur : 1065 
+!!!!terminated child list !!! 
+multi-oom 54 
+tid : 1067 cur : 1065 
+multi-oom 55 -k 
+multi-oom: exit(-1)
+tid : 1068 cur : 1067 
+!!!!terminated child list !!! 
+multi-oom 55 
+tid : 1069 cur : 1067 
+multi-oom 56 -k 
+multi-oom: exit(-1)
+tid : 1070 cur : 1069 
+!!!!terminated child list !!! 
+multi-oom 56 
+tid : 1071 cur : 1069 
+multi-oom 57 -k 
+multi-oom: exit(-1)
+tid : 1072 cur : 1071 
+!!!!terminated child list !!! 
+multi-oom 57 
+tid : 1073 cur : 1071 
+multi-oom 58 -k 
+multi-oom: exit(-1)
+tid : 1074 cur : 1073 
+!!!!terminated child list !!! 
+multi-oom 58 
+tid : 1075 cur : 1073 
+multi-oom 59 -k 
+multi-oom: exit(-1)
+tid : 1076 cur : 1075 
+!!!!terminated child list !!! 
+multi-oom 59 
+tid : 1077 cur : 1075 
+multi-oom 60 -k 
+multi-oom: exit(-1)
+tid : 1078 cur : 1077 
+!!!!terminated child list !!! 
+multi-oom 60 
+tid : 1079 cur : 1077 
+multi-oom 61 -k 
+multi-oom: exit(-1)
+tid : 1080 cur : 1079 
+!!!!terminated child list !!! 
+multi-oom 61 
+tid : 1081 cur : 1079 
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+multi-oom: exit(61)
+(multi-oom) success. program forked 10 times.
+(multi-oom) end
+multi-oom: exit(61)
+Execution of 'multi-oom' complete.
+Timer: 863 ticks
+Thread: 30 idle ticks, 72 kernel ticks, 761 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 301197 reads, 178 writes
+hd1:0: 85 reads, 0 writes
+Console: 74725 characters output
+Keyboard: 0 keys pressed
+Exception: 330 page faults
+Powering off...
