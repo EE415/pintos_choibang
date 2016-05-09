@@ -118,10 +118,16 @@ struct thread
 
     struct thread * parent;		/* thread pointer to parent*/
     struct list fd_list;		/* file discript list*/
-
+    
     int fd_num;				/* num of fd*/
 
-	struct file *exec_file; /**/ 
+    struct file *exec_file; /**/
+    /*project 3 : supplement table and lock */
+    struct lock sp_lock;
+    struct list sp_table;
+    void *bound_stack;
+    /*****************************************/
+
 #endif
 
     /* Owned by thread.c. */

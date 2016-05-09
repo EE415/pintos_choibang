@@ -4,55 +4,88 @@
 #include "threads/malloc.h"
 #include "threads/thread.h"
 #include "threads/synch.h"
+#include "threads/interrupt.h"
+#include "userprog/pagedir.h"
+#include "threads/vaddr.h"
 
-static struct hash frames;
-static struct lock f_lock;
 
-/* Returns true if frame a precedes frame b. */
-bool frame_less (const struct hash_elem *a_, const struct hash_elem *b_, void *aux UNUSED)
-{
-  const struct frame *a = hash_entry (a_, struct frame, hash_elem);
-  const struct frame *b = hash_entry (b_, struct frame, hash_elem);
-  return a->addr < b->addr;
-}
-
-/* Returns a hash value for frame f. */
-unsigned frame_hash (const struct hash_elem *f_, void *aux UNUSED)
-{
-  const struct frame *f = hash_entry (f_, struct frame, hash_elem);
-  return hash_int ((unsigned)frame->addr);
-}
+struct list frames;
+struct lock f_lock;
+struct list_elem *victim_elem;
 
 /* Initializes hash table of frames. */
 void frame_init ()
 {
-  hash_init (&frames, frame_hash, frame_less, NULL);
-  lock_init (f_lock);
+  list_init (&frames);
+  lock_init (&f_lock);
+  victim_elem = NULL;
+}
+
+/* Clockwise Algorithm */
+void clockwise_victim (void)
+{
+  if (list_empty(&frames) || (list_size(&frames) == 1))
+    victim_elem = NULL;
+  else
+  {
+    if (list_next(victim_elem) == list_end(&frames))
+      victim_elem = list_front (&frames);
+    else
+      victim_elem = list_next (victim_elem);
+  }
+}
+
+/* Choose victim using clockwise algorithm */
+struct frame *select_victim (void)
+{
+  struct frame *victim;
+  if (victim_elem == NULL)
+    victim_elem = list_front (&frames);
+  while (1)
+  {
+    victim = list_entry (victim_elem, struct frame, elem);
+    clockwise_victim();
+    if (pagedir_is_accessed(victim->thread->pagedir, victim->addr))
+      pagedir_set_accessed(victim->thread->pagedir, victim->addr, false);
+    else
+      break;
+  }
+  return victim;
 }
 
 /* Allocates a new page and adds the page to frame table. */
-void *frame_get_page (void *uaddr, bool zero, void *kpage, struct thread *t)
+void *frame_get_page (void *uaddr, bool zero, bool writable)
 {
+  void *kpage;
   kpage = palloc_get_page (PAL_USER | (zero ? PAL_ZERO: 0));
-  t = thread_current ();
+  struct thread *t = thread_current ();
 
   /* If memory is full, kernel panic for now. 
  * TODO: Implement eviction to get memory */
+  
   if (kpage == NULL)
   {
-    page_fault();
+    /*IMPLEMENT!!!!!!!!!!!!!!!!!!!!*/
   }
+  else
+  {
+    /* Allocate frame */
+    lock_acquire(&f_lock);
+    struct frame *f = (struct frame *) malloc (sizeof (struct frame));
+    if (f == NULL)
+      kpage = NULL;
+    else
+    {
+      f->addr = kpage;
+      f->uaddr = uaddr;
+      f->thread = t;
+      f->evictable = false;
+      f->writable = writable;
 
-  struct frame *f = (struct frame *) malloc (sizeof (struct frame));
-  f->addr = kpage;
-  f->uaddr = uaddr;
-  f->thread = t;
-  f->evictable = false;
-
-  lock_acquire (&f_lock);
-  hash_insert (&frames, &f->hash_elem);
-  lock_release (&f_lock);
-
+      list_push_back (&frames, &f->elem);
+      lock_release (&f_lock);    
+    }
+  }
   return kpage;
 }
 
@@ -60,28 +93,100 @@ void *frame_get_page (void *uaddr, bool zero, void *kpage, struct thread *t)
 struct frame *frame_search (void *addr)
 {
   struct frame *f;
-  struct frame f_find;
-  f_find.addr = addr;
-  f = hash_entry (hash_find(&frames, &f_find.hash_elem), struct frame, hash_elem);
- 
-  if (f != NULL)
-    return f;
-  else
-    return NULL;
+  struct list_elem *e;
+  lock_acquire(&f_lock);
+  if (!list_empty(&frames))
+  {
+    for (e = list_begin(&frames); e != list_end(&frames); e = list_next(e))
+    {
+      f = list_entry(e, struct frame, elem);
+      if (f->addr == addr)
+      {
+        lock_release(&f_lock);
+        return f;
+      }
+    }
+  }
+  lock_release(&f_lock);
+  return NULL;
 }
 
 void frame_free_page (void *addr)
 {
   struct frame *f;
+  lock_acquire(&f_lock);
   f = frame_search (addr);
 
   if (f != NULL)
   {
     palloc_free_page (f->addr);
-    hash_delete (&frames, &f->hash_elem);
+    list_remove (&f->elem);
     free (f);
+    lock_release(&f_lock);
     return;
   }
   else
+  {
+    lock_release(&f_lock);
     return;
+  }
 }
+
+void *
+delete_frame_all(struct thread *t)
+{
+  struct list_elem *cur;
+  struct list_elem *next;
+  struct frame *f;
+  lock_acquire(&f_lock);
+  if(!list_empty(&frames))
+    {
+      for(cur = list_begin(&frames) ; cur != list_end(&frames) ; cur = list_next(cur))
+	{
+	  f = list_entry(cur, struct frame, elem);
+	  if(f->thread->tid == t->tid)
+	    {
+	      next = list_next(cur);
+	      if(cur == victim_elem)
+		clockwise_victim();
+	      list_remove(cur);
+	      cur = next;
+	      pagedir_clear_page(t->pagedir, f->uaddr);
+	      palloc_free_page(f->addr);
+	      free(f);
+	    }
+	}
+    }
+  lock_release(&f_lock);
+}
+
+
+bool 
+stack_growth(void *fault_addr, struct intr_frame *f)
+{
+  void *kpage ;
+  struct thread *curr = thread_current();
+  if ((fault_addr <= curr->bound_stack) && (fault_addr >= (f->esp - 32)) && (fault_addr >= (PHYS_BASE - (1<<23))))
+    {
+      while(pg_round_down(fault_addr) < curr->bound_stack)
+	{
+	  curr->bound_stack = ((uint8_t *) curr->bound_stack) - PGSIZE;
+	  kpage = frame_get_page(curr->bound_stack, true, true);
+	  if(kpage == NULL)
+	    {
+	      frame_free_page(kpage);
+	      return false;
+	    }
+	  bool success = (pagedir_get_page(curr->pagedir, curr->bound_stack) == NULL) && 
+	    (pagedir_set_page(curr->pagedir, curr->bound_stack,kpage,true));
+	  if(!success)
+	    {
+	      frame_free_page(kpage);
+	      return false;
+	    }
+	}
+      return true;
+    }
+  return false;
+}
+

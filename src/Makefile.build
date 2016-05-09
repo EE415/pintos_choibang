@@ -38,6 +38,10 @@ lib_SRC += lib/stdio.c			# I/O library.
 lib_SRC += lib/stdlib.c			# Utility functions.
 lib_SRC += lib/string.c			# String functions.
 lib_SRC += lib/arithmetic.c
+# VM 
+vm_SRC = vm/frame.c
+vm_SRC += vm/page.c
+vm_SRC += vm/swap.c
 
 # Kernel-specific library code.
 lib/kernel_SRC  = lib/kernel/debug.c	# Debug helpers.

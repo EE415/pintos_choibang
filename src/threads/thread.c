@@ -602,7 +602,9 @@ init_thread (struct thread *t, const char *name, int priority)
   list_init(&t->donate_list); /* Initialize donate_list  */
   list_init(&t->child_list);
   list_init(&t->terminated_child_list);
-
+  /*project 3 : initialize the supplement */
+  list_init(&t->sp_table);
+  lock_init(&t->sp_lock);
   /* This semaphore will be used for system call wait(). */
   sema_init(&t->exit_sema, 0);
   t->magic = THREAD_MAGIC;
