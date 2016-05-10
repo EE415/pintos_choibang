@@ -143,7 +143,6 @@ process_wait (tid_t child_tid)
 		return -1;
 	enum intr_level old_level;
 	old_level = intr_disable ();
-	printf("tid : %d cur : %d \n",child_tid, curr->tid);
 	/* If child_tid has already been terminated, wait() returns its exit status. */
 	if(!list_empty(&curr->terminated_child_list)){
 	  for(find = list_begin(&curr->terminated_child_list);
@@ -158,7 +157,6 @@ process_wait (tid_t child_tid)
 				/* If a parent process waits a same child twice, it should return -1. */
 				/* To do this, it frees the temp information. */
 				free(temp);
-				printf("!!!!terminated child list !!! \n");
 	
 				return status;
 			}
@@ -217,7 +215,7 @@ process_exit (void)
   struct thread *curr = thread_current ();
   uint32_t *pd;
 
-  delete_all_sp(curr);
+//  delete_all_sp(curr);
   /* Destroy the current process's page directory and switch back
      to the kernel-only page directory. */
   pd = curr->pagedir;
@@ -685,7 +683,10 @@ setup_stack (void **esp)
     {
       success = install_page (((uint8_t *) PHYS_BASE) - PGSIZE, kpage, true);
       if (success)
+      {
         *esp = PHYS_BASE;
+        thread_current()->bound_stack = ((uint8_t *) PHYS_BASE) - PGSIZE;
+      }
       else
         palloc_free_page (kpage);
     }
@@ -715,7 +716,9 @@ install_page (void *upage, void *kpage, bool writable)
 void sys_exit(int status){
 	struct thread *curr = thread_current();
 	struct thread *parent = curr->parent;
-
+	
+	/**** project 3****/
+        delete_all_sp(curr);
 	enum intr_level old_level = intr_disable ();
 
 	list_remove(&curr->child_elem);

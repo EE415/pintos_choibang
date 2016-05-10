@@ -154,22 +154,64 @@ page_fault (struct intr_frame *f)
   write = (f->error_code & PF_W) != 0;
   user = (f->error_code & PF_U) != 0;
   
+ 
+  /* When a page fault occurs, the process should terminate.  */
+/*  if (user)
+  {
+    //thread_exit();
+    sys_exit(-1);
+  }
+*/
+  /* When a page is not present, terminate the process. */
+  if (!not_present)
+    sys_exit(-1);
+
+  /* When it's not a user address, grow stack. */
+  if (!user)
+  {
+    if (stack_growth(fault_addr, f))
+      return;
+    else
+      sys_exit(-1);
+  }
+
+  /* Locate the page, and load from disk. */
   void *fault_page = pg_round_down(fault_addr);
   struct supplement_page *sp = find_sp(&thread_current()->sp_table, fault_page);
   if(sp != NULL)
-    {
-      if(load_sp(sp))
-	return ;
-    }
+  {
+    if(load_sp(sp))
+      return ;
+  }
 
   if(stack_growth(fault_addr, f))
     return ;
+  else
+  {
+    sys_exit(-1);
+  }
 
-  
-  /* When a page fault occurs, the process should terminate.  */
-  if(not_present || write || user)
-	sys_exit(-1);
+/*
+  if(user || write || not_present)
+  {	
+    void *fault_page = pg_round_down(fault_addr);
+    struct supplement_page *sp = find_sp(&thread_current()->sp_table, fault_page);
+    if(sp != NULL)
+    {
+      if(load_sp(sp))
+        return ;
+    }
 
+    if(stack_growth(fault_addr, f))
+      return ;
+    else
+    {
+      printf("stack cannot grow\n");
+      //thread_exit();
+      sys_exit(-1);
+    }
+    sys_exit(-1);
+  }*/
   /* Never reached */
 
   /* To implement virtual memory, delete the rest of the function

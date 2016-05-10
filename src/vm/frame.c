@@ -13,7 +13,7 @@ struct list frames;
 struct lock f_lock;
 struct list_elem *victim_elem;
 
-/* Initializes hash table of frames. */
+/* Initializes list of frames. */
 void frame_init ()
 {
   list_init (&frames);
@@ -65,7 +65,20 @@ void *frame_get_page (void *uaddr, bool zero, bool writable)
   
   if (kpage == NULL)
   {
-    /*IMPLEMENT!!!!!!!!!!!!!!!!!!!!*/
+    lock_acquire(&f_lock);
+    struct frame *v = select_victim();
+    if (!insert_sp(v))
+    {
+      lock_release(&f_lock);
+      return NULL;
+    }
+    v->uaddr = uaddr;
+    v->thread = thread_current ();
+    v->writable = writable;
+    if (zero)
+      memset(v->addr, 0, PGSIZE);
+    lock_release(&f_lock);
+    kpage = v->addr;
   }
   else
   {
@@ -132,7 +145,7 @@ void frame_free_page (void *addr)
   }
 }
 
-void *
+void 
 delete_frame_all(struct thread *t)
 {
   struct list_elem *cur;
@@ -141,20 +154,37 @@ delete_frame_all(struct thread *t)
   lock_acquire(&f_lock);
   if(!list_empty(&frames))
     {
-      for(cur = list_begin(&frames) ; cur != list_end(&frames) ; cur = list_next(cur))
+      /*for(cur = list_begin(&frames) ; cur != list_end(&frames) ; cur = list_next(cur))
 	{
 	  f = list_entry(cur, struct frame, elem);
 	  if(f->thread->tid == t->tid)
 	    {
-	      next = list_next(cur);
+	      //next = list_next(cur);
 	      if(cur == victim_elem)
 		clockwise_victim();
 	      list_remove(cur);
-	      cur = next;
+	      //if (next != list_end(&frames))
+              //  cur = next;
 	      pagedir_clear_page(t->pagedir, f->uaddr);
 	      palloc_free_page(f->addr);
 	      free(f);
 	    }
+	    }*/
+      cur = list_front(&frames);
+      while(cur != list_end(&frames))
+	{
+          f = list_entry(cur, struct frame, elem);
+	  next = list_next(cur);
+	  if(f->thread->tid == t->tid)
+	    {
+	      if(cur == victim_elem)
+		clockwise_victim();
+	      list_remove(cur);
+	      pagedir_clear_page(t->pagedir, f->uaddr);
+	      palloc_free_page(f->addr);
+	      free(f);
+	    }
+	  cur = next;
 	}
     }
   lock_release(&f_lock);

@@ -22,7 +22,7 @@ struct frame *select_victim(void);
 void * frame_get_page(void *, bool, bool);
 struct frame *frame_search(void *);
 void frame_free_page(void *);
-void * delete_frame_all(struct thread *);
+void delete_frame_all(struct thread *);
 bool stack_growth(void *, struct intr_frame *);
 
 #endif

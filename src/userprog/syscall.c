@@ -11,7 +11,7 @@
 #include "threads/init.h"
 #include "devices/input.h"
 #include "userprog/pagedir.h"
-
+#include "vm/frame.h"
 
 static void syscall_handler (struct intr_frame *);
 struct thread * curr;
@@ -79,6 +79,20 @@ syscall_handler (struct intr_frame *f UNUSED)
 		buffer = *(char**)(f->esp+8);	
 		length = *(int*)(f->esp+12);
 		
+		void *upage = pg_round_down(buffer);
+		void *kpage = pagedir_get_page(thread_current()->pagedir, upage);
+		struct frame *fr = frame_search(kpage);
+		if (fr == NULL)
+		{
+			sys_exit(-1);
+			//thread_exit();
+			break;
+		}
+		if (!fr->writable)
+		{
+			sys_exit(-1);
+			break;
+		}	
 		/* stdin case*/
 		if(fd == 0){
 			int i = 0;
@@ -279,9 +293,8 @@ isUseraddr(void *esp, int argnum, int pointer_index)
 
 		// char pointer validation check
 		if(!pagedir_get_page(curr->pagedir, *temp))
-        	sys_exit(-1);
+        		sys_exit(-1);
 	}
-
 	
 }
 //change fd to file pointer

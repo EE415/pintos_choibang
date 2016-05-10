@@ -9,7 +9,7 @@ struct swap_slot
 };
 
 void swap_init(void);
-struct swap_slot *get_free_slot();
+struct swap_slot *get_free_slot(void);
 void set_free_slot(struct swap_slot *);
 struct swap_slot * swap_out(void *);
 void swap_in(void *, struct swap_slot *);

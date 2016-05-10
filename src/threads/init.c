@@ -34,6 +34,9 @@
 #include "filesys/filesys.h"
 #include "filesys/fsutil.h"
 #endif
+#include "vm/frame.h"
+#include "vm/page.h"
+#include "vm/swap.h"
 
 /* Amount of physical memory, in 4 kB pages. */
 size_t ram_pages;
@@ -102,6 +105,8 @@ main (void)
 #ifdef USERPROG
   exception_init ();
   syscall_init ();
+/************ project 3 *************/
+  frame_init();
 #endif
 
   /* Start thread scheduler and enable interrupts. */
@@ -113,6 +118,10 @@ main (void)
   /* Initialize file system. */
   disk_init ();
   filesys_init (format_filesys);
+#endif
+/************ project 3 *************/
+#ifdef USERPROG
+  swap_init();
 #endif
 
   printf ("Boot complete.\n");
