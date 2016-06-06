@@ -1,0 +1,2692 @@
+
+tests/arc4.c,202
+swap_byte (uint8_t *a, uint8_t *b)swap_byte6,82
+arc4_init (struct arc4 *arc4, const void *key_, size_t size)arc4_init14,166
+arc4_crypt (struct arc4 *arc4, void *buf_, size_t size)arc4_crypt35,575
+
+tests/tests.pm,846
+sub check_expected {check_expected28,532
+sub common_checks {common_checks36,756
+sub check_for_panic {check_for_panic56,1549
+sub check_for_keyword {check_for_keyword102,2867
+sub check_for_triple_fault {check_for_triple_fault116,3205
+sub get_core_output {get_core_output133,3628
+sub compare_output {compare_output155,4166
+sub check_archive {check_archive246,7080
+sub open_file {open_file324,9685
+sub compare_files {compare_files356,10685
+sub hex_dump {hex_dump404,12021
+sub print_fs {print_fs446,13015
+sub normalize_fs {normalize_fs467,13548
+sub is_dir {is_dir482,13945
+sub file_size {file_size491,14181
+sub flatten_hierarchy {flatten_hierarchy503,14596
+sub read_tar {read_tar523,15108
+sub fail {fail581,16791
+sub pass {pass585,16830
+sub finish {finish589,16869
+sub read_text_file {read_text_file613,17399
+
+tests/random.pm,113
+sub random_init {random_init8,58
+sub random_bytes {random_bytes16,195
+sub random_ulong {random_ulong22,298
+
+tests/lib.c,753
+const char *test_name;test_name8,124
+bool quiet = false;quiet9,147
+vmsg (const char *format, va_list args, const char *suffix) vmsg12,180
+msg (const char *format, ...) msg28,825
+fail (const char *format, ...) fail40,981
+swap (void *a_, void *b_, size_t size) swap52,1141
+shuffle (void *buf_, size_t cnt, size_t size) shuffle67,1343
+exec_children (const char *child_name, pid_t pids[], size_t child_cnt) exec_children80,1574
+wait_children (pid_t pids[], size_t child_cnt) wait_children94,1941
+check_file_handle (int fd,check_file_handle108,2240
+check_file (const char *file_name, const void *buf, size_t size) check_file151,3476
+compare_bytes (const void *read_data_, const void *expected_data_, size_t size,compare_bytes163,3751
+
+tests/filesys/seq-test.c,93
+seq_test (const char *file_name, void *buf, size_t size, size_t initial_size,seq_test7,107
+
+tests/filesys/base/child-syn-read.c,146
+const char *test_name = "child-syn-read";test_name14,376
+static char buf[BUF_SIZE];buf16,419
+main (int argc, const char *argv[]) main19,451
+
+tests/filesys/base/lg-full.c,35
+#define TEST_SIZE TEST_SIZE5,139
+
+tests/filesys/base/child-syn-wrt.c,73
+char buf[BUF_SIZE];buf11,274
+main (int argc, char *argv[])main14,299
+
+tests/filesys/base/sm-create.c,34
+#define TEST_SIZE TEST_SIZE4,84
+
+tests/filesys/base/lg-seq-random.c,35
+#define TEST_SIZE TEST_SIZE5,151
+
+tests/filesys/base/syn-read.c,109
+static char buf[BUF_SIZE];buf12,283
+#define CHILD_CNT CHILD_CNT14,311
+test_main (void) test_main17,338
+
+tests/filesys/base/lg-random.c,72
+#define BLOCK_SIZE BLOCK_SIZE5,151
+#define TEST_SIZE TEST_SIZE6,174
+
+tests/filesys/base/sm-full.c,35
+#define TEST_SIZE TEST_SIZE5,139
+
+tests/filesys/base/syn-write.h,236
+#define TESTS_FILESYS_BASE_SYN_WRITE_HTESTS_FILESYS_BASE_SYN_WRITE_H2,39
+#define CHILD_CNT CHILD_CNT4,79
+#define CHUNK_SIZE CHUNK_SIZE5,100
+#define BUF_SIZE BUF_SIZE6,123
+static const char file_name[] = "stuff";file_name7,165
+
+tests/filesys/base/lg-create.c,34
+#define TEST_SIZE TEST_SIZE4,84
+
+tests/filesys/base/syn-read.h,160
+#define TESTS_FILESYS_BASE_SYN_READ_HTESTS_FILESYS_BASE_SYN_READ_H2,38
+#define BUF_SIZE BUF_SIZE4,77
+static const char file_name[] = "data";file_name5,99
+
+tests/filesys/base/lg-seq-block.c,72
+#define TEST_SIZE TEST_SIZE5,149
+#define BLOCK_SIZE BLOCK_SIZE6,173
+
+tests/filesys/base/sm-seq-random.c,35
+#define TEST_SIZE TEST_SIZE5,151
+
+tests/filesys/base/syn-write.c,101
+char buf1[BUF_SIZE];buf113,352
+char buf2[BUF_SIZE];buf214,373
+test_main (void) test_main17,400
+
+tests/filesys/base/syn-remove.c,93
+char buf1[1234];buf110,187
+char buf2[1234];buf211,204
+test_main (void) test_main14,227
+
+tests/filesys/base/sm-random.c,72
+#define BLOCK_SIZE BLOCK_SIZE5,151
+#define TEST_SIZE TEST_SIZE6,173
+
+tests/filesys/base/sm-seq-block.c,72
+#define TEST_SIZE TEST_SIZE5,149
+#define BLOCK_SIZE BLOCK_SIZE6,172
+
+tests/filesys/seq-test.h,63
+#define TESTS_FILESYS_SEQ_TEST_HTESTS_FILESYS_SEQ_TEST_H2,33
+
+tests/filesys/extended/mk-tree.h,79
+#define TESTS_FILESYS_EXTENDED_MK_TREE_HTESTS_FILESYS_EXTENDED_MK_TREE_H2,41
+
+tests/filesys/extended/dir-vine.c,35
+test_main (void) test_main17,471
+
+tests/filesys/extended/dir-rm-parent.c,34
+test_main (void) test_main9,189
+
+tests/filesys/extended/grow-sparse.c,69
+static char buf[76543];buf8,179
+test_main (void) test_main11,209
+
+tests/filesys/extended/dir-rm-root.c,34
+test_main (void) test_main9,134
+
+tests/filesys/extended/mk-tree.c,166
+make_tree (int at, int bt, int ct, int dt) make_tree12,312
+do_mkdir (const char *format, ...) do_mkdir44,1070
+do_touch (const char *format, ...)do_touch57,1291
+
+tests/filesys/extended/syn-rw.c,102
+char buf[BUF_SIZE];buf10,207
+#define CHILD_CNT CHILD_CNT12,228
+test_main (void) test_main15,254
+
+tests/filesys/extended/syn-rw.h,240
+#define TESTS_FILESYS_EXTENDED_SYN_RW_HTESTS_FILESYS_EXTENDED_SYN_RW_H2,40
+#define CHUNK_SIZE CHUNK_SIZE4,81
+#define CHUNK_CNT CHUNK_CNT5,102
+#define BUF_SIZE BUF_SIZE6,124
+static const char file_name[] = "logfile";file_name7,166
+
+tests/filesys/extended/grow-dir-lg.c,66
+#define FILE_CNT FILE_CNT4,72
+#define DIRECTORY DIRECTORY5,92
+
+tests/filesys/extended/grow-root-lg.c,32
+#define FILE_CNT FILE_CNT3,47
+
+tests/filesys/extended/dir-open.c,34
+test_main (void) test_main9,147
+
+tests/filesys/extended/child-syn-rw.c,186
+const char *test_name = "child-syn-rw";test_name16,579
+static char buf1[BUF_SIZE];buf118,620
+static char buf2[BUF_SIZE];buf219,648
+main (int argc, const char *argv[]) main22,681
+
+tests/filesys/extended/grow-seq-sm.c,34
+#define TEST_SIZE TEST_SIZE4,75
+
+tests/filesys/extended/dir-over-file.c,34
+test_main (void) test_main9,179
+
+tests/filesys/extended/dir-mkdir.c,33
+test_main (void) test_main8,96
+
+tests/filesys/extended/grow-create.c,34
+#define TEST_SIZE TEST_SIZE3,32
+
+tests/filesys/extended/grow-root-sm.c,32
+#define FILE_CNT FILE_CNT3,47
+
+tests/filesys/extended/dir-under-file.c,34
+test_main (void) test_main9,179
+
+tests/filesys/extended/dir-rm-tree.c,155
+test_main (void) test_main14,322
+remove_tree (int at, int bt, int ct, int dt) remove_tree23,482
+do_remove (const char *format, ...) do_remove52,1207
+
+tests/filesys/extended/grow-seq-lg.c,34
+#define TEST_SIZE TEST_SIZE4,76
+
+tests/filesys/extended/grow-tell.c,168
+static char buf[2134];buf9,179
+return_block_size (void) return_block_size12,217
+check_tell (int fd, long ofs) check_tell18,273
+test_main (void) test_main27,454
+
+tests/filesys/extended/tar.c,583
+main (int argc, char *argv[]) main14,251
+usage (void) usage24,429
+make_tar_archive (const char *archive_name, char *files[], size_t file_cnt) make_tar_archive49,1512
+archive_file (char file_name[], size_t file_name_size,archive_file89,2426
+archive_ordinary_file (const char *file_name, int file_fd,archive_ordinary_file124,3305
+archive_directory (char file_name[], size_t file_name_size, int file_fd,archive_directory159,4232
+write_header (const char *file_name,write_header185,4922
+do_write (int fd, const char *buffer, int size, bool *write_error) do_write237,6675
+
+tests/filesys/extended/dir-rmdir.c,34
+test_main (void) test_main9,156
+
+tests/filesys/extended/grow-file-size.c,179
+static char buf[2134];buf10,248
+return_block_size (void) return_block_size13,286
+check_file_size (int fd, long ofs) check_file_size19,342
+test_main (void) test_main28,530
+
+tests/filesys/extended/dir-rm-cwd.c,82
+wrap_open (const char *name) wrap_open10,242
+test_main (void) test_main24,510
+
+tests/filesys/extended/grow-two-files.c,260
+#define FILE_SIZE FILE_SIZE9,171
+static char buf_a[FILE_SIZE];buf_a10,194
+static char buf_b[FILE_SIZE];buf_b11,224
+write_some_bytes (const char *file_name, int fd, const char *buf, size_t *ofs) write_some_bytes14,267
+test_main (void) test_main32,796
+
+tests/filesys/extended/dir-mk-tree.c,34
+test_main (void) test_main8,169
+
+tests/filesys/extended/dir-empty-name.c,34
+test_main (void) test_main9,166
+
+tests/cksum.c,120
+static unsigned long crctab[] = {crctab6,111
+cksum (const void *b_, size_t n)cksum63,3401
+main (void) main85,3786
+
+tests/vm/mmap-shuffle.c,111
+#define SIZE SIZE12,250
+static char *buf = (char *) 0x10000000;buf14,277
+test_main (void)test_main17,323
+
+tests/vm/mmap-close.c,64
+#define ACTUAL ACTUAL10,207
+test_main (void)test_main13,250
+
+tests/vm/pt-grow-bad.c,34
+test_main (void)test_main11,240
+
+tests/vm/page-parallel.c,69
+#define CHILD_CNT CHILD_CNT7,115
+test_main (void)test_main10,141
+
+tests/vm/mmap-remove.c,34
+test_main (void)test_main11,246
+
+tests/vm/mmap-overlap.c,33
+test_main (void)test_main9,170
+
+tests/vm/page-merge-seq.c,429
+#define CHUNK_SIZE CHUNK_SIZE14,485
+#define CHUNK_CNT CHUNK_CNT15,516
+#define DATA_SIZE DATA_SIZE16,588
+unsigned char buf1[DATA_SIZE], buf2[DATA_SIZE];buf118,656
+unsigned char buf1[DATA_SIZE], buf2[DATA_SIZE];buf218,656
+size_t histogram[256];histogram19,704
+init (void) init24,843
+sort_chunks (void)sort_chunks39,1110
+merge (void) merge73,1978
+verify (void) verify108,2678
+test_main (void)test_main131,3114
+
+tests/vm/child-linear.c,159
+const char *test_name = "child-linear";test_name10,216
+#define SIZE SIZE12,257
+static char buf[SIZE];buf13,284
+main (int argc, char *argv[])main16,312
+
+tests/vm/mmap-over-data.c,58
+static char x;x9,174
+test_main (void) test_main12,195
+
+tests/vm/mmap-misalign.c,34
+test_main (void) test_main8,138
+
+tests/vm/pt-big-stk-obj.c,34
+test_main (void)test_main11,204
+
+tests/vm/mmap-inherit.c,34
+test_main (void)test_main11,225
+
+tests/vm/mmap-bad-fd.c,35
+test_main (void) test_main10,192
+
+tests/vm/page-shuffle.c,94
+#define SIZE SIZE10,207
+static char buf[SIZE];buf12,234
+test_main (void)test_main15,263
+
+tests/vm/pt-grow-stk-sc.c,34
+test_main (void)test_main14,287
+
+tests/vm/qsort.h,48
+#define TESTS_VM_QSORT_H TESTS_VM_QSORT_H2,25
+
+tests/vm/page-linear.c,93
+#define SIZE SIZE9,194
+static char buf[SIZE];buf11,226
+test_main (void)test_main14,255
+
+tests/vm/child-sort.c,187
+const char *test_name = "child-sort";test_name10,273
+unsigned char buf[128 * 1024];buf12,312
+size_t histogram[256];histogram13,343
+main (int argc UNUSED, char *argv[]) main16,371
+
+tests/vm/pt-bad-addr.c,33
+test_main (void)test_main8,137
+
+tests/vm/pt-write-code.c,33
+test_main (void)test_main8,147
+
+tests/vm/pt-grow-pusha.c,34
+test_main (void)test_main12,224
+
+tests/vm/mmap-unmap.c,63
+#define ACTUAL ACTUAL9,196
+test_main (void)test_main12,239
+
+tests/vm/parallel-merge.h,62
+#define TESTS_VM_PARALLEL_MERGE TESTS_VM_PARALLEL_MERGE2,32
+
+tests/vm/page-merge-stk.c,33
+test_main (void) test_main5,67
+
+tests/vm/child-inherit.c,34
+test_main (void)test_main11,255
+
+tests/vm/qsort.c,411
+pick_pivot (unsigned char *buf, size_t size) pick_pivot8,176
+is_partitioned (const unsigned char *array, size_t size,is_partitioned19,494
+swap (unsigned char *a, unsigned char *b) swap37,843
+partition (unsigned char *array, size_t size, int pivot) partition48,1139
+is_sorted (const unsigned char *buf, size_t size) is_sorted100,2390
+qsort_bytes (unsigned char *buf, size_t size) qsort_bytes114,2653
+
+tests/vm/mmap-twice.c,34
+test_main (void)test_main11,225
+
+tests/vm/pt-grow-stack.c,34
+test_main (void)test_main11,188
+
+tests/vm/mmap-clean.c,34
+test_main (void)test_main11,241
+
+tests/vm/mmap-write.c,64
+#define ACTUAL ACTUAL11,265
+test_main (void)test_main14,308
+
+tests/vm/mmap-over-code.c,35
+test_main (void) test_main10,179
+
+tests/vm/page-merge-mm.c,33
+test_main (void) test_main5,67
+
+tests/vm/parallel-merge.c,509
+#define CHUNK_SIZE CHUNK_SIZE13,388
+#define CHUNK_CNT CHUNK_CNT14,420
+#define DATA_SIZE DATA_SIZE15,492
+unsigned char buf1[DATA_SIZE], buf2[DATA_SIZE];buf117,560
+unsigned char buf1[DATA_SIZE], buf2[DATA_SIZE];buf217,560
+size_t histogram[256];histogram18,608
+init (void) init23,747
+sort_chunks (const char *subprocess, int exit_status)sort_chunks39,1056
+merge (void) merge85,2255
+verify (void) verify120,2954
+parallel_merge (const char *child_name, int exit_status)parallel_merge143,3390
+
+tests/vm/mmap-null.c,34
+test_main (void) test_main8,140
+
+tests/vm/child-qsort.c,106
+const char *test_name = "child-qsort";test_name12,317
+main (int argc UNUSED, char *argv[]) main15,361
+
+tests/vm/child-mm-wrt.c,64
+#define ACTUAL ACTUAL12,322
+test_main (void)test_main15,365
+
+tests/vm/child-qsort-mm.c,109
+const char *test_name = "child-qsort-mm";test_name10,233
+main (int argc UNUSED, char *argv[]) main13,280
+
+tests/vm/pt-write-code-2.c,33
+test_main (void)test_main8,167
+
+tests/vm/process_death.pm,51
+sub check_process_death {check_process_death6,60
+
+tests/vm/page-merge-par.c,33
+test_main (void) test_main5,67
+
+tests/vm/pt-bad-read.c,33
+test_main (void)test_main9,172
+
+tests/vm/mmap-over-stk.c,35
+test_main (void) test_main10,180
+
+tests/vm/mmap-zero.c,35
+test_main (void) test_main11,302
+
+tests/vm/mmap-read.c,34
+test_main (void)test_main11,171
+
+tests/vm/mmap-exit.c,34
+test_main (void)test_main10,204
+
+tests/make-grade,0
+
+tests/cksum.pm,62
+sub cksum {cksum60,3308
+sub cksum_file {cksum_file78,3676
+
+tests/arc4.pm,66
+sub arc4_init {arc4_init4,27
+sub arc4_crypt {arc4_crypt15,260
+
+tests/threads/mlfqs-load-60.c,195
+static int64_t start_time;start_time108,4181
+#define THREAD_CNT THREAD_CNT112,4247
+test_mlfqs_load_60 (void) test_mlfqs_load_60115,4275
+load_thread (void *aux UNUSED) load_thread144,5043
+
+tests/threads/priority-donate-chain.c,501
+#define NESTING_DEPTH NESTING_DEPTH33,1410
+struct lock_pairlock_pair35,1435
+    struct lock *second;second37,1456
+    struct lock *first;first38,1481
+static thread_func donor_thread_func;donor_thread_func41,1511
+static thread_func interloper_thread_func;interloper_thread_func42,1549
+test_priority_donate_chain (void) test_priority_donate_chain45,1598
+donor_thread_func (void *locks_) donor_thread_func86,2802
+interloper_thread_func (void *arg_ UNUSED)interloper_thread_func109,3367
+
+tests/threads/alarm-zero.c,47
+test_alarm_zero (void) test_alarm_zero11,230
+
+tests/threads/tests.h,103
+#define TESTS_THREADS_TESTS_HTESTS_THREADS_TESTS_H2,30
+typedef void test_func (void);test_func6,92
+
+tests/threads/priority-donate-multiple.c,287
+static thread_func a_thread_func;a_thread_func18,665
+static thread_func b_thread_func;b_thread_func19,699
+test_priority_donate_multiple (void) test_priority_donate_multiple22,739
+a_thread_func (void *lock_) a_thread_func58,1793
+b_thread_func (void *lock_) b_thread_func69,1982
+
+tests/threads/priority-donate-nest.c,397
+struct locks locks18,648
+    struct lock *a;a20,666
+    struct lock *b;b21,686
+static thread_func medium_thread_func;medium_thread_func24,712
+static thread_func high_thread_func;high_thread_func25,751
+test_priority_donate_nest (void) test_priority_donate_nest28,794
+medium_thread_func (void *locks_) medium_thread_func64,1769
+high_thread_func (void *lock_) high_thread_func86,2248
+
+tests/threads/tests.c,353
+struct test test6,92
+    const char *name;name8,109
+    test_func *function;function9,131
+static const struct test tests[] = tests12,162
+static const char *test_name;test_name43,1505
+run_test (const char *name) run_test47,1573
+msg (const char *format, ...) msg67,2037
+fail (const char *format, ...) fail83,2409
+pass (void) pass98,2680
+
+tests/threads/priority-preempt.c,189
+static thread_func simple_thread_func;simple_thread_func15,430
+test_priority_preempt (void) test_priority_preempt18,475
+simple_thread_func (void *aux UNUSED) simple_thread_func31,841
+
+tests/threads/priority-change.c,175
+static thread_func changing_thread;changing_thread10,261
+test_priority_change (void) test_priority_change13,303
+changing_thread (void *aux UNUSED) changing_thread26,685
+
+tests/threads/mlfqs-load-1.c,51
+test_mlfqs_load_1 (void) test_mlfqs_load_118,501
+
+tests/threads/alarm.pm,34
+sub check_alarm {check_alarm1,0
+
+tests/threads/priority-donate-lower.c,199
+static thread_func acquire_thread_func;acquire_thread_func13,428
+test_priority_donate_lower (void) test_priority_donate_lower16,474
+acquire_thread_func (void *lock_) acquire_thread_func43,1348
+
+tests/threads/mlfqs.pm,231
+sub mlfqs_expected_load {mlfqs_expected_load5,42
+sub mlfqs_expected_ticks {mlfqs_expected_ticks25,618
+sub check_mlfqs_fair {check_mlfqs_fair72,1826
+sub mlfqs_compare {mlfqs_compare94,2455
+sub mlfqs_row {mlfqs_row142,3859
+
+tests/threads/priority-donate-multiple2.c,399
+static thread_func a_thread_func;a_thread_func23,875
+static thread_func b_thread_func;b_thread_func24,909
+static thread_func c_thread_func;c_thread_func25,943
+test_priority_donate_multiple2 (void) test_priority_donate_multiple228,983
+a_thread_func (void *lock_) a_thread_func65,2075
+b_thread_func (void *lock_) b_thread_func76,2264
+c_thread_func (void *a_ UNUSED) c_thread_func87,2453
+
+tests/threads/mlfqs-block.c,98
+test_mlfqs_block (void) test_mlfqs_block23,723
+block_thread (void *lock_) block_thread50,1359
+
+tests/threads/priority-sema.c,233
+static thread_func priority_sema_thread;priority_sema_thread12,286
+static struct semaphore sema;sema13,327
+test_priority_sema (void) test_priority_sema16,363
+priority_sema_thread (void *aux UNUSED) priority_sema_thread41,893
+
+tests/threads/priority-condvar.c,299
+static thread_func priority_condvar_thread;priority_condvar_thread12,285
+static struct lock lock;lock13,329
+static struct condition condition;condition14,354
+test_priority_condvar (void) test_priority_condvar17,395
+priority_condvar_thread (void *aux UNUSED) priority_condvar_thread46,1018
+
+tests/threads/alarm-negative.c,55
+test_alarm_negative (void) test_alarm_negative11,240
+
+tests/threads/alarm-priority.c,292
+static thread_func alarm_priority_thread;alarm_priority_thread12,289
+static int64_t wake_time;wake_time13,331
+static struct semaphore wait_sema;wait_sema14,357
+test_alarm_priority (void) test_alarm_priority17,398
+alarm_priority_thread (void *aux UNUSED) alarm_priority_thread42,941
+
+tests/threads/mlfqs-recent-1.c,57
+test_mlfqs_recent_1 (void) test_mlfqs_recent_1110,5977
+
+tests/threads/alarm-simultaneous.c,464
+test_alarm_simultaneous (void) test_alarm_simultaneous16,401
+struct sleep_test sleep_test22,493
+    int64_t start;              /* Current time at start of test. */start24,516
+    int iterations;             /* Number of iterations per thread. */iterations25,585
+    int *output_pos;            /* Current position in output buffer. */output_pos26,656
+test_sleep (int thread_cnt, int iterations) test_sleep33,844
+sleeper (void *test_) sleeper79,2178
+
+tests/threads/alarm-wait.c,945
+test_alarm_single (void) test_alarm_single16,401
+test_alarm_multiple (void) test_alarm_multiple22,458
+struct sleep_test sleep_test28,547
+    int64_t start;              /* Current time at start of test. */start30,570
+    int iterations;             /* Number of iterations per thread. */iterations31,639
+    struct lock output_lock;    /* Lock protecting output buffer. */output_lock34,729
+    int *output_pos;            /* Current position in output buffer. */output_pos35,798
+struct sleep_thread sleep_thread39,935
+    struct sleep_test *test;     /* Info shared between all threads. */test41,960
+    int id;                     /* Sleeper ID. */id42,1032
+    int duration;               /* Number of ticks to sleep. */duration43,1082
+    int iterations;             /* Iterations counted so far. */iterations44,1146
+test_sleep (int thread_cnt, int iterations) test_sleep51,1326
+sleeper (void *t_) sleeper138,3794
+
+tests/threads/mlfqs-load-avg.c,194
+static int64_t start_time;start_time119,4725
+#define THREAD_CNT THREAD_CNT123,4794
+test_mlfqs_load_avg (void) test_mlfqs_load_avg126,4822
+load_thread (void *seq_no_) load_thread156,5614
+
+tests/threads/priority-donate-one.c,333
+static thread_func acquire1_thread_func;acquire1_thread_func18,649
+static thread_func acquire2_thread_func;acquire2_thread_func19,690
+test_priority_donate_one (void) test_priority_donate_one22,737
+acquire1_thread_func (void *lock_) acquire1_thread_func46,1579
+acquire2_thread_func (void *lock_) acquire2_thread_func57,1768
+
+tests/threads/priority-donate-sema.c,495
+struct lock_and_sema lock_and_sema19,629
+    struct lock lock;lock21,655
+    struct semaphore sema;sema22,677
+static thread_func l_thread_func;l_thread_func25,710
+static thread_func m_thread_func;m_thread_func26,744
+static thread_func h_thread_func;h_thread_func27,778
+test_priority_donate_sema (void) test_priority_donate_sema30,818
+l_thread_func (void *ls_) l_thread_func50,1363
+m_thread_func (void *ls_) m_thread_func63,1626
+h_thread_func (void *ls_) h_thread_func72,1760
+
+tests/threads/mlfqs-fair.c,540
+test_mlfqs_fair_2 (void) test_mlfqs_fair_231,1027
+test_mlfqs_fair_20 (void) test_mlfqs_fair_2037,1092
+test_mlfqs_nice_2 (void) test_mlfqs_nice_243,1159
+test_mlfqs_nice_10 (void) test_mlfqs_nice_1049,1224
+#define MAX_THREAD_CNT MAX_THREAD_CNT54,1287
+struct thread_info thread_info56,1314
+    int64_t start_time;start_time58,1338
+    int tick_count;tick_count59,1362
+    int nice;nice60,1382
+test_mlfqs_fair (int thread_cnt, int nice_min, int nice_step)test_mlfqs_fair66,1452
+load_thread (void *ti_) load_thread108,2530
+
+tests/threads/priority-fifo.c,577
+struct simple_thread_data simple_thread_data18,554
+    int id;                     /* Sleeper ID. */id20,585
+    int iterations;             /* Iterations so far. */iterations21,635
+    struct lock *lock;          /* Lock on output. */lock22,692
+    int **op;                   /* Output buffer position. */op23,746
+#define THREAD_CNT THREAD_CNT26,814
+#define ITER_CNT ITER_CNT27,836
+static thread_func simple_thread_func;simple_thread_func29,857
+test_priority_fifo (void) test_priority_fifo32,902
+simple_thread_func (void *data_) simple_thread_func87,2340
+
+tests/userprog/sc-bad-sp.c,35
+test_main (void) test_main16,531
+
+tests/userprog/open-null.c,34
+test_main (void) test_main9,187
+
+tests/userprog/create-bad-ptr.c,34
+test_main (void) test_main9,179
+
+tests/userprog/write-normal.c,34
+test_main (void) test_main9,161
+
+tests/userprog/bad-write.c,34
+test_main (void) test_main8,193
+
+tests/userprog/read-stdout.c,35
+test_main (void) test_main10,180
+
+tests/userprog/bad-write2.c,34
+test_main (void) test_main8,168
+
+tests/userprog/boundary.c,167
+static char dst[8192];dst10,238
+get_boundary_area (void) get_boundary_area15,393
+copy_string_across_boundary (const char *src) copy_string_across_boundary26,611
+
+tests/userprog/exec-arg.c,34
+test_main (void) test_main7,101
+
+tests/userprog/wait-simple.c,34
+test_main (void) test_main8,114
+
+tests/userprog/child-bad.c,35
+test_main (void) test_main10,246
+
+tests/userprog/read-bad-fd.c,35
+test_main (void) test_main11,217
+
+tests/userprog/exit.c,33
+test_main (void) test_main7,88
+
+tests/userprog/rox-simple.c,34
+test_main (void) test_main9,152
+
+tests/userprog/open-missing.c,34
+test_main (void) test_main8,115
+
+tests/userprog/create-bound.c,35
+test_main (void) test_main10,218
+
+tests/userprog/no-vm/multi-oom.c,664
+static const int EXPECTED_DEPTH_TO_PASS = 30;EXPECTED_DEPTH_TO_PASS27,767
+static const int EXPECTED_REPETITIONS = 10;EXPECTED_REPETITIONS28,813
+const char *test_name = "multi-oom";test_name30,858
+enum child_termination_mode { RECURSE, CRASH };child_termination_mode32,896
+enum child_termination_mode { RECURSE, CRASH };RECURSE32,896
+enum child_termination_mode { RECURSE, CRASH };CRASH32,896
+spawn_child (int c, enum child_termination_mode mode)spawn_child37,1046
+consume_some_resources (void)consume_some_resources49,1417
+consume_some_resources_and_die (int seed)consume_some_resources_and_die66,1930
+main (int argc, char *argv[])main106,2779
+
+tests/userprog/exec-once.c,34
+test_main (void) test_main8,128
+
+tests/userprog/open-twice.c,35
+test_main (void) test_main10,199
+
+tests/userprog/child-simple.c,81
+const char *test_name = "child-simple";test_name8,182
+main (void) main11,227
+
+tests/userprog/close-normal.c,34
+test_main (void) test_main8,114
+
+tests/userprog/read-boundary.c,35
+test_main (void) test_main12,254
+
+tests/userprog/child-rox.c,139
+const char *test_name = "child-rox";test_name13,354
+try_write (void) try_write16,404
+main (int argc UNUSED, char *argv[]) main32,680
+
+tests/userprog/exec-bad-ptr.c,34
+test_main (void) test_main8,162
+
+tests/userprog/write-bad-ptr.c,34
+test_main (void) test_main9,186
+
+tests/userprog/sc-boundary-2.c,35
+test_main (void) test_main11,257
+
+tests/userprog/args.c,42
+main (int argc, char *argv[]) main9,208
+
+tests/userprog/bad-jump2.c,34
+test_main (void) test_main8,186
+
+tests/userprog/boundary.h,65
+#define TESTS_USERPROG_BOUNDARY_HTESTS_USERPROG_BOUNDARY_H2,34
+
+tests/userprog/open-normal.c,33
+test_main (void) test_main8,94
+
+tests/userprog/wait-killed.c,34
+test_main (void) test_main8,138
+
+tests/userprog/close-stdout.c,34
+test_main (void) test_main8,167
+
+tests/userprog/create-empty.c,34
+test_main (void) test_main7,118
+
+tests/userprog/read-bad-ptr.c,34
+test_main (void) test_main9,185
+
+tests/userprog/close-twice.c,35
+test_main (void) test_main10,210
+
+tests/userprog/exec-missing.c,34
+test_main (void) test_main9,161
+
+tests/userprog/rox-multichild.c,35
+#define CHILD_CNT CHILD_CNT4,121
+
+tests/userprog/create-null.c,34
+test_main (void) test_main8,171
+
+tests/userprog/open-empty.c,34
+test_main (void) test_main8,137
+
+tests/userprog/bad-jump.c,34
+test_main (void) test_main8,191
+
+tests/userprog/close-bad-fd.c,34
+test_main (void) test_main8,155
+
+tests/userprog/wait-twice.c,35
+test_main (void) test_main10,244
+
+tests/userprog/halt.c,33
+test_main (void) test_main7,88
+
+tests/userprog/write-zero.c,34
+test_main (void) test_main9,152
+
+tests/userprog/multi-recurse.c,108
+const char *test_name = "multi-recurse";test_name10,200
+main (int argc UNUSED, char *argv[]) main13,246
+
+tests/userprog/rox-child.c,35
+#define CHILD_CNT CHILD_CNT4,103
+
+tests/userprog/bad-read2.c,34
+test_main (void) test_main8,164
+
+tests/userprog/create-exists.c,34
+test_main (void) test_main9,166
+
+tests/userprog/write-stdin.c,35
+test_main (void) test_main10,181
+
+tests/userprog/bad-read.c,34
+test_main (void) test_main8,189
+
+tests/userprog/open-boundary.c,35
+test_main (void) test_main10,220
+
+tests/userprog/wait-bad-pid.c,34
+test_main (void) test_main8,146
+
+tests/userprog/open-bad-ptr.c,34
+test_main (void) test_main9,185
+
+tests/userprog/multi-child-fd.c,35
+test_main (void) test_main13,366
+
+tests/userprog/sc-bad-arg.c,35
+test_main (void) test_main12,382
+
+tests/userprog/write-boundary.c,35
+test_main (void) test_main12,255
+
+tests/userprog/close-stdin.c,34
+test_main (void) test_main8,167
+
+tests/userprog/read-zero.c,34
+test_main (void) test_main9,151
+
+tests/userprog/create-long.c,35
+test_main (void) test_main10,179
+
+tests/userprog/exec-multiple.c,34
+test_main (void) test_main8,130
+
+tests/userprog/child-close.c,106
+const char *test_name = "child-close";test_name16,478
+main (int argc UNUSED, char *argv[]) main19,522
+
+tests/userprog/read-normal.c,34
+test_main (void) test_main8,140
+
+tests/userprog/create-normal.c,33
+test_main (void) test_main7,92
+
+tests/userprog/sc-boundary.c,35
+test_main (void) test_main10,227
+
+tests/userprog/write-bad-fd.c,35
+test_main (void) test_main10,193
+
+tests/main.h,39
+#define TESTS_MAIN_HTESTS_MAIN_H2,21
+
+tests/main.c,48
+main (int argc UNUSED, char *argv[]) main6,72
+
+tests/Algorithm/Diff.pm,1618
+package Algorithm::Diff;Algorithm::Diff1,0
+sub _withPositionsOfInInterval_withPositionsOfInInterval34,1249
+sub _replaceNextLargerWith_replaceNextLargerWith66,2250
+sub _longestCommonSubsequence_longestCommonSubsequence126,3875
+sub traverse_sequencestraverse_sequences246,7170
+sub traverse_balancedtraverse_balanced320,9348
+sub prepareprepare420,11876
+sub LCSLCS431,12123
+sub LCS_lengthLCS_length448,12546
+sub LCSidxLCSidx455,12745
+sub compact_diffcompact_diff465,12965
+sub diffdiff490,13562
+sub sdiffsdiff513,14129
+package Algorithm::Diff::_impl;Algorithm::Diff::_impl542,14902
+sub _Idx()  { 0 } # $me->[_Idx]: Ref to array of hunk indices_Idx545,14947
+sub _End()  { 3 } # $me->[_End]: Diff between forward and reverse pos_End548,15114
+sub _Same() { 4 } # $me->[_Same]: 1 if pos 1 contains unchanged items_Same549,15184
+sub _Base() { 5 } # $me->[_Base]: Added to range's min and max_Base550,15254
+sub _Pos()  { 6 } # $me->[_Pos]: Which hunk is currently selected_Pos551,15317
+sub _Off()  { 7 } # $me->[_Off]: Offset into _Idx for current position_Off552,15383
+sub _Min() { -2 } # Added to _Off to get min instead of max+1_Min553,15454
+sub DieDie555,15517
+sub _ChkPos_ChkPos561,15573
+sub _ChkSeq_ChkSeq569,15716
+sub getObjPkggetObjPkg578,15926
+sub newnew585,16025
+sub ResetReset610,16619
+sub BaseBase623,16866
+sub CopyCopy631,17005
+sub Next {Next641,17192
+sub Prev {Prev653,17451
+sub Diff {Diff661,17616
+sub Min {Min675,17932
+sub Max {Max683,18120
+sub Range {Range691,18304
+sub Items {Items704,18657
+sub Same {Same719,18993
+sub GetGet740,19379
+
+tests/lib.pm,27
+sub shuffle {shuffle6,47
+
+tests/lib.h,65
+#define TESTS_LIB_HTESTS_LIB_H2,20
+#define CHECK(CHECK29,863
+
+tests/cksum.h,41
+#define TESTS_CKSUM_HTESTS_CKSUM_H2,22
+
+tests/internal/list.c,535
+#undef NDEBUGNDEBUG10,238
+#define MAX_SIZE MAX_SIZE19,427
+struct value value22,477
+    struct list_elem elem;      /* List element. */elem24,495
+    int value;                  /* Item value. */value25,547
+test (void) test36,918
+shuffle (struct value *array, size_t cnt) shuffle113,3393
+value_less (const struct list_elem *a_, const struct list_elem *b_,value_less129,3708
+verify_list_fwd (struct list *list, int size) verify_list_fwd141,4073
+verify_list_bkwd (struct list *list, int size) verify_list_bkwd160,4529
+
+tests/internal/stdio.c,164
+#undef NDEBUGNDEBUG10,244
+static int failure_cnt;failure_cnt20,437
+checkf (const char *expect, const char *format, ...) checkf23,474
+test (void) test45,911
+
+tests/internal/stdlib.c,339
+#undef NDEBUGNDEBUG10,275
+#define MAX_CNT MAX_CNT19,478
+test (void) test28,745
+shuffle (int *array, size_t cnt) shuffle61,1531
+compare_ints (const void *a_, const void *b_) compare_ints78,1848
+verify_order (const int *array, size_t cnt) verify_order88,2047
+verify_bsearch (const int *array, size_t cnt) verify_bsearch99,2283
+
+tests/arc4.h,145
+#define TESTS_ARC4_HTESTS_ARC4_H2,21
+struct arc4arc48,130
+    uint8_t s[256];s10,146
+    uint8_t i, j;i11,166
+    uint8_t i, j;j11,166
+
+filesys/directory.c,1144
+struct dir dir10,192
+    struct inode *inode;                /* Backing store. */inode12,208
+    off_t pos;                          /* Current position. */pos13,269
+struct dir_entry dir_entry17,371
+    disk_sector_t inode_sector;         /* Sector number of header. */inode_sector19,393
+    char name[NAME_MAX + 1];            /* Null terminated file name. */name20,464
+    bool in_use;                        /* In use or free? */in_use21,537
+dir_create (disk_sector_t sector, size_t entry_cnt) dir_create27,740
+dir_open (struct inode *inode) dir_open35,1009
+dir_open_root (void)dir_open_root55,1411
+dir_reopen (struct dir *dir) dir_reopen63,1605
+dir_close (struct dir *dir) dir_close70,1743
+dir_get_inode (struct dir *dir) dir_get_inode81,1918
+lookup (const struct dir *dir, const char *name,lookup92,2260
+dir_lookup (const struct dir *dir, const char *name,dir_lookup119,2960
+dir_add (struct dir *dir, const char *name, disk_sector_t inode_sector) dir_add142,3531
+dir_remove (struct dir *dir, const char *name) dir_remove185,4738
+dir_readdir (struct dir *dir, char name[NAME_MAX + 1])dir_readdir222,5519
+
+filesys/fsutil.h,47
+#define FILESYS_FSUTIL_HFILESYS_FSUTIL_H2,25
+
+filesys/free-map.h,51
+#define FILESYS_FREE_MAP_HFILESYS_FREE_MAP_H2,27
+
+filesys/file.h,408
+#define FILESYS_FILE_HFILESYS_FILE_H2,23
+struct file file8,113
+    struct inode *inode;        /* File's inode. */inode10,130
+    off_t pos;                  /* Current position. */pos11,182
+    bool deny_write;            /* Has file_deny_write() been called? */deny_write12,238
+    struct list_elem elem;	/* file discript list_elem*/elem13,311
+    int fd;			/* file discript number*/fd14,367
+
+filesys/filesys.h,143
+#define FILESYS_FILESYS_HFILESYS_FILESYS_H2,26
+#define FREE_MAP_SECTOR FREE_MAP_SECTOR8,139
+#define ROOT_DIR_SECTOR ROOT_DIR_SECTOR9,205
+
+filesys/off_t.h,108
+#define FILESYS_OFF_T_HFILESYS_OFF_T_H2,24
+typedef int32_t off_t;off_t9,199
+#define PROTd PROTd13,307
+
+filesys/inode.c,1912
+#define INODE_MAGIC INODE_MAGIC11,218
+struct inode_diskinode_disk15,319
+    disk_sector_t start;                /* First data sector. */start17,341
+    off_t length;                       /* File size in bytes. */length18,406
+    unsigned magic;                     /* Magic number. */magic19,472
+    uint32_t unused[125];               /* Not used. */unused20,532
+bytes_to_sectors (off_t size)bytes_to_sectors26,696
+struct inode inode32,802
+    struct list_elem elem;              /* Element in inode list. */elem34,820
+    disk_sector_t sector;               /* Sector number of disk location. */sector35,889
+    int open_cnt;                       /* Number of openers. */open_cnt36,967
+    bool removed;                       /* True if deleted, false otherwise. */removed37,1032
+    int deny_write_cnt;                 /* 0: writes ok, >0: deny writes. */deny_write_cnt38,1112
+    struct inode_disk data;             /* Inode content. */data39,1189
+byte_to_sector (const struct inode *inode, off_t pos) byte_to_sector47,1428
+static struct list open_inodes;open_inodes58,1723
+inode_init (void) inode_init62,1797
+inode_create (disk_sector_t sector, off_t length)inode_create73,2064
+inode_open (disk_sector_t sector) inode_open112,3212
+inode_reopen (struct inode *inode)inode_reopen146,4011
+inode_get_inumber (const struct inode *inode)inode_get_inumber155,4161
+inode_close (struct inode *inode) inode_close164,4401
+inode_remove (struct inode *inode) inode_remove191,5058
+inode_read_at (struct inode *inode, void *buffer_, off_t size, off_t offset) inode_read_at201,5355
+inode_write_at (struct inode *inode, const void *buffer_, off_t size,inode_write_at258,7259
+inode_deny_write (struct inode *inode) inode_deny_write323,9339
+inode_allow_write (struct inode *inode) inode_allow_write333,9624
+inode_length (const struct inode *inode)inode_length342,9847
+
+filesys/inode.h,45
+#define FILESYS_INODE_HFILESYS_INODE_H2,24
+
+filesys/fsutil.c,225
+fsutil_ls (char **argv UNUSED) fsutil_ls16,347
+fsutil_cat (char **argv)fsutil_cat33,742
+fsutil_rm (char **argv) fsutil_rm60,1312
+fsutil_put (char **argv) fsutil_put82,2055
+fsutil_get (char **argv)fsutil_get147,3971
+
+filesys/free-map.c,510
+static struct file *free_map_file;   /* Free map file. */free_map_file8,152
+static struct bitmap *free_map;      /* Free map, one bit per disk sector. */free_map9,210
+free_map_init (void) free_map_init13,326
+free_map_allocate (size_t cnt, disk_sector_t *sectorp) free_map_allocate27,748
+free_map_release (disk_sector_t sector, size_t cnt)free_map_release44,1245
+free_map_open (void) free_map_open53,1504
+free_map_close (void) free_map_close64,1805
+free_map_create (void) free_map_create72,1944
+
+filesys/Makefile,0
+
+filesys/filesys.c,360
+struct disk *filesys_disk;filesys_disk12,274
+filesys_init (bool format) filesys_init19,429
+filesys_done (void) filesys_done37,776
+filesys_create (const char *name, off_t initial_size) filesys_create47,1027
+filesys_open (const char *name)filesys_open68,1694
+filesys_remove (const char *name) filesys_remove85,2077
+do_format (void)do_format96,2294
+
+filesys/file.c,849
+file_open (struct inode *inode) file_open10,312
+file_reopen (struct file *file) file_reopen31,751
+file_close (struct file *file) file_close38,862
+file_get_inode (struct file *file) file_get_inode50,1076
+file_read (struct file *file, void *buffer, off_t size) file_read61,1396
+file_read_at (struct file *file, void *buffer, off_t size, off_t file_ofs) file_read_at74,1827
+file_write (struct file *file, const void *buffer, off_t size) file_write87,2321
+file_write_at (struct file *file, const void *buffer, off_t size,file_write_at102,2863
+file_deny_write (struct file *file) file_deny_write111,3150
+file_allow_write (struct file *file) file_allow_write125,3477
+file_length (struct file *file) file_length137,3700
+file_seek (struct file *file, off_t new_pos)file_seek146,3893
+file_tell (struct file *file) file_tell156,4113
+
+filesys/directory.h,87
+#define FILESYS_DIRECTORY_HFILESYS_DIRECTORY_H2,28
+#define NAME_MAX NAME_MAX12,347
+
+vm/test.sh,0
+
+vm/test.sh~,0
+
+vm/frame.h,469
+#define VM_FRAME_HVM_FRAME_H2,20
+struct frame{frame11,245
+  struct thread* t;			/* thread pointer that owns frame */t12,260
+  void *frame_addr;frame_addr13,320
+  void *page_addr;page_addr14,341
+  bool writable;writable15,361
+  bool mmapFlag;mmapFlag17,383
+  struct list_elem elem;elem18,401
+  int fd;fd20,429
+  struct file *file;file21,440
+  uint32_t ofs;ofs22,462
+  uint32_t read_bytes;read_bytes23,479
+  uint32_t zero_bytes;zero_bytes24,503
+
+vm/build/threads/kernel.lds.s,174
+  _start = .;_start9,103
+       _end_kernel_text = .; }_end_kernel_text15,223
+  _start_bss = .;_start_bss19,279
+  _end_bss = .;_end_bss21,318
+  _end = .;_end23,335
+
+vm/build/Makefile,680
+SRCDIR = ../..SRCDIR3,20
+threads_SRC  = threads/init.c		# Main program.threads_SRC15,221
+devices_SRC  = devices/timer.c		# Timer device.devices_SRC26,720
+lib_SRC  = lib/debug.c			# Debug helpers.lib_SRC35,1136
+vm_SRC = vm/frame.cvm_SRC42,1396
+lib/kernel_SRC  = lib/kernel/debug.c	# Debug helpers.kernel_SRC47,1489
+userprog_SRC  = userprog/process.c	# Process loading.userprog_SRC54,1786
+filesys_SRC  = filesys/filesys.c	# Filesystem core.filesys_SRC65,2206
+SOURCES = $(foreach dir,$(KERNEL_SUBDIRS),$($(dir)_SRC))SOURCES72,2499
+OBJECTS = $(patsubst %.c,%.o,$(patsubst %.S,%.o,$(SOURCES)))OBJECTS73,2556
+DEPENDS = $(patsubst %.o,%.d,$(OBJECTS))DEPENDS74,2617
+
+vm/page.h,421
+#define VM_PAGE_HVM_PAGE_H2,19
+struct sup_pagesup_page7,122
+  void *upage;upage9,142
+  struct swap_slot *ss;ss10,158
+  bool writable;writable11,183
+  int fd;fd12,201
+  struct list_elem elem;elem14,215
+  bool swapped;swapped16,245
+  bool mmapFlag;mmapFlag17,262
+  struct file *file;file18,280
+  uint32_t ofs;ofs19,302
+  uint32_t read_bytes;read_bytes20,319
+  uint32_t zero_bytes;zero_bytes21,343
+
+vm/frame.c,914
+struct list ft_list;ft_list15,340
+struct list_elem *next_vict_elem;next_vict_elem16,362
+struct lock frame_lock;frame_lock17,397
+frame_init(void)frame_init21,457
+find_frame(void *frame_addr)find_frame30,618
+clockwise_victim(void)clockwise_victim56,1073
+select_victim(void)select_victim76,1505
+frame_allocate(void *upage, bool mmapFlag, bool writable)frame_allocate99,2058
+frame_allocate_zeroflag(void *upage, bool mmapFlag, bool writable, bool zero)frame_allocate_zeroflag107,2284
+add_new_frame(void *upage, void *kpage, bool mmapFlag, bool writable)add_new_frame128,2709
+replace_frame(void *upage, bool writable, bool zero)replace_frame158,3529
+delete_single_frame(void *kpage)delete_single_frame181,4093
+unmap_frames(int fd)unmap_frames196,4366
+remove_thread_frame(struct thread *t)remove_thread_frame235,5272
+stack_growth(void *fault_addr, struct intr_frame *f)stack_growth272,6148
+
+vm/page.c,515
+find_sp(struct list *sp_table, void *upage)find_sp19,469
+add_exefile_sp(struct file *file, off_t ofs, uint8_t *upage, uint32_t read_bytes, uint32_t zero_bytes, bool writable, bool mmapFlag)add_exefile_sp43,1017
+add_new_sp(struct frame *f)add_new_sp67,1749
+load_exefile(struct sup_page *sp)load_exefile106,2753
+load_swap(struct sup_page *sp)load_swap138,3715
+load_sp(struct sup_page *sp)load_sp157,4214
+remove_sp(struct sup_page *sp)remove_sp166,4402
+destroy_spt(struct thread *t)destroy_spt175,4631
+
+vm/Makefile,0
+
+vm/swap.c,491
+struct disk *swap_disk;swap_disk15,335
+struct list free_swap_list;free_swap_list16,360
+disk_sector_t slot_max;slot_max17,389
+disk_sector_t slot_count;slot_count18,414
+struct lock swap_lock;swap_lock19,441
+#define PAGE_SECTOR_NUM PAGE_SECTOR_NUM20,465
+swap_init(void)swap_init24,587
+get_free_slot()get_free_slot35,829
+set_free_slot(struct swap_slot *ss)set_free_slot54,1268
+swap_out(void *buffer)swap_out60,1392
+swap_in(void *buffer, struct swap_slot *ss)swap_in84,1960
+
+vm/swap.h,179
+#define VM_SWAP_HVM_SWAP_H2,19
+struct swap_slotswap_slot6,88
+	uint32_t sec_no;			/* sector number of free swap slot in disk */sec_no8,109
+	struct list_elem elem;elem9,176
+
+utils/squish-pty.c,560
+#define _GNU_SOURCE _GNU_SOURCE1,0
+fail_io (const char *msg, ...)fail_io28,591
+make_noncanon (int fd, int vmin, int vtime)make_noncanon46,995
+make_nonblocking (int fd, bool nonblocking) make_nonblocking64,1471
+handle_error (ssize_t retval, int *fd, bool fd_is_pty, const char *call)handle_error83,2012
+relay (int pty, int dead_child_fd) relay116,2657
+static int dead_child_fd;dead_child_fd245,6468
+sigchld_handler (int signo __attribute__ ((unused))) sigchld_handler248,6507
+main (int argc __attribute__ ((unused)), char *argv[])main255,6625
+
+utils/setitimer-helper.c,43
+main (int argc, char *argv[]) main11,163
+
+utils/squish-unix.c,495
+#define _GNU_SOURCE _GNU_SOURCE1,0
+fail_io (const char *msg, ...)fail_io31,655
+make_noncanon (int fd, int vmin, int vtime)make_noncanon49,1059
+make_nonblocking (int fd, bool nonblocking) make_nonblocking67,1535
+handle_error (ssize_t retval, int *fd, bool fd_is_sock, const char *call)handle_error86,2082
+relay (int sock) relay105,2457
+sigchld_handler (int signo __attribute__ ((unused))) sigchld_handler235,6379
+main (int argc __attribute__ ((unused)), char *argv[])main241,6465
+
+utils/Makefile,74
+CC = gccCC3,46
+CFLAGS = -Wall -WCFLAGS4,55
+LDFLAGS = -lmLDFLAGS5,73
+
+devices/kbd.c,1373
+#define DATA_REG DATA_REG11,220
+static bool left_shift, right_shift;    /* Left and right Shift keys. */left_shift15,317
+static bool left_shift, right_shift;    /* Left and right Shift keys. */right_shift15,317
+static bool left_alt, right_alt;        /* Left and right Alt keys. */left_alt16,390
+static bool left_alt, right_alt;        /* Left and right Alt keys. */right_alt16,390
+static bool left_ctrl, right_ctrl;      /* Left and right Ctl keys. */left_ctrl17,461
+static bool left_ctrl, right_ctrl;      /* Left and right Ctl keys. */right_ctrl17,461
+static bool caps_lock;caps_lock21,593
+static int64_t key_cnt;key_cnt24,647
+static intr_handler_func keyboard_interrupt;keyboard_interrupt26,672
+kbd_init (void) kbd_init30,755
+kbd_print_stats (void) kbd_print_stats37,881
+struct keymapkeymap43,1022
+    uint8_t first_scancode;     /* First scancode. */first_scancode45,1040
+    const char *chars;          /* chars[0] has scancode first_scancode,chars46,1094
+static const struct keymap invariant_keymap[] = invariant_keymap54,1483
+static const struct keymap unshifted_keymap[] = unshifted_keymap69,1808
+static const struct keymap shifted_keymap[] = shifted_keymap81,2068
+keyboard_interrupt (struct intr_frame *args UNUSED) keyboard_interrupt94,2330
+map_key (const struct keymap k[], unsigned scancode, uint8_t *c) map_key196,4978
+
+devices/serial.c,1339
+#define IO_BASE IO_BASE18,488
+#define RBR_REG RBR_REG21,535
+#define THR_REG THR_REG22,607
+#define IER_REG IER_REG23,684
+#define LS_REG LS_REG26,770
+#define MS_REG MS_REG27,829
+#define IIR_REG IIR_REG30,923
+#define FCR_REG FCR_REG31,1003
+#define LCR_REG LCR_REG32,1073
+#define MCR_REG MCR_REG33,1134
+#define LSR_REG LSR_REG34,1196
+#define IER_RECV IER_RECV37,1307
+#define IER_XMIT IER_XMIT38,1375
+#define LCR_N81 LCR_N8141,1482
+#define LCR_DLAB LCR_DLAB42,1556
+#define MCR_OUT2 MCR_OUT245,1658
+#define LSR_DR LSR_DR48,1740
+#define LSR_THRE LSR_THRE49,1820
+static enum { UNINIT, POLL, QUEUE } mode;UNINIT52,1896
+static enum { UNINIT, POLL, QUEUE } mode;POLL52,1896
+static enum { UNINIT, POLL, QUEUE } mode;QUEUE52,1896
+static enum { UNINIT, POLL, QUEUE } mode;mode52,1896
+static struct intq txq;txq55,1969
+static intr_handler_func serial_interrupt;serial_interrupt60,2091
+init_poll (void) init_poll67,2371
+serial_init_queue (void) serial_init_queue82,2913
+serial_putc (uint8_t byte) serial_putc99,3235
+serial_flush (void) serial_flush135,4181
+serial_notify (void) serial_notify148,4565
+set_serial (int bps)set_serial157,4744
+write_ier (void) write_ier177,5201
+putc_poll (uint8_t byte) putc_poll199,5658
+serial_interrupt (struct intr_frame *f UNUSED) serial_interrupt210,5856
+
+devices/kbd.h,41
+#define DEVICES_KBD_HDEVICES_KBD_H2,22
+
+devices/intq.h,590
+#define DEVICES_INTQ_HDEVICES_INTQ_H2,23
+#define INTQ_BUFSIZE INTQ_BUFSIZE21,692
+struct intqintq24,750
+    struct lock lock;           /* Only one thread may wait at once. */lock27,793
+    struct thread *not_full;    /* Thread waiting for not-full condition. */not_full28,865
+    struct thread *not_empty;   /* Thread waiting for not-empty condition. */not_empty29,942
+    uint8_t buf[INTQ_BUFSIZE];  /* Buffer. */buf32,1038
+    int head;                   /* New data is written here. */head33,1084
+    int tail;                   /* Old data is read here. */tail34,1148
+
+devices/intq.c,422
+intq_init (struct intq *q) intq_init11,264
+intq_empty (const struct intq *q) intq_empty20,439
+intq_full (const struct intq *q) intq_full28,605
+intq_getc (struct intq *q) intq_getc39,902
+intq_putc (struct intq *q, uint8_t byte) intq_putc63,1426
+next (int pos) next81,1825
+wait (struct intq *q UNUSED, struct thread **waiter) wait89,2008
+signal (struct intq *q UNUSED, struct thread **waiter) signal105,2520
+
+devices/vga.c,469
+#define COL_CNT COL_CNT13,310
+#define ROW_CNT ROW_CNT14,329
+static size_t cx, cy;cx18,434
+static size_t cx, cy;cy18,434
+#define GRAY_ON_BLACK GRAY_ON_BLACK21,516
+static uint8_t (*fb)[COL_CNT][2];fb26,695
+init (void)init36,949
+vga_putc (int c)vga_putc51,1230
+cls (void)cls100,2043
+clear_row (size_t y) clear_row113,2199
+newline (void)newline128,2533
+move_cursor (void) move_cursor142,2777
+find_cursor (size_t *x, size_t *y) find_cursor152,3049
+
+devices/timer.c,827
+static int64_t ticks;ticks21,466
+static unsigned loops_per_tick;loops_per_tick25,564
+static intr_handler_func timer_interrupt;timer_interrupt27,597
+timer_init (void) timer_init36,933
+timer_calibrate (void) timer_calibrate50,1355
+timer_ticks (void) timer_ticks77,2133
+timer_elapsed (int64_t then) timer_elapsed89,2409
+timer_sleep (int64_t tick) timer_sleep96,2543
+timer_msleep (int64_t ms) timer_msleep111,2838
+timer_usleep (int64_t us) timer_usleep118,2965
+timer_nsleep (int64_t ns) timer_nsleep125,3098
+timer_print_stats (void) timer_print_stats132,3210
+timer_interrupt (struct intr_frame *args UNUSED)timer_interrupt139,3340
+too_many_loops (unsigned loops) too_many_loops166,3907
+busy_wait (int64_t loops) busy_wait190,4508
+real_time_sleep (int64_t num, int32_t denom) real_time_sleep198,4639
+
+devices/serial.h,47
+#define DEVICES_SERIAL_HDEVICES_SERIAL_H2,25
+
+devices/vga.h,41
+#define DEVICES_VGA_HDEVICES_VGA_H2,22
+
+devices/disk.c,3402
+#define reg_data(reg_data15,365
+#define reg_error(reg_error16,433
+#define reg_nsect(reg_nsect17,502
+#define reg_lbal(reg_lbal18,578
+#define reg_lbam(reg_lbam19,649
+#define reg_lbah(reg_lbah20,721
+#define reg_device(reg_device21,794
+#define reg_status(reg_status22,874
+#define reg_command(reg_command23,950
+#define reg_ctl(reg_ctl28,1184
+#define reg_alt_status(reg_alt_status29,1261
+#define STA_BSY STA_BSY32,1380
+#define STA_DRDY STA_DRDY33,1424
+#define STA_DRQ STA_DRQ34,1476
+#define CTL_SRST CTL_SRST37,1558
+#define DEV_MBS DEV_MBS40,1641
+#define DEV_LBA DEV_LBA41,1692
+#define DEV_DEV DEV_DEV42,1755
+#define CMD_IDENTIFY_DEVICE CMD_IDENTIFY_DEVICE47,1914
+#define CMD_READ_SECTOR_RETRY CMD_READ_SECTOR_RETRY48,1977
+#define CMD_WRITE_SECTOR_RETRY CMD_WRITE_SECTOR_RETRY49,2049
+struct disk disk52,2144
+    char name[8];               /* Name, e.g. "hd0:1". */name54,2161
+    struct channel *channel;    /* Channel disk is on. */channel55,2219
+    int dev_no;                 /* Device 0 or 1 for master or slave. */dev_no56,2277
+    bool is_ata;                /* 1=This device is an ATA disk. */is_ata58,2351
+    disk_sector_t capacity;     /* Capacity in sectors (if is_ata). */capacity59,2419
+    long long read_cnt;         /* Number of sectors read. */read_cnt61,2491
+    long long write_cnt;        /* Number of sectors written. */write_cnt62,2553
+struct channel channel67,2708
+    char name[8];               /* Name, e.g. "hd0". */name69,2728
+    uint16_t reg_base;          /* Base I/O port. */reg_base70,2784
+    uint8_t irq;                /* Interrupt in use. */irq71,2837
+    struct lock lock;           /* Must acquire to access the controller. */lock73,2894
+    bool expecting_interrupt;   /* True if an interrupt is expected, false ifexpecting_interrupt74,2971
+    struct semaphore completion_wait;   /* Up'd by interrupt handler. */completion_wait76,3120
+    struct disk devices[2];     /* The devices on this channel. */devices78,3194
+#define CHANNEL_CNT CHANNEL_CNT82,3338
+static struct channel channels[CHANNEL_CNT];channels83,3360
+disk_init (void) disk_init103,4107
+disk_print_stats (void) disk_print_stats164,5659
+disk_get (int chan_no, int dev_no) disk_get192,6377
+disk_size (struct disk *d) disk_size208,6714
+disk_read (struct disk *d, disk_sector_t sec_no, void *buffer) disk_read220,6993
+disk_write (struct disk *d, disk_sector_t sec_no, const void *buffer)disk_write245,7717
+reset_channel (struct channel *c) reset_channel271,8402
+check_device_type (struct disk *d) check_device_type336,10046
+identify_ata_device (struct disk *d) identify_ata_device366,10818
+print_ata_string (char *string, size_t size) print_ata_string411,12327
+select_sector (struct disk *d, disk_sector_t sec_no) select_sector432,12813
+issue_pio_command (struct channel *c, uint8_t command) issue_pio_command451,13337
+input_sector (struct channel *c, void *sector) input_sector464,13752
+output_sector (struct channel *c, const void *sector) output_sector472,13979
+wait_until_idle (const struct disk *d) wait_until_idle485,14355
+wait_while_busy (const struct disk *d) wait_while_busy504,14805
+select_device (const struct disk *d)select_device528,15329
+select_device_wait (const struct disk *d) select_device_wait542,15681
+interrupt_handler (struct intr_frame *f) interrupt_handler551,15838
+
+devices/timer.h,82
+#define DEVICES_TIMER_HDEVICES_TIMER_H2,24
+#define TIMER_FREQ TIMER_FREQ8,134
+
+devices/input.h,45
+#define DEVICES_INPUT_HDEVICES_INPUT_H2,24
+
+devices/disk.h,175
+#define DEVICES_DISK_HDEVICES_DISK_H2,23
+#define DISK_SECTOR_SIZE DISK_SECTOR_SIZE8,128
+typedef uint32_t disk_sector_t;disk_sector_t12,239
+#define PRDSNu PRDSNu16,357
+
+devices/input.c,195
+static struct intq buffer;buffer7,154
+input_init (void) input_init11,223
+input_putc (uint8_t key) input_putc19,372
+input_getc (void) input_getc31,638
+input_full (void) input_full48,934
+
+misc/bochs-2.2.6-build.sh,0
+
+threads/interrupt.h,1723
+#define THREADS_INTERRUPT_HTHREADS_INTERRUPT_H2,28
+enum intr_level intr_level8,127
+    INTR_OFF,             /* Interrupts disabled. */INTR_OFF10,148
+    INTR_ON               /* Interrupts enabled. */INTR_ON11,201
+struct intr_frameintr_frame20,452
+    uint32_t edi;               /* Saved EDI. */edi24,579
+    uint32_t esi;               /* Saved ESI. */esi25,628
+    uint32_t ebp;               /* Saved EBP. */ebp26,677
+    uint32_t esp_dummy;         /* Not used. */esp_dummy27,726
+    uint32_t ebx;               /* Saved EBX. */ebx28,774
+    uint32_t edx;               /* Saved EDX. */edx29,823
+    uint32_t ecx;               /* Saved ECX. */ecx30,872
+    uint32_t eax;               /* Saved EAX. */eax31,921
+    uint16_t gs, :16;           /* Saved GS segment register. */gs32,970
+    uint16_t fs, :16;           /* Saved FS segment register. */fs33,1035
+    uint16_t es, :16;           /* Saved ES segment register. */es34,1100
+    uint16_t ds, :16;           /* Saved DS segment register. */ds35,1165
+    uint32_t vec_no;            /* Interrupt vector number. */vec_no38,1280
+    uint32_t error_code;        /* Error code. */error_code43,1506
+    void *frame_pointer;        /* Saved EBP (frame pointer). */frame_pointer47,1668
+    void (*eip) (void);         /* Next instruction to execute. */eip51,1820
+    uint16_t cs, :16;           /* Code segment for eip. */cs52,1887
+    uint32_t eflags;            /* Saved CPU flags. */eflags53,1947
+    void *esp;                  /* Saved stack pointer. */esp54,2002
+    uint16_t ss, :16;           /* Data segment for esp. */ss55,2061
+typedef void intr_handler_func (struct intr_frame *);intr_handler_func58,2127
+
+threads/palloc.h,296
+#define THREADS_PALLOC_HTHREADS_PALLOC_H2,25
+enum palloc_flagspalloc_flags7,101
+    PAL_ASSERT = 001,           /* Panic on failure. */PAL_ASSERT9,123
+    PAL_ZERO = 002,             /* Zero page contents. */PAL_ZERO10,179
+    PAL_USER = 004              /* User page. */PAL_USER11,237
+
+threads/synch.h,711
+#define THREADS_SYNCH_HTHREADS_SYNCH_H2,24
+struct semaphore semaphore8,117
+    unsigned value;             /* Current value. */value10,139
+    struct list waiters;        /* List of waiting threads. */waiters11,192
+struct sema_char{sema_char14,261
+	struct semaphore sema;sema15,279
+	char *file_name;file_name16,303
+	bool success;success17,321
+struct lock lock27,547
+    struct thread *holder;      /* Thread holding lock (for debugging). */holder29,564
+    struct semaphore semaphore; /* Binary semaphore controlling access. */semaphore30,639
+struct condition condition40,944
+    struct list waiters;        /* List of waiting threads. */waiters42,966
+#define barrier(barrier55,1420
+
+threads/loader.S,572
+#define CR0_PE 0x00000001      /* Protection Enable. */CR0_PE54,2481
+#define CR0_EM 0x00000004      /* (Floating-point) Emulation. */CR0_EM55,2537
+#define CR0_PG 0x80000000      /* Paging. */CR0_PG56,2602
+#define CR0_WP 0x00010000      /* Write-Protect enable in kernel mode. */CR0_WP57,2647
+start:start61,2736
+read_sector:read_sector236,7150
+gdt:gdt304,8114
+gdtdesc:gdtdesc309,8239
+panic:  .code16			# We only panic in real mode.panic316,8406
+panic_message:panic_message326,8574
+ram_pgs:ram_pgs333,8755
+arg_cnt:arg_cnt340,8990
+args:args343,9040
+
+threads/vaddr.h,698
+#define THREADS_VADDR_HTHREADS_VADDR_H2,24
+#define BITMASK(BITMASK15,288
+#define PGSHIFT PGSHIFT18,382
+#define PGBITS PGBITS19,458
+#define PGSIZE PGSIZE20,530
+#define PGMASK PGMASK21,596
+static inline unsigned pg_ofs (const void *va) {pg_ofs24,699
+static inline uintptr_t pg_no (const void *va) {pg_no29,812
+static inline void *pg_round_up (const void *va) {pg_round_up34,940
+static inline void *pg_round_down (const void *va) {pg_round_down39,1098
+#define	PHYS_BASE PHYS_BASE53,1700
+is_user_vaddr (const void *vaddr) is_user_vaddr57,1821
+is_kernel_vaddr (const void *vaddr) is_kernel_vaddr64,1965
+ptov (uintptr_t paddr)ptov72,2140
+vtop (const void *vaddr)vtop82,2354
+
+threads/intr-stubs.S,281
+intr_entry:intr_entry19,552
+intr_exit:intr_exit51,1283
+intr_stubs:intr_stubs95,2450
+#define zero                                    \zero99,2574
+#define REAL                                    \REAL105,2791
+#define STUB(NUMBER, TYPE)                      \STUB112,3083
+
+threads/pte.h,1035
+#define THREADS_PTE_HTHREADS_PTE_H2,22
+#define	PTSHIFT PTSHIFT21,612
+#define PTBITS PTBITS22,675
+#define PTSPAN PTSPAN23,751
+#define PTMASK PTMASK24,831
+#define PDSHIFT PDSHIFT27,947
+#define PDBITS PDBITS28,1022
+#define PDMASK PDMASK29,1096
+static inline unsigned pt_no (const void *va) {pt_no32,1230
+static inline uintptr_t pd_no (const void *va) {pd_no37,1387
+#define PTE_FLAGS PTE_FLAGS61,2329
+#define PTE_ADDR PTE_ADDR62,2378
+#define PTE_AVL PTE_AVL63,2430
+#define PTE_P PTE_P64,2495
+#define PTE_W PTE_W65,2559
+#define PTE_U PTE_U66,2624
+#define PTE_A PTE_A67,2692
+#define PTE_D PTE_D68,2759
+static inline uint32_t pde_create (uint32_t *pt) {pde_create71,2882
+static inline uint32_t *pde_get_pt (uint32_t pde) {pde_get_pt78,3118
+static inline uint32_t pte_create_kernel (void *page, bool writable) {pte_create_kernel87,3419
+static inline uint32_t pte_create_user (void *page, bool writable) {pte_create_user96,3765
+static inline void *pte_get_page (uint32_t pte) {pte_get_page102,3966
+
+threads/build/threads/kernel.lds.s,174
+  _start = .;_start9,103
+       _end_kernel_text = .; }_end_kernel_text15,223
+  _start_bss = .;_start_bss19,279
+  _end_bss = .;_end_bss21,318
+  _end = .;_end23,335
+
+threads/build/Makefile,645
+SRCDIR = ../..SRCDIR3,20
+threads_SRC  = threads/init.c		# Main program.threads_SRC15,221
+devices_SRC  = devices/timer.c		# Timer device.devices_SRC26,720
+lib_SRC  = lib/debug.c			# Debug helpers.lib_SRC35,1136
+lib/kernel_SRC  = lib/kernel/debug.c	# Debug helpers.kernel_SRC43,1423
+userprog_SRC  = userprog/process.c	# Process loading.userprog_SRC50,1720
+filesys_SRC  = filesys/filesys.c	# Filesystem core.filesys_SRC61,2140
+SOURCES = $(foreach dir,$(KERNEL_SUBDIRS),$($(dir)_SRC))SOURCES68,2433
+OBJECTS = $(patsubst %.c,%.o,$(patsubst %.S,%.o,$(SOURCES)))OBJECTS69,2490
+DEPENDS = $(patsubst %.o,%.d,$(OBJECTS))DEPENDS70,2551
+
+threads/io.h,663
+#define THREADS_IO_HTHREADS_IO_H42,1987
+inb (uint16_t port)inb49,2114
+insb (uint16_t port, void *addr, size_t cnt)insb60,2381
+inw (uint16_t port)inw71,2691
+insw (uint16_t port, void *addr, size_t cnt)insw82,2977
+inl (uint16_t port)inl93,3287
+insl (uint16_t port, void *addr, size_t cnt)insl104,3569
+outb (uint16_t port, uint8_t data)outb115,3864
+outsb (uint16_t port, const void *addr, size_t cnt)outsb124,4095
+outw (uint16_t port, uint16_t data)outw135,4395
+outsw (uint16_t port, const void *addr, size_t cnt)outsw144,4649
+outl (uint16_t port, uint32_t data)outl155,4949
+outsl (uint16_t port, const void *addr, size_t cnt)outsl164,5195
+
+threads/thread.h,3289
+#define THREADS_THREAD_HTHREADS_THREAD_H2,25
+enum thread_statusthread_status10,175
+    THREAD_RUNNING,     /* Running thread. */THREAD_RUNNING12,198
+    THREAD_READY,       /* Not running but ready to run. */THREAD_READY13,244
+    THREAD_BLOCKED,     /* Waiting for an event to trigger. */THREAD_BLOCKED14,304
+    THREAD_DYING        /* About to be destroyed. */THREAD_DYING15,367
+struct list ready_list;ready_list20,546
+typedef int tid_t;tid_t26,655
+#define TID_ERROR TID_ERROR27,674
+#define PRI_MIN PRI_MIN30,769
+#define PRI_DEFAULT PRI_DEFAULT31,832
+#define PRI_MAX PRI_MAX32,896
+struct threadthread90,3651
+    tid_t tid;                          /* Thread identifier. */tid93,3698
+    enum thread_status status;          /* Thread state. */status94,3763
+    char name[16];                      /* Name (for debugging purposes). */name95,3823
+    uint8_t *stack;                     /* Saved stack pointer. */stack96,3900
+    int priority;                       /* Priority. */priority97,3967
+    int nice;				/* Niceness*/nice98,4023
+    int recent_cpu;			/* recent_cpu*/recent_cpu99,4054
+    struct list_elem elem;              /* List element. */elem101,4139
+    struct list_elem elem2;		/* For donate_list */elem2102,4199
+    struct list_elem elem3;		/* For block_list */elem3103,4250
+    struct list donate_list;		/* List of threads which try to acquire the lock								   acquired by this thread */donate_list104,4300
+   int64_t wakeup_ticks;		/*when wakeup_ticks equals to timer_tick(), thread wakeup */wakeup_ticks106,4421
+    uint32_t *pagedir;                  /* Page directory. */pagedir109,4563
+    struct list_elem child_elem;		/* Fof child_list*/child_elem111,4627
+    struct list child_list;				/* List of child threads */child_list113,4682
+    struct list terminated_child_list;	/* List of terminated child threads */terminated_child_list114,4741
+	struct semaphore exit_sema; /* exit_sema becomes down right after the thread is created.exit_sema116,4820
+    struct thread * parent;		/* thread pointer to parent*/parent119,4986
+    struct list fd_list;		/* file discript list*/fd_list120,5045
+    int fd_num;				/* num of fd*/fd_num122,5100
+    struct file *exec_file; /**/exec_file124,5135
+    struct lock sp_lock;sp_lock126,5215
+    struct list sp_table;sp_table127,5240
+    void *stack_lim;stack_lim128,5266
+    struct list mmap_list;mmap_list131,5336
+    unsigned magic;                     /* Detects stack overflow. */magic136,5401
+struct terminated_proc_info{terminated_proc_info139,5477
+    struct list_elem terminated_elem;terminated_elem140,5506
+	tid_t tid;	tid141,5544
+	int exit_status;exit_status142,5557
+typedef void thread_func (void *aux);thread_func156,5879
+#define ppp ppp199,7061
+#define qqq qqq200,7076
+#define fff fff201,7091
+#define int2fp(int2fp203,7113
+#define fp2int_zero(fp2int_zero204,7137
+#define fp2int_round(fp2int_round205,7166
+#define addfp(addfp206,7234
+#define subfp(subfp207,7258
+#define addfp_int(addfp_int208,7282
+#define subfp_int(subfp_int209,7314
+#define multiply_fp(multiply_fp210,7346
+#define multiply_fp_int(multiply_fp_int211,7395
+#define divide_fp(divide_fp212,7429
+#define divide_fp_int(divide_fp_int213,7477
+
+threads/switch.h,771
+#define THREADS_SWITCH_HTHREADS_SWITCH_H2,25
+struct switch_threads_frame switch_threads_frame6,110
+    uint32_t edi;               /*  0: Saved %edi. */edi8,143
+    uint32_t esi;               /*  4: Saved %esi. */esi9,197
+    uint32_t ebp;               /*  8: Saved %ebp. */ebp10,251
+    uint32_t ebx;               /* 12: Saved %ebx. */ebx11,305
+    void (*eip) (void);         /* 16: Return address. */eip12,359
+    struct thread *cur;         /* 20: switch_threads()'s CUR argument. */cur13,417
+    struct thread *next;        /* 24: switch_threads()'s NEXT argument. */next14,492
+struct switch_entry_frameswitch_entry_frame23,838
+    void (*eip) (void);eip25,868
+#define SWITCH_CUR SWITCH_CUR36,1080
+#define SWITCH_NEXT SWITCH_NEXT37,1107
+
+threads/init.c,587
+size_t ram_pages;ram_pages42,953
+uint32_t *base_page_dir;base_page_dir45,1020
+static bool format_filesys;format_filesys49,1095
+bool power_off_when_done;power_off_when_done53,1180
+main (void)main70,1511
+ram_init (void) ram_init140,2913
+paging_init (void)paging_init165,3865
+read_command_line (void) read_command_line201,4996
+parse_options (char **argv) parse_options236,5741
+run_task (char **argv)run_task269,6574
+run_actions (char **argv) run_actions285,6914
+usage (void)usage337,8185
+power_off (void) power_off373,9600
+print_stats (void) print_stats396,9987
+
+threads/kernel.lds.S,175
+  _start = .;_start11,245
+	      _end_kernel_text = .; }_end_kernel_text17,445
+  _start_bss = .;_start_bss21,562
+  _end_bss = .;_end_bss23,601
+  _end = .;_end25,618
+
+threads/loader.h,706
+#define THREADS_LOADER_HTHREADS_LOADER_H2,25
+#define LOADER_BASE LOADER_BASE5,89
+#define LOADER_END LOADER_END6,162
+#define LOADER_KERN_BASE LOADER_KERN_BASE9,275
+#define LOADER_PHYS_BASE LOADER_PHYS_BASE18,611
+#define LOADER_SIG LOADER_SIG21,707
+#define LOADER_ARGS LOADER_ARGS22,787
+#define LOADER_ARG_CNT LOADER_ARG_CNT23,867
+#define LOADER_RAM_PGS LOADER_RAM_PGS24,947
+#define LOADER_SIG_LEN LOADER_SIG_LEN27,1067
+#define LOADER_ARGS_LEN LOADER_ARGS_LEN28,1092
+#define LOADER_ARG_CNT_LEN LOADER_ARG_CNT_LEN29,1120
+#define LOADER_RAM_PGS_LEN LOADER_RAM_PGS_LEN30,1149
+#define SEL_NULL SEL_NULL34,1267
+#define SEL_KCSEG SEL_KCSEG35,1320
+#define SEL_KDSEG SEL_KDSEG36,1380
+
+threads/flags.h,108
+#define THREADS_FLAGS_HTHREADS_FLAGS_H2,24
+#define FLAG_MBS FLAG_MBS5,72
+#define FLAG_IF FLAG_IF6,123
+
+threads/switch.S,73
+switch_threads:switch_threads17,648
+switch_entry:switch_entry53,1463
+
+threads/thread.c,3392
+#define THREAD_MAGIC THREAD_MAGIC23,561
+#define THREAD_BASIC THREAD_BASIC27,659
+static struct list sleep_list;sleep_list33,883
+static struct list block_list;block_list35,954
+static int load;load37,1047
+static struct thread *idle_thread;idle_thread39,1083
+static struct thread *initial_thread;initial_thread42,1175
+static struct lock tid_lock;tid_lock45,1249
+struct kernel_thread_frame kernel_thread_frame48,1318
+    void *eip;                  /* Return address. */eip50,1350
+    thread_func *function;      /* Function to call. */function51,1404
+    void *aux;                  /* Auxiliary data for function. */aux52,1460
+static long long idle_ticks;    /* # of timer ticks spent idle. */idle_ticks56,1551
+static long long kernel_ticks;  /* # of timer ticks in kernel threads. */kernel_ticks57,1618
+static long long user_ticks;    /* # of timer ticks in user programs. */user_ticks58,1692
+#define TIME_SLICE TIME_SLICE61,1784
+static unsigned thread_ticks;   /* # of timer ticks since last yield. */thread_ticks62,1860
+bool thread_mlfqs;thread_mlfqs67,2097
+static int i;i81,2616
+thread_init (void) thread_init96,3161
+thread_start (void) thread_start119,3706
+thread_tick (void) thread_tick136,4169
+thread_print_stats (void) thread_print_stats158,4535
+thread_create (const char *name, int priority,thread_create180,5495
+thread_block (void) thread_block245,7159
+thread_unblock (struct thread *t) thread_unblock271,7920
+thread_name (void) thread_name311,8826
+thread_current (void) thread_current320,9054
+thread_tid (void) thread_tid337,9514
+thread_exit (void) thread_exit345,9663
+thread_yield (void) thread_yield364,10121
+thread_set_priority (int new_priority) thread_set_priority388,10605
+get_priority(struct thread *target){get_priority436,11933
+thread_get_priority (void) thread_get_priority471,12759
+thread_set_nice (int nice ) thread_set_nice479,12930
+thread_get_nice (void) thread_get_nice495,13351
+thread_get_load_avg (void) thread_get_load_avg502,13466
+thread_get_recent_cpu (void) thread_get_recent_cpu509,13598
+idle (void *idle_started_ UNUSED) idle524,14187
+kernel_thread (thread_func *function, void *aux) kernel_thread554,15111
+running_thread (void) running_thread565,15465
+is_thread (struct thread *t)is_thread579,15906
+init_thread (struct thread *t, const char *name, int priority)init_thread587,16072
+alloc_frame (struct thread *t, size_t size) alloc_frame618,16987
+next_thread_to_run (void) next_thread_to_run634,17502
+schedule_tail (struct thread *prev) schedule_tail708,19414
+schedule (void) schedule745,20474
+allocate_tid (void) allocate_tid763,20877
+uint32_t thread_stack_ofs = offsetof (struct thread, stack);thread_stack_ofs777,21151
+void push2sleep(int64_t ticks){push2sleep779,21264
+bool wakeup_tick_compare (const struct list_elem *a,wakeup_tick_compare793,21696
+void updatesleep(int64_t ticks){updatesleep803,22092
+void push2mlfq(struct thread *input)push2mlfq828,22571
+bool priority_compare (const struct list_elem *a,priority_compare841,22941
+struct list_elem * pop_from_mlfq(void)pop_from_mlfq851,23373
+int num_ready(void)num_ready859,23572
+void load_update(void)load_update868,23724
+void recent_cpu_update()recent_cpu_update879,23994
+void priority_update(void)priority_update913,24847
+void increase_recent_cpu(void)increase_recent_cpu952,25822
+
+threads/malloc.h,47
+#define THREADS_MALLOC_HTHREADS_MALLOC_H2,25
+
+threads/palloc.c,938
+struct poolpool30,966
+    struct lock lock;                   /* Mutual exclusion. */lock32,982
+    struct bitmap *used_map;            /* Bitmap of free pages. */used_map33,1046
+    uint8_t *base;                      /* Base of pool. */base34,1114
+struct pool kernel_pool, user_pool;kernel_pool38,1238
+struct pool kernel_pool, user_pool;user_pool38,1238
+size_t user_page_limit = SIZE_MAX;user_page_limit41,1326
+palloc_init (void) palloc_init49,1577
+palloc_get_multiple (enum palloc_flags flags, size_t page_cnt)palloc_get_multiple78,2645
+palloc_get_page (enum palloc_flags flags) palloc_get_page121,3853
+palloc_free_multiple (void *pages, size_t page_cnt) palloc_free_multiple128,3997
+palloc_free_page (void *page) palloc_free_page156,4624
+init_pool (struct pool *p, void *base, size_t page_cnt, const char *name) init_pool164,4813
+page_from_pool (const struct pool *pool, void *page) page_from_pool185,5523
+
+threads/malloc.c,1298
+struct descdesc38,1402
+    size_t block_size;          /* Size of each element in bytes. */block_size40,1418
+    size_t blocks_per_arena;    /* Number of blocks in an arena. */blocks_per_arena41,1487
+    struct list free_list;      /* List of free blocks. */free_list42,1555
+    struct lock lock;           /* Lock. */lock43,1614
+#define ARENA_MAGIC ARENA_MAGIC47,1715
+struct arena arena50,1760
+    unsigned magic;             /* Always set to ARENA_MAGIC. */magic52,1778
+    struct desc *desc;          /* Owning descriptor, null for big block. */desc53,1843
+    size_t free_cnt;            /* Free blocks; pages in big block. */free_cnt54,1920
+struct block block58,2015
+    struct list_elem free_elem; /* Free list element. */free_elem60,2033
+static struct desc descs[10];   /* Descriptors. */descs64,2126
+static size_t desc_cnt;         /* Number of descriptors. */desc_cnt65,2177
+malloc_init (void) malloc_init72,2409
+malloc (size_t size) malloc90,2927
+calloc (size_t a, size_t b) calloc159,4751
+block_size (void *block) block_size179,5115
+realloc (void *old_block, size_t new_size) realloc195,5625
+free (void *p) free219,6220
+block_to_arena (struct block *b)block_to_arena268,7469
+arena_to_block (struct arena *a, size_t idx) arena_to_block286,7945
+
+threads/start.S,30
+start:	call mainstart12,386
+
+threads/Makefile,0
+
+threads/init.h,43
+#define THREADS_INIT_HTHREADS_INIT_H2,23
+
+threads/synch.c,1158
+sema_init (struct semaphore *sema, unsigned value) sema_init45,1674
+sema_down (struct semaphore *sema) sema_down62,2205
+sema_try_down (struct semaphore *sema) sema_try_down85,2759
+sema_up (struct semaphore *sema) sema_up110,3257
+sema_self_test (void) sema_self_test155,4330
+sema_test_helper (void *sema_) sema_test_helper174,4731
+lock_init (struct lock *lock)lock_init202,5712
+lock_acquire (struct lock *lock)lock_acquire219,6177
+lock_try_acquire (struct lock *lock)lock_try_acquire249,7091
+lock_release (struct lock *lock) lock_release269,7578
+lock_held_by_current_thread (const struct lock *lock) lock_held_by_current_thread297,8322
+struct semaphore_elem semaphore_elem305,8484
+    struct list_elem elem;              /* List element. */elem307,8511
+    struct semaphore semaphore;         /* This semaphore. */semaphore308,8571
+cond_init (struct condition *cond)cond_init315,8822
+cond_wait (struct condition *cond, struct lock *lock) cond_wait343,9842
+cond_signal (struct condition *cond, struct lock *lock UNUSED) cond_signal368,10562
+cond_broadcast (struct condition *cond, struct lock *lock) cond_broadcast418,12392
+
+threads/interrupt.c,1591
+#define INTR_CNT INTR_CNT14,309
+static uint64_t idt[INTR_CNT];idt20,575
+static intr_handler_func *intr_handlers[INTR_CNT];intr_handlers23,661
+static const char *intr_names[INTR_CNT];intr_names26,769
+static bool in_external_intr;   /* Are we processing an external interrupt? */in_external_intr35,1205
+static bool yield_on_return;    /* Should we yield on interrupt return? */yield_on_return36,1284
+intr_get_level (void) intr_get_level52,1848
+intr_set_level (enum intr_level level) intr_set_level68,2328
+intr_enable (void) intr_enable75,2519
+intr_disable (void) intr_disable91,2903
+intr_init (void)intr_init105,3236
+register_handler (uint8_t vec_no, int dpl, enum intr_level level,register_handler152,4930
+intr_register_ext (uint8_t vec_no, intr_handler_func *handler,intr_register_ext168,5490
+intr_register_int (uint8_t vec_no, int dpl, enum intr_level level,intr_register_int189,6387
+intr_context (void) intr_context199,6723
+intr_yield_on_return (void) intr_yield_on_return209,6976
+pic_init (void)pic_init232,7855
+pic_end_of_interrupt (int irq) pic_end_of_interrupt259,8798
+make_gate (void (*function) (void), int dpl, int type)make_gate288,9874
+make_intr_gate (void (*function) (void), int dpl)make_intr_gate311,10632
+make_trap_gate (void (*function) (void), int dpl)make_trap_gate319,10814
+make_idtr_operand (uint16_t limit, void *base)make_idtr_operand327,11049
+intr_handler (struct intr_frame *frame) intr_handler339,11408
+intr_dump_frame (const struct intr_frame *f) intr_dump_frame392,12849
+intr_name (uint8_t vec) intr_name416,13787
+
+threads/intr-stubs.h,113
+#define THREADS_INTR_STUBS_HTHREADS_INTR_STUBS_H2,29
+typedef void intr_stub_func (void);intr_stub_func13,423
+
+userprog/test.sh,0
+
+userprog/gdt.h,177
+#define USERPROG_GDT_HUSERPROG_GDT_H2,23
+#define SEL_UCSEG SEL_UCSEG8,158
+#define SEL_UDSEG SEL_UDSEG9,216
+#define SEL_TSS SEL_TSS10,274
+#define SEL_CNT SEL_CNT11,332
+
+userprog/tss.c,1297
+struct tsstss51,2307
+    uint16_t back_link, :16;back_link53,2322
+    void *esp0;                         /* Ring 0 stack virtual address. */esp054,2351
+    uint16_t ss0, :16;                  /* Ring 0 stack segment selector. */ss055,2427
+    void *esp1;esp156,2504
+    uint16_t ss1, :16;ss157,2520
+    void *esp2;esp258,2543
+    uint16_t ss2, :16;ss259,2559
+    uint32_t cr3;cr360,2582
+    void (*eip) (void);eip61,2600
+    uint32_t eflags;eflags62,2624
+    uint32_t eax, ecx, edx, ebx;eax63,2645
+    uint32_t eax, ecx, edx, ebx;ecx63,2645
+    uint32_t eax, ecx, edx, ebx;edx63,2645
+    uint32_t eax, ecx, edx, ebx;ebx63,2645
+    uint32_t esp, ebp, esi, edi;esp64,2678
+    uint32_t esp, ebp, esi, edi;ebp64,2678
+    uint32_t esp, ebp, esi, edi;esi64,2678
+    uint32_t esp, ebp, esi, edi;edi64,2678
+    uint16_t es, :16;es65,2711
+    uint16_t cs, :16;cs66,2733
+    uint16_t ss, :16;ss67,2755
+    uint16_t ds, :16;ds68,2777
+    uint16_t fs, :16;fs69,2799
+    uint16_t gs, :16;gs70,2821
+    uint16_t ldt, :16;ldt71,2843
+    uint16_t trace, bitmap;trace72,2866
+    uint16_t trace, bitmap;bitmap72,2866
+static struct tss *tss;tss76,2918
+tss_init (void) tss_init80,2982
+tss_get (void) tss_get93,3321
+tss_update (void) tss_update102,3476
+
+userprog/pagedir.c,945
+pagedir_create (void) pagedir_create17,470
+pagedir_destroy (uint32_t *pd) pagedir_destroy28,686
+lookup_page (uint32_t *pd, const void *vaddr, bool create)lookup_page57,1502
+pagedir_set_page (uint32_t *pd, void *upage, void *kpage, bool writable)pagedir_set_page99,2588
+pagedir_get_page (uint32_t *pd, const void *uaddr) pagedir_get_page126,3285
+pagedir_clear_page (uint32_t *pd, void *upage) pagedir_clear_page144,3755
+pagedir_is_dirty (uint32_t *pd, const void *vpage) pagedir_is_dirty164,4238
+pagedir_set_dirty (uint32_t *pd, const void *vpage, bool dirty) pagedir_set_dirty173,4472
+pagedir_is_accessed (uint32_t *pd, const void *vpage) pagedir_is_accessed193,4999
+pagedir_set_accessed (uint32_t *pd, const void *vpage, bool accessed) pagedir_set_accessed202,5243
+pagedir_activate (uint32_t *pd) pagedir_activate220,5632
+active_pd (void) active_pd235,6137
+invalidate_pagedir (uint32_t *pd) invalidate_pagedir255,6846
+
+userprog/build/threads/kernel.lds.s,174
+  _start = .;_start9,103
+       _end_kernel_text = .; }_end_kernel_text15,223
+  _start_bss = .;_start_bss19,279
+  _end_bss = .;_end_bss21,318
+  _end = .;_end23,335
+
+userprog/build/Makefile,645
+SRCDIR = ../..SRCDIR3,20
+threads_SRC  = threads/init.c		# Main program.threads_SRC15,221
+devices_SRC  = devices/timer.c		# Timer device.devices_SRC26,720
+lib_SRC  = lib/debug.c			# Debug helpers.lib_SRC35,1136
+lib/kernel_SRC  = lib/kernel/debug.c	# Debug helpers.kernel_SRC43,1423
+userprog_SRC  = userprog/process.c	# Process loading.userprog_SRC50,1720
+filesys_SRC  = filesys/filesys.c	# Filesystem core.filesys_SRC61,2140
+SOURCES = $(foreach dir,$(KERNEL_SUBDIRS),$($(dir)_SRC))SOURCES68,2433
+OBJECTS = $(patsubst %.c,%.o,$(patsubst %.S,%.o,$(SOURCES)))OBJECTS69,2490
+DEPENDS = $(patsubst %.o,%.d,$(OBJECTS))DEPENDS70,2551
+
+userprog/exception.h,130
+#define USERPROG_EXCEPTION_HUSERPROG_EXCEPTION_H2,29
+#define PF_P PF_P5,135
+#define PF_W PF_W6,210
+#define PF_U PF_U7,255
+
+userprog/process.c,2562
+static thread_func start_process NO_RETURN;NO_RETURN26,604
+process_execute (const char *file_name) process_execute34,973
+start_process (void *f_name)start_process90,2425
+process_wait (tid_t child_tid) process_wait134,3868
+process_exit (void)process_exit213,6025
+process_activate (void)process_activate241,6917
+typedef uint32_t Elf32_Word, Elf32_Addr, Elf32_Off;Elf32_Word257,7314
+typedef uint32_t Elf32_Word, Elf32_Addr, Elf32_Off;Elf32_Addr257,7314
+typedef uint32_t Elf32_Word, Elf32_Addr, Elf32_Off;Elf32_Off257,7314
+typedef uint16_t Elf32_Half;Elf32_Half258,7366
+#define PE32Wx PE32Wx261,7438
+#define PE32Ax PE32Ax262,7501
+#define PE32Ox PE32Ox263,7564
+#define PE32Hx PE32Hx264,7626
+struct Elf32_EhdrElf32_Ehdr268,7795
+    unsigned char e_ident[16];e_ident270,7817
+    Elf32_Half    e_type;e_type271,7848
+    Elf32_Half    e_machine;e_machine272,7874
+    Elf32_Word    e_version;e_version273,7903
+    Elf32_Addr    e_entry;e_entry274,7932
+    Elf32_Off     e_phoff;e_phoff275,7959
+    Elf32_Off     e_shoff;e_shoff276,7986
+    Elf32_Word    e_flags;e_flags277,8013
+    Elf32_Half    e_ehsize;e_ehsize278,8040
+    Elf32_Half    e_phentsize;e_phentsize279,8068
+    Elf32_Half    e_phnum;e_phnum280,8099
+    Elf32_Half    e_shentsize;e_shentsize281,8126
+    Elf32_Half    e_shnum;e_shnum282,8157
+    Elf32_Half    e_shstrndx;e_shstrndx283,8184
+struct Elf32_PhdrElf32_Phdr289,8350
+    Elf32_Word p_type;p_type291,8372
+    Elf32_Off  p_offset;p_offset292,8395
+    Elf32_Addr p_vaddr;p_vaddr293,8420
+    Elf32_Addr p_paddr;p_paddr294,8444
+    Elf32_Word p_filesz;p_filesz295,8468
+    Elf32_Word p_memsz;p_memsz296,8493
+    Elf32_Word p_flags;p_flags297,8517
+    Elf32_Word p_align;p_align298,8541
+#define PT_NULL PT_NULL302,8613
+#define PT_LOAD PT_LOAD303,8659
+#define PT_DYNAMIC PT_DYNAMIC304,8715
+#define PT_INTERP PT_INTERP305,8775
+#define PT_NOTE PT_NOTE306,8837
+#define PT_SHLIB PT_SHLIB307,8891
+#define PT_PHDR PT_PHDR308,8939
+#define PT_STACK PT_STACK309,8999
+#define PF_X PF_X312,9103
+#define PF_W PF_W313,9145
+#define PF_R PF_R314,9185
+load (char *file_name, void (**eip) (void), void **esp) load327,9736
+validate_segment (const struct Elf32_Phdr *phdr, struct file *file) validate_segment568,15580
+load_segment (struct file *file, off_t ofs, uint8_t *upage,load_segment625,17421
+setup_stack (void **esp) setup_stack675,18997
+install_page (void *upage, void *kpage, bool writable)install_page706,19934
+void sys_exit(int status){sys_exit716,20261
+
+userprog/tss.h,43
+#define USERPROG_TSS_HUSERPROG_TSS_H2,23
+
+userprog/process.h,51
+#define USERPROG_PROCESS_HUSERPROG_PROCESS_H2,27
+
+userprog/pagedir.h,51
+#define USERPROG_PAGEDIR_HUSERPROG_PAGEDIR_H2,27
+
+userprog/syscall.c,264
+struct thread * curr;curr19,479
+syscall_init (void) syscall_init21,506
+syscall_handler (struct intr_frame *f UNUSED) syscall_handler27,612
+isUseraddr(int argnum, int pointer_index, struct intr_frame *f)isUseraddr467,11014
+fd2file(int fd)fd2file503,11751
+
+userprog/syscall.h,225
+#define USERPROG_SYSCALL_HUSERPROG_SYSCALL_H2,27
+struct mmap_regionmmap_region6,74
+  int fd;fd8,95
+  void * start_addr;start_addr9,105
+  void * end_addr;end_addr10,126
+  struct list_elem mmap_elem;mmap_elem13,193
+
+userprog/gdt.c,752
+static uint64_t gdt[SEL_CNT];gdt25,919
+gdt_init (void)gdt_init36,1294
+enum seg_classseg_class57,2025
+    CLS_SYSTEM = 0,             /* System segment. */CLS_SYSTEM59,2044
+    CLS_CODE_DATA = 1           /* Code or data segment. */CLS_CODE_DATA60,2098
+enum seg_granularityseg_granularity64,2211
+    GRAN_BYTE = 0,              /* Limit has 1-byte granularity. */GRAN_BYTE66,2236
+    GRAN_PAGE = 1               /* Limit has 4 kB granularity. */GRAN_PAGE67,2304
+make_seg_desc (uint32_t base,make_seg_desc82,2985
+make_code_desc (int dpl)make_code_desc116,4233
+make_data_desc (int dpl)make_data_desc124,4461
+make_tss_desc (void *laddr)make_tss_desc134,4807
+make_gdtr_operand (uint16_t limit, void *base)make_gdtr_operand143,5052
+
+userprog/Makefile,0
+
+userprog/exception.c,258
+static long long page_fault_cnt;page_fault_cnt13,298
+exception_init (void) exception_init34,1041
+exception_print_stats (void) exception_print_stats69,2777
+kill (struct intr_frame *f) kill76,2952
+page_fault (struct intr_frame *f) page_fault129,5093
+
+examples/shell.c,135
+main (void)main10,181
+read_line (char line[], size_t size) read_line52,1243
+backspace (char **pos, char line[]) backspace92,2049
+
+examples/mcp.c,43
+main (int argc, char *argv[]) main10,122
+
+examples/pwd.c,226
+main (void) main13,215
+get_inumber (const char *file_name, int *inum) get_inumber32,564
+prepend (const char *prefix,prepend52,1120
+getcwd (char *cwd, size_t cwd_size) getcwd72,1723
+#define MAX_LEVEL MAX_LEVEL76,1790
+
+examples/insult.c,3072
+char *start[] =start13,506
+char startLoc[] = { 3, 0, 4, 7, 16 };startLoc17,624
+char *adj[] = { "3", "4", "2", ",", "1" };adj18,662
+char adjLoc[] = { 3, 0, 1, 2, 5 };adjLoc19,705
+char *adj3[] = { "3", "4" };adj320,740
+char adj3Loc[] = { 2, 0, 1, 2 };adj3Loc21,769
+char *adj1[] =adj122,802
+char adj1Loc[] =adj1Loc32,1448
+char *adj2[] =adj236,1670
+char adj2Loc[] =adj2Loc44,2137
+char *name[] =name47,2318
+char nameLoc[] = { 7, 0, 1, 6, 10, 16, 21, 23, 27 };nameLoc52,2519
+char *stuff[] =stuff53,2572
+char stuffLoc[] = { 14, 0, 1, 3, 4, 5, 6, 8, 10, 11, 12, 13, 14, 15, 17, 18 };stuffLoc58,2760
+char *noun_and_prep[] =noun_and_prep59,2839
+char noun_and_prepLoc[] =noun_and_prepLoc65,3174
+char *organics[] =organics68,3293
+char organicsLoc[] =organicsLoc73,3483
+char *body_parts[] =body_parts75,3576
+char body_partsLoc[] = { 6, 0, 1, 2, 3, 4, 5, 6 };body_partsLoc78,3669
+char *noun[] =noun79,3720
+char nounLoc[] = { 13, 0, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15 };nounLoc83,3892
+char *animal[] =animal84,3965
+char animalLoc[] = { 10, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };animalLoc88,4077
+char *good_verb[] =good_verb89,4138
+char good_verbLoc[] = { 10, 0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11 };good_verbLoc93,4262
+char *curse[] =curse94,4327
+char curseLoc[] = { 4, 0, 3, 7, 13, 20 };curseLoc98,4498
+char *afflictors[] =afflictors99,4540
+char afflictorsLoc[] = { 6, 0, 2, 4, 6, 8, 12, 16 };afflictorsLoc103,4677
+char *quantity[] =quantity104,4730
+char quantityLoc[] = { 10, 0, 4, 8, 11, 14, 15, 18, 22, 26, 32, 33 };quantityLoc109,4971
+char *numbers[] =numbers110,5041
+char numbersLoc[] = { 7, 0, 2, 4, 5, 7, 8, 10, 13 };numbersLoc114,5218
+char *adv[] =adv115,5271
+char advLoc[] = { 8, 0, 1, 2, 3, 4, 11, 12, 18, 19 };advLoc120,5462
+char *metaphor[] =metaphor121,5516
+char metaphorLoc[] = { 6, 0, 3, 5, 7, 9, 20, 23 };metaphorLoc126,5756
+char *force[] = { "force", "fury", "power", "rage" };force127,5807
+char forceLoc[] = { 4, 0, 1, 2, 3, 4 };forceLoc128,5861
+char *bad_action[] =bad_action129,5901
+char bad_actionLoc[] =bad_actionLoc137,6386
+char *beasties[] =beasties140,6515
+char beastiesLoc[] =beastiesLoc146,6803
+char *condition[] =condition148,6888
+char conditionLoc[] = { 10, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };conditionLoc152,7043
+char *place[] =place153,7107
+char placeLoc[] = { 5, 0, 3, 7, 11, 17, 20 };placeLoc157,7279
+char *relation[] =relation158,7325
+char relationLoc[] = { 6, 0, 1, 2, 3, 5, 7, 9 };relationLoc162,7435
+char *in_something[] =in_something163,7484
+char in_somethingLoc[] = { 8, 0, 1, 3, 4, 5, 6, 8, 9, 10 };in_somethingLoc167,7611
+char *bad_place[] =bad_place168,7671
+char bad_placeLoc[] = { 6, 0, 2, 3, 5, 7, 8, 9 };bad_placeLoc172,7785
+char **daGrammar[27];daGrammar173,7835
+char *daGLoc[27];daGLoc174,7857
+init_grammar (void)init_grammar177,7888
+usage (int ret_code, const char *message, ...)usage249,9651
+main (int argc, char *argv[])main272,10225
+expand (int num, char **grammar[], char *location[], int handle)expand348,12022
+
+examples/rm.c,42
+main (int argc, char *argv[]) main9,102
+
+examples/bubsort.c,60
+#define SORT_SIZE SORT_SIZE12,287
+main (void)main15,314
+
+examples/hex-dump.c,42
+main (int argc, char *argv[]) main9,129
+
+examples/echo.c,39
+main (int argc, char **argv)main5,45
+
+examples/cat.c,42
+main (int argc, char *argv[]) main9,117
+
+examples/lineup.c,42
+main (int argc, char *argv[])main15,337
+
+examples/mcat.c,43
+main (int argc, char *argv[]) main10,133
+
+examples/cmp.c,41
+main (int argc, char *argv[]) main9,82
+
+examples/recursor.c,40
+main (int argc, char *argv[])main6,65
+
+examples/halt.c,24
+main (void)main10,162
+
+examples/ls.c,102
+list_dir (const char *dir, bool verbose) list_dir16,416
+main (int argc, char *argv[]) main68,1633
+
+examples/Makefile,748
+SRCDIR = ..SRCDIR1,0
+PROGS = cat cmp cp echo halt hex-dump ls mcat mcp mkdir pwd rm shell \PROGS6,185
+cat_SRC = cat.ccat_SRC10,334
+cmp_SRC = cmp.ccmp_SRC11,350
+cp_SRC = cp.ccp_SRC12,366
+echo_SRC = echo.cecho_SRC13,380
+halt_SRC = halt.chalt_SRC14,398
+hex-dump_SRC = hex-dump.chex-dump_SRC15,416
+insult_SRC = insult.cinsult_SRC16,442
+lineup_SRC = lineup.clineup_SRC17,464
+ls_SRC = ls.cls_SRC18,486
+recursor_SRC = recursor.crecursor_SRC19,500
+rm_SRC = rm.crm_SRC20,526
+bubsort_SRC = bubsort.cbubsort_SRC23,606
+matmult_SRC = matmult.cmatmult_SRC24,630
+mcat_SRC = mcat.cmcat_SRC25,654
+mcp_SRC = mcp.cmcp_SRC26,672
+mkdir_SRC = mkdir.cmkdir_SRC29,717
+pwd_SRC = pwd.cpwd_SRC30,737
+shell_SRC = shell.cshell_SRC31,753
+
+examples/matmult.c,126
+#define DIM DIM29,634
+int A[DIM][DIM];A31,651
+int B[DIM][DIM];B32,668
+int C[DIM][DIM];C33,685
+main (void)main36,707
+
+examples/cp.c,41
+main (int argc, char *argv[]) main9,87
+
+examples/mkdir.c,41
+main (int argc, char *argv[]) main9,85
+
+lib/stdio.h,195
+#define __LIB_STDIO_H__LIB_STDIO_H2,22
+#define STDIN_FILENO STDIN_FILENO15,275
+#define STDOUT_FILENO STDOUT_FILENO16,298
+#define sprintf sprintf36,1011
+#define vsprintf vsprintf37,1057
+
+lib/arithmetic.c,520
+divl (uint64_t n, uint32_t d)divl26,1080
+nlz (uint32_t x) nlz42,1364
+udiv64 (uint64_t n, uint64_t d)udiv6478,2084
+umod64 (uint64_t n, uint64_t d)umod64132,3870
+sdiv64 (int64_t n, int64_t d)sdiv64140,4032
+smod64 (int64_t n, int64_t d)smod64151,4385
+__divdi3 (long long n, long long d) __divdi3165,4784
+__moddi3 (long long n, long long d) __moddi3172,4891
+__udivdi3 (unsigned long long n, unsigned long long d) __udivdi3179,5008
+__umoddi3 (unsigned long long n, unsigned long long d) __umoddi3186,5145
+
+lib/inttypes.h,1133
+#define __LIB_INTTYPES_H__LIB_INTTYPES_H2,25
+#define PRId8 PRId86,72
+#define PRIi8 PRIi87,92
+#define PRIo8 PRIo88,112
+#define PRIu8 PRIu89,132
+#define PRIx8 PRIx810,152
+#define PRIX8 PRIX811,172
+#define PRId16 PRId1613,193
+#define PRIi16 PRIi1614,213
+#define PRIo16 PRIo1615,233
+#define PRIu16 PRIu1616,253
+#define PRIx16 PRIx1617,273
+#define PRIX16 PRIX1618,293
+#define PRId32 PRId3220,314
+#define PRIi32 PRIi3221,333
+#define PRIo32 PRIo3222,352
+#define PRIu32 PRIu3223,371
+#define PRIx32 PRIx3224,390
+#define PRIX32 PRIX3225,409
+#define PRId64 PRId6427,429
+#define PRIi64 PRIi6428,450
+#define PRIo64 PRIo6429,471
+#define PRIu64 PRIu6430,492
+#define PRIx64 PRIx6431,513
+#define PRIX64 PRIX6432,534
+#define PRIdMAX PRIdMAX34,556
+#define PRIiMAX PRIiMAX35,577
+#define PRIoMAX PRIoMAX36,598
+#define PRIuMAX PRIuMAX37,619
+#define PRIxMAX PRIxMAX38,640
+#define PRIXMAX PRIXMAX39,661
+#define PRIdPTR PRIdPTR41,683
+#define PRIiPTR PRIiPTR42,704
+#define PRIoPTR PRIoPTR43,725
+#define PRIuPTR PRIuPTR44,746
+#define PRIxPTR PRIxPTR45,767
+#define PRIXPTR PRIXPTR46,788
+
+lib/string.h,199
+#define __LIB_STRING_H__LIB_STRING_H2,23
+#define strcpy strcpy29,890
+#define strncpy strncpy30,933
+#define strcat strcat31,978
+#define strncat strncat32,1021
+#define strtok strtok33,1066
+
+lib/syscall-nr.h,1636
+#define __LIB_SYSCALL_NR_H__LIB_SYSCALL_NR_H2,27
+    SYS_HALT,                   /* Halt the operating system. */SYS_HALT8,124
+    SYS_EXIT,                   /* Terminate this process. */SYS_EXIT9,189
+    SYS_EXEC,                   /* Start another process. */SYS_EXEC10,251
+    SYS_WAIT,                   /* Wait for a child process to die. */SYS_WAIT11,312
+    SYS_CREATE,                 /* Create a file. */SYS_CREATE12,383
+    SYS_REMOVE,                 /* Delete a file. */SYS_REMOVE13,436
+    SYS_OPEN,                   /* Open a file. */SYS_OPEN14,489
+    SYS_FILESIZE,               /* Obtain a file's size. */SYS_FILESIZE15,540
+    SYS_READ,                   /* Read from a file. */SYS_READ16,600
+    SYS_WRITE,                  /* Write to a file. */SYS_WRITE17,656
+    SYS_SEEK,                   /* Change position in a file. */SYS_SEEK18,711
+    SYS_TELL,                   /* Report current position in a file. */SYS_TELL19,776
+    SYS_CLOSE,                  /* Close a file. */SYS_CLOSE20,849
+    SYS_MMAP,                   /* Map a file into memory. */SYS_MMAP23,948
+    SYS_MUNMAP,                 /* Remove a memory mapping. */SYS_MUNMAP24,1010
+    SYS_CHDIR,                  /* Change the current directory. */SYS_CHDIR27,1100
+    SYS_MKDIR,                  /* Create a directory. */SYS_MKDIR28,1168
+    SYS_READDIR,                /* Reads a directory entry. */SYS_READDIR29,1226
+    SYS_ISDIR,                  /* Tests if a fd represents a directory. */SYS_ISDIR30,1289
+    SYS_INUMBER                 /* Returns the inode number for a fd. */SYS_INUMBER31,1365
+
+lib/stdbool.h,193
+#define __LIB_STDBOOL_H__LIB_STDBOOL_H2,24
+#define bool	bool4,49
+#define true	true5,68
+#define false	false6,83
+#define __bool_true_false_are_defined	__bool_true_false_are_defined7,99
+
+lib/user/stdio.h,51
+#define __LIB_USER_STDIO_H__LIB_USER_STDIO_H2,27
+
+lib/user/entry.c,45
+_start (int argc, char *argv[]) _start7,92
+
+lib/user/debug.c,82
+debug_panic (const char *file, int line, const char *function,debug_panic10,233
+
+lib/user/syscall.c,960
+#define syscall0(syscall06,146
+#define syscall1(syscall119,850
+#define syscall2(syscall233,1720
+#define syscall3(syscall349,2639
+halt (void) halt65,3514
+exit (int status)exit72,3578
+exec (const char *file)exec79,3656
+wait (pid_t pid)wait85,3733
+create (const char *file, unsigned initial_size)create91,3795
+remove (const char *file)remove97,3906
+open (const char *file)open103,3979
+filesize (int fd) filesize109,4048
+read (int fd, void *buffer, unsigned size)read115,4114
+write (int fd, const void *buffer, unsigned size)write121,4214
+seek (int fd, unsigned position) seek127,4323
+tell (int fd) tell133,4408
+close (int fd)close139,4467
+mmap (int fd, void *addr)mmap145,4523
+munmap (mapid_t mapid)munmap151,4599
+chdir (const char *dir)chdir157,4664
+mkdir (const char *dir)mkdir163,4734
+readdir (int fd, char name[READDIR_MAX_LEN + 1]) readdir169,4804
+isdir (int fd) isdir175,4907
+inumber (int fd) inumber181,4967
+
+lib/user/syscall.h,327
+#define __LIB_USER_SYSCALL_H__LIB_USER_SYSCALL_H2,29
+typedef int pid_t;pid_t8,126
+#define PID_ERROR PID_ERROR9,145
+typedef int mapid_t;mapid_t12,206
+#define MAP_FAILED MAP_FAILED13,227
+#define READDIR_MAX_LEN READDIR_MAX_LEN16,323
+#define EXIT_SUCCESS EXIT_SUCCESS19,416
+#define EXIT_FAILURE EXIT_FAILURE20,476
+
+lib/user/console.c,666
+vprintf (const char *format, va_list args) vprintf9,174
+hprintf (int handle, const char *format, ...) hprintf16,336
+puts (const char *s) puts31,604
+putchar (int c) putchar41,737
+struct vhprintf_aux vhprintf_aux49,864
+    char buf[64];       /* Character buffer. */buf51,889
+    char *p;            /* Current position in buffer. */p52,937
+    int char_cnt;       /* Total characters written so far. */char_cnt53,995
+    int handle;         /* Output file handle. */handle54,1058
+vhprintf (int handle, const char *format, va_list args) vhprintf64,1332
+add_char (char c, void *aux_) add_char78,1652
+flush (struct vhprintf_aux *aux)flush89,1865
+
+lib/limits.h,730
+#define __LIB_LIMITS_H__LIB_LIMITS_H2,23
+#define CHAR_BIT CHAR_BIT4,47
+#define SCHAR_MAX SCHAR_MAX6,67
+#define SCHAR_MIN SCHAR_MIN7,89
+#define UCHAR_MAX UCHAR_MAX8,124
+#define CHAR_MIN CHAR_MIN11,172
+#define CHAR_MAX CHAR_MAX12,191
+#define CHAR_MIN CHAR_MIN14,224
+#define CHAR_MAX CHAR_MAX15,251
+#define SHRT_MAX SHRT_MAX18,286
+#define SHRT_MIN SHRT_MIN19,309
+#define USHRT_MAX USHRT_MAX20,342
+#define INT_MAX INT_MAX22,367
+#define INT_MIN INT_MIN23,394
+#define UINT_MAX UINT_MAX24,425
+#define LONG_MAX LONG_MAX26,455
+#define LONG_MIN LONG_MIN27,484
+#define ULONG_MAX ULONG_MAX28,517
+#define LLONG_MAX LLONG_MAX30,549
+#define LLONG_MIN LLONG_MIN31,589
+#define ULLONG_MAX ULLONG_MAX32,624
+
+lib/debug.c,47
+debug_backtrace (void) debug_backtrace13,360
+
+lib/stdio.c,2761
+struct vsnprintf_aux vsnprintf_aux9,165
+    char *p;            /* Current output position. */p11,191
+    int length;         /* Length of output string. */length12,246
+    int max_length;     /* Max length of output string. */max_length13,301
+vsnprintf (char *buffer, size_t buf_size, const char *format, va_list args) vsnprintf26,826
+vsnprintf_helper (char ch, void *aux_)vsnprintf_helper46,1296
+snprintf (char *buffer, size_t buf_size, const char *format, ...) snprintf62,1849
+printf (const char *format, ...) printf79,2252
+struct printf_conversion printf_conversion94,2487
+        MINUS = 1 << 0,         /* '-' */MINUS99,2552
+        PLUS = 1 << 1,          /* '+' */PLUS100,2594
+        SPACE = 1 << 2,         /* ' ' */SPACE101,2636
+        POUND = 1 << 3,         /* '#' */POUND102,2678
+        ZERO = 1 << 4,          /* '0' */ZERO103,2720
+        GROUP = 1 << 5          /* '\'' */GROUP104,2762
+    flags;flags106,2813
+    int width;width109,2856
+    int precision;precision113,2949
+        CHAR = 1,               /* hh */CHAR118,3025
+        SHORT = 2,              /* h */SHORT119,3066
+        INT = 3,                /* (none) */INT120,3106
+        INTMAX = 4,             /* j */INTMAX121,3151
+        LONG = 5,               /* l */LONG122,3191
+        LONGLONG = 6,           /* ll */LONGLONG123,3231
+        PTRDIFFT = 7,           /* t */PTRDIFFT124,3272
+        SIZET = 8               /* z */SIZET125,3312
+    type;type127,3360
+struct integer_base integer_base130,3376
+    int base;                   /* Base. */base132,3401
+    const char *digits;         /* Collection of digits. */digits133,3445
+    int x;                      /* `x' character to use, for base 16 only. */x134,3505
+    int group;                  /* Number of digits to group with ' flag. */group135,3583
+static const struct integer_base base_d = {10, "0123456789", 0, 3};base_d138,3666
+static const struct integer_base base_o = {8, "01234567", 0, 3};base_o139,3734
+static const struct integer_base base_x = {16, "0123456789abcdef", 'x', 4};base_x140,3799
+static const struct integer_base base_X = {16, "0123456789ABCDEF", 'X', 4};base_X141,3875
+__vprintf (const char *format, va_list args,__vprintf157,4692
+parse_conversion (const char *format, struct printf_conversion *c,parse_conversion340,9965
+format_integer (uintmax_t value, bool is_signed, bool negative, format_integer470,12581
+output_dup (char ch, size_t cnt, void (*output) (char, void *), void *aux) output_dup551,15275
+format_string (const char *string, int length,format_string561,15565
+__printf (const char *format,__printf577,16076
+hex_dump (uintptr_t ofs, const void *buf_, size_t size, bool ascii)hex_dump593,16539
+
+lib/random.c,404
+static uint8_t s[256];          /* S[]. */s17,426
+static uint8_t s_i, s_j;        /* i, j. */s_i18,469
+static uint8_t s_i, s_j;        /* i, j. */s_j18,469
+static bool inited;     inited21,541
+swap_byte (uint8_t *a, uint8_t *b) swap_byte25,631
+random_init (unsigned seed)random_init34,781
+random_bytes (void *buf_, size_t size) random_bytes54,1118
+random_ulong (void) random_ulong78,1560
+
+lib/stddef.h,195
+#define __LIB_STDDEF_H__LIB_STDDEF_H2,23
+#define NULL NULL4,47
+#define offsetof(offsetof5,73
+typedef __PTRDIFF_TYPE__ ptrdiff_t;ptrdiff_t9,238
+typedef __SIZE_TYPE__ size_t;size_t10,274
+
+lib/stdarg.h,217
+#define __LIB_STDARG_H__LIB_STDARG_H2,23
+typedef __builtin_va_list va_list;va_list7,133
+#define va_start(va_start9,169
+#define va_end(va_end10,228
+#define va_arg(va_arg11,284
+#define va_copy(va_copy12,341
+
+lib/stdint.h,1381
+#define __LIB_STDINT_H__LIB_STDINT_H2,23
+typedef signed char int8_t;int8_t4,47
+#define INT8_MAX INT8_MAX5,75
+#define INT8_MIN INT8_MIN6,96
+typedef signed short int int16_t;int16_t8,130
+#define INT16_MAX INT16_MAX9,164
+#define INT16_MIN INT16_MIN10,188
+typedef signed int int32_t;int32_t12,224
+#define INT32_MAX INT32_MAX13,252
+#define INT32_MIN INT32_MIN14,281
+typedef signed long long int int64_t;int64_t16,317
+#define INT64_MAX INT64_MAX17,355
+#define INT64_MIN INT64_MIN18,395
+typedef unsigned char uint8_t;uint8_t20,431
+#define UINT8_MAX UINT8_MAX21,462
+typedef unsigned short int uint16_t;uint16_t23,485
+#define UINT16_MAX UINT16_MAX24,522
+typedef unsigned int uint32_t;uint32_t26,548
+#define UINT32_MAX UINT32_MAX27,579
+typedef unsigned long long int uint64_t;uint64_t29,611
+#define UINT64_MAX UINT64_MAX30,652
+typedef int32_t intptr_t;intptr_t32,696
+#define INTPTR_MIN INTPTR_MIN33,722
+#define INTPTR_MAX INTPTR_MAX34,751
+typedef uint32_t uintptr_t;uintptr_t36,781
+#define UINTPTR_MAX UINTPTR_MAX37,809
+typedef int64_t intmax_t;intmax_t39,841
+#define INTMAX_MIN INTMAX_MIN40,867
+#define INTMAX_MAX INTMAX_MAX41,896
+typedef uint64_t uintmax_t;uintmax_t43,926
+#define UINTMAX_MAX UINTMAX_MAX44,954
+#define PTRDIFF_MIN PTRDIFF_MIN46,986
+#define PTRDIFF_MAX PTRDIFF_MAX47,1016
+#define SIZE_MAX SIZE_MAX49,1047
+
+lib/stdlib.h,43
+#define __LIB_STDLIB_H__LIB_STDLIB_H2,23
+
+lib/kernel/stdio.h,55
+#define __LIB_KERNEL_STDIO_H__LIB_KERNEL_STDIO_H2,29
+
+lib/kernel/bitmap.c,2283
+typedef unsigned long elem_type;elem_type19,444
+#define ELEM_BITS ELEM_BITS22,514
+struct bitmapbitmap27,719
+    size_t bit_cnt;     /* Number of bits. */bit_cnt29,737
+    elem_type *bits;    /* Elements that represent bits. */bits30,783
+elem_idx (size_t bit_idx) elem_idx36,952
+bit_mask (size_t bit_idx) bit_mask44,1126
+elem_cnt (size_t bit_cnt)elem_cnt51,1292
+byte_cnt (size_t bit_cnt)byte_cnt58,1449
+last_mask (const struct bitmap *b) last_mask66,1686
+bitmap_create (size_t bit_cnt) bitmap_create79,2046
+bitmap_create_in_buf (size_t bit_cnt, void *block, size_t block_size UNUSED)bitmap_create_in_buf100,2568
+bitmap_buf_size (size_t bit_cnt) bitmap_buf_size115,2967
+bitmap_destroy (struct bitmap *b) bitmap_destroy124,3181
+bitmap_size (const struct bitmap *b)bitmap_size137,3356
+bitmap_set (struct bitmap *b, size_t idx, bool value) bitmap_set146,3523
+bitmap_mark (struct bitmap *b, size_t bit_idx) bitmap_mark158,3773
+bitmap_reset (struct bitmap *b, size_t bit_idx) bitmap_reset171,4222
+bitmap_flip (struct bitmap *b, size_t bit_idx) bitmap_flip186,4747
+bitmap_test (const struct bitmap *b, size_t idx) bitmap_test199,5190
+bitmap_set_all (struct bitmap *b, bool value) bitmap_set_all210,5437
+bitmap_set_multiple (struct bitmap *b, size_t start, size_t cnt, bool value) bitmap_set_multiple219,5628
+bitmap_count (const struct bitmap *b, size_t start, size_t cnt, bool value) bitmap_count234,5998
+bitmap_contains (const struct bitmap *b, size_t start, size_t cnt, bool value) bitmap_contains252,6451
+bitmap_any (const struct bitmap *b, size_t start, size_t cnt) bitmap_any269,6875
+bitmap_none (const struct bitmap *b, size_t start, size_t cnt) bitmap_none277,7113
+bitmap_all (const struct bitmap *b, size_t start, size_t cnt) bitmap_all285,7355
+bitmap_scan (const struct bitmap *b, size_t start, size_t cnt, bool value) bitmap_scan297,7709
+bitmap_scan_and_flip (struct bitmap *b, size_t start, size_t cnt, bool value)bitmap_scan_and_flip321,8426
+bitmap_file_size (const struct bitmap *b) bitmap_file_size334,8765
+bitmap_read (struct bitmap *b, struct file *file) bitmap_read342,8924
+bitmap_write (const struct bitmap *b, struct file *file)bitmap_write357,9297
+bitmap_dump (const struct bitmap *b) bitmap_dump368,9560
+
+lib/kernel/hash.h,1219
+#define __LIB_KERNEL_HASH_H__LIB_KERNEL_HASH_H2,28
+struct hash_elem hash_elem29,971
+    struct list_elem list_elem;list_elem31,993
+#define hash_entry(hash_entry39,1314
+typedef unsigned hash_hash_func (const struct hash_elem *e, void *aux);hash_hash_func45,1599
+typedef bool hash_less_func (const struct hash_elem *a,hash_less_func50,1839
+typedef void hash_action_func (struct hash_elem *e, void *aux);hash_action_func56,2071
+struct hash hash59,2154
+    size_t elem_cnt;            /* Number of elements in table. */elem_cnt61,2171
+    size_t bucket_cnt;          /* Number of buckets, a power of 2. */bucket_cnt62,2238
+    struct list *buckets;       /* Array of `bucket_cnt' lists. */buckets63,2309
+    hash_hash_func *hash;       /* Hash function. */hash64,2376
+    hash_less_func *less;       /* Comparison function. */less65,2429
+    void *aux;                  /* Auxiliary data for `hash' and `less'. */aux66,2488
+struct hash_iterator hash_iterator70,2599
+    struct hash *hash;          /* The hash table. */hash72,2625
+    struct list *bucket;        /* Current bucket. */bucket73,2679
+    struct hash_elem *elem;     /* Current hash element in current bucket. */elem74,2733
+
+lib/kernel/bitmap.h,100
+#define __LIB_KERNEL_BITMAP_H__LIB_KERNEL_BITMAP_H2,30
+#define BITMAP_ERROR BITMAP_ERROR36,1307
+
+lib/kernel/list.h,504
+#define __LIB_KERNEL_LIST_H__LIB_KERNEL_LIST_H2,28
+struct list_elem list_elem90,3087
+    struct list_elem *prev;     /* Previous list element. */prev92,3109
+    struct list_elem *next;     /* Next list element. */next93,3170
+struct list list97,3245
+    struct list_elem head;      /* List head. */head99,3262
+    struct list_elem tail;      /* List tail. */tail100,3311
+#define list_entry(list_entry108,3649
+typedef bool list_less_func (const struct list_elem *a,list_less_func152,5162
+
+lib/kernel/console.h,59
+#define __LIB_KERNEL_CONSOLE_H__LIB_KERNEL_CONSOLE_H2,31
+
+lib/kernel/list.c,2075
+is_head (struct list_elem *elem)is_head39,1548
+is_interior (struct list_elem *elem)is_interior47,1743
+is_tail (struct list_elem *elem)is_tail54,1926
+list_init (struct list *list)list_init61,2077
+list_begin (struct list *list)list_begin72,2312
+list_next (struct list_elem *elem)list_next82,2593
+list_end (struct list *list)list_end94,2890
+list_rbegin (struct list *list) list_rbegin103,3102
+list_prev (struct list_elem *elem)list_prev113,3387
+list_rend (struct list *list) list_rend133,3929
+list_head (struct list *list) list_head151,4267
+list_tail (struct list *list) list_tail159,4397
+list_insert (struct list_elem *before, struct list_elem *elem)list_insert169,4633
+list_splice (struct list_elem *before,list_splice184,5062
+list_push_front (struct list *list, struct list_elem *elem)list_push_front209,5714
+list_push_back (struct list *list, struct list_elem *elem)list_push_back217,5904
+list_remove (struct list_elem *elem)list_remove257,7081
+list_pop_front (struct list *list)list_pop_front268,7373
+list_pop_back (struct list *list)list_pop_back278,7630
+list_front (struct list *list)list_front288,7851
+list_back (struct list *list)list_back297,8043
+list_size (struct list *list)list_size306,8231
+list_empty (struct list *list)list_empty318,8463
+swap (struct list_elem **a, struct list_elem **b) swap325,8619
+list_reverse (struct list *list)list_reverse334,8763
+is_sorted (struct list_elem *a, struct list_elem *b,is_sorted350,9223
+find_end_of_run (struct list_elem *a, struct list_elem *b,find_end_of_run366,9736
+inplace_merge (struct list_elem *a0, struct list_elem *a1b0,inplace_merge388,10362
+list_sort (struct list *list, list_less_func *less, void *aux)list_sort413,11088
+list_insert_ordered (struct list *list, struct list_elem *elem,list_insert_ordered454,12480
+list_unique (struct list *list, struct list *duplicates,list_unique474,13096
+list_max (struct list *list, list_less_func *less, void *aux)list_max501,13875
+list_min (struct list *list, list_less_func *less, void *aux)list_min520,14460
+
+lib/kernel/debug.c,82
+debug_panic (const char *file, int line, const char *function,debug_panic15,347
+
+lib/kernel/console.c,842
+static struct lock console_lock;console_lock18,525
+static bool use_console_lock;use_console_lock31,1105
+static int console_lock_depth;console_lock_depth57,1940
+static int64_t write_cnt;write_cnt60,2019
+console_init (void) console_init64,2081
+console_panic (void) console_panic74,2303
+console_print_stats (void) console_print_stats81,2396
+acquire_console (void) acquire_console88,2533
+release_console (void) release_console101,2801
+console_locked_by_current_thread (void) console_locked_by_current_thread115,3096
+vprintf (const char *format, va_list args) vprintf126,3405
+puts (const char *s) puts140,3673
+putbuf (const char *buffer, size_t n) putbuf153,3897
+putchar (int c) putchar163,4093
+vprintf_helper (char c, void *char_cnt_) vprintf_helper174,4249
+putchar_have_lock (uint8_t c) putchar_have_lock185,4501
+
+lib/kernel/hash.c,1806
+#define list_elem_to_hash_elem(list_elem_to_hash_elem12,215
+hash_init (struct hash *h,hash_init25,844
+hash_clear (struct hash *h, hash_action_func *destructor) hash_clear54,1670
+hash_destroy (struct hash *h, hash_action_func *destructor) hash_destroy87,2636
+hash_insert (struct hash *h, struct hash_elem *new)hash_insert99,3000
+hash_replace (struct hash *h, struct hash_elem *new) hash_replace115,3371
+hash_find (struct hash *h, struct hash_elem *e) hash_find132,3782
+hash_delete (struct hash *h, struct hash_elem *e)hash_delete145,4204
+hash_apply (struct hash *h, hash_action_func *action) hash_apply163,4743
+hash_first (struct hash_iterator *i, struct hash *h) hash_first200,5648
+hash_next (struct hash_iterator *i)hash_next219,6236
+hash_cur (struct hash_iterator *i) hash_cur241,6865
+hash_size (struct hash *h) hash_size248,6974
+hash_empty (struct hash *h) hash_empty255,7097
+#define FNV_32_PRIME FNV_32_PRIME261,7218
+#define FNV_32_BASIS FNV_32_BASIS262,7249
+hash_bytes (const void *buf_, size_t size)hash_bytes266,7339
+hash_string (const char *s_) hash_string283,7659
+hash_int (int i) hash_int299,7935
+find_bucket (struct hash *h, struct hash_elem *e) find_bucket306,8065
+find_elem (struct hash *h, struct list *bucket, struct hash_elem *e) find_elem315,8357
+turn_off_least_1bit (size_t x) turn_off_least_1bit330,8784
+is_power_of_2 (size_t x) is_power_of_2337,8922
+#define MIN_ELEMS_PER_BUCKET MIN_ELEMS_PER_BUCKET343,9035
+#define BEST_ELEMS_PER_BUCKET BEST_ELEMS_PER_BUCKET344,9112
+#define MAX_ELEMS_PER_BUCKET MAX_ELEMS_PER_BUCKET345,9170
+rehash (struct hash *h) rehash352,9481
+insert_elem (struct hash *h, struct list *bucket, struct hash_elem *e) insert_elem417,11430
+remove_elem (struct hash *h, struct hash_elem *e) remove_elem425,11614
+
+lib/string.c,1075
+memcpy (void *dst_, const void *src_, size_t size) memcpy7,128
+memmove (void *dst_, const void *src_, size_t size) memmove24,478
+memcmp (const void *a_, const void *b_, size_t size) memcmp53,1110
+strcmp (const char *a_, const char *b_) strcmp73,1667
+memchr (const void *block_, int ch_, size_t size) memchr94,2136
+strchr (const char *string, int c_) strchr113,2604
+strcspn (const char *string, const char *stop) strcspn131,2948
+strpbrk (const char *string, const char *stop) strpbrk145,3304
+strrchr (const char *string, int c_) strrchr156,3605
+strspn (const char *string, const char *skip) strspn170,3892
+strstr (const char *haystack, const char *needle) strstr184,4248
+strtok_r (char *s, const char *delimiters, char **save_ptr) strtok_r235,5754
+memset (void *dst_, int value, size_t size) memset279,6704
+strlen (const char *string) strlen291,6920
+strnlen (const char *string, size_t maxlen) strnlen305,7194
+strlcpy (char *dst, const char *src, size_t size) strlcpy324,7806
+strlcat (char *dst, const char *src, size_t size) strlcat354,8655
+
+lib/round.h,154
+#define __LIB_ROUND_H__LIB_ROUND_H2,22
+#define ROUND_UP(ROUND_UP6,135
+#define DIV_ROUND_UP(DIV_ROUND_UP10,276
+#define ROUND_DOWN(ROUND_DOWN14,429
+
+lib/ctype.h,1212
+#define __LIB_CTYPE_H__LIB_CTYPE_H2,22
+static inline int islower (int c) { return c >= 'a' && c <= 'z'; }islower4,45
+static inline int isupper (int c) { return c >= 'A' && c <= 'Z'; }isupper5,112
+static inline int isalpha (int c) { return islower (c) || isupper (c); }isalpha6,179
+static inline int isdigit (int c) { return c >= '0' && c <= '9'; }isdigit7,252
+static inline int isalnum (int c) { return isalpha (c) || isdigit (c); }isalnum8,319
+static inline int isxdigit (int c) {isxdigit9,392
+static inline int isspace (int c) {isspace12,505
+static inline int isblank (int c) { return c == ' ' || c == '\t'; }isblank16,639
+static inline int isgraph (int c) { return c > 32 && c < 127; }isgraph17,707
+static inline int isprint (int c) { return c >= 32 && c < 127; }isprint18,771
+static inline int iscntrl (int c) { return (c >= 0 && c < 32) || c == 127; }iscntrl19,836
+static inline int isascii (int c) { return c >= 0 && c < 128; }isascii20,913
+static inline int ispunct (int c) {ispunct21,977
+static inline int tolower (int c) { return isupper (c) ? c - 'A' + 'a' : c; }tolower25,1070
+static inline int toupper (int c) { return islower (c) ? c - 'a' + 'A' : c; }toupper26,1148
+
+lib/debug.h,421
+#define __LIB_DEBUG_H__LIB_DEBUG_H2,22
+#define UNUSED UNUSED7,188
+#define NO_RETURN NO_RETURN8,228
+#define NO_INLINE NO_INLINE9,273
+#define PRINTF_FORMAT(PRINTF_FORMAT10,318
+#define PANIC(PANIC14,515
+#undef ASSERTASSERT26,899
+#undef NOT_REACHEDNOT_REACHED27,913
+#define ASSERT(ASSERT30,948
+#define NOT_REACHED(NOT_REACHED34,1156
+#define ASSERT(ASSERT36,1229
+#define NOT_REACHED(NOT_REACHED37,1266
+
+lib/stdlib.c,666
+atoi (const char *s) atoi10,213
+compare_thunk (const void *a, const void *b, void *aux) compare_thunk45,914
+qsort (void *array, size_t cnt, size_t size,qsort58,1386
+do_swap (unsigned char *array, size_t a_idx, size_t b_idx, size_t size)do_swap67,1657
+do_compare (unsigned char *array, size_t a_idx, size_t b_idx, size_t size,do_compare86,2177
+heapify (unsigned char *array, size_t i, size_t cnt, size_t size,heapify97,2610
+sort (void *array, size_t cnt, size_t size,sort132,3780
+bsearch (const void *key, const void *array, size_t cnt,bsearch166,4773
+binary_search (const void *key, const void *array, size_t cnt, size_t size,binary_search185,5516
+
+lib/random.h,43
+#define __LIB_RANDOM_H__LIB_RANDOM_H2,23
+
+Makefile,281
+BUILD_SUBDIRS = threads userprog vm filesys lib/userBUILD_SUBDIRS1,0
+CLEAN_SUBDIRS = $(BUILD_SUBDIRS) examples utilsCLEAN_SUBDIRS7,173
+TAGS_SUBDIRS = $(BUILD_SUBDIRS) devices libTAGS_SUBDIRS16,358
+TAGS_SOURCES = find $(TAGS_SUBDIRS) -name \*.[chS] -printTAGS_SOURCES17,402

@@ -1,0 +1,29 @@
+#ifndef VM_FRAME_H
+#define VM_FRAME_H
+#include "threads/thread.h"
+#include <list.h>
+
+struct frame *find_frame(void *frame_addr);
+struct frame *select_victim(void);
+/* Struct frame. Elements of frame table by using list structure. */
+
+
+struct frame{
+  struct thread* t;			/* thread pointer that owns frame */
+  void *frame_addr;
+  void *page_addr;
+  bool writable;
+  bool mmapFlag;
+  struct list_elem elem;
+  int fd;
+};
+
+void frame_init(void);
+void *frame_allocate(void *upage,bool mmapFlag, bool writable);
+void *frame_allocate_zeroflag(void *upage, bool mmapFlag, bool writable, bool zero);
+bool add_new_frame(void *upage, void *kpage, bool mmapFlag, bool writable);
+void *replace_frame(void *upage, bool writable, bool zero);
+void delete_single_frame(void *kpage);
+void *remove_thread_frame(struct thread *t);
+
+#endif /* vm/frame.h */

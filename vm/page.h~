@@ -1,0 +1,36 @@
+#ifndef VM_PAGE_H
+#define VM_PAGE_H
+#include "threads/thread.h"
+#include <list.h>
+
+/* Project 3: additional code */
+struct sup_page
+{
+  void *upage;     	   /*virtual address*/
+  struct swap_slot *ss;    /*disk memory slot*/
+  bool writable;           /*writable*/
+  int fd;                  /*file descripter*/
+ 
+  struct list_elem elem;   
+  
+  bool swapped;            /*should swap or not*/
+  bool mmapFlag;           /*mmap or not */
+  struct file *file;       /*file*/
+  uint32_t ofs;            /*position to start reading or writing for page */
+  uint32_t read_bytes;     /*reading size for page*/
+  uint32_t zero_bytes;     /*zero_bytes for page */
+};
+
+
+struct sup_page *find_sp(struct list *sp_table, void *upage);
+bool add_exefile_sp(struct file *file, off_t ofs, uint8_t *upage, uint32_t read_bytes, uint32_t zero_bytes, bool writable, bool mmapFlag);
+
+bool load_exefile(struct sup_page *sp);
+bool load_swap(struct sup_page *sp);
+ 
+bool add_new_sp(struct frame *f);
+bool load_sp(struct sup_page *sp);
+void remove_sp(struct sup_page *sp);
+void destroy_spt(struct thread *t);
+
+#endif /* vm/page.h */

@@ -1,0 +1,19 @@
+#ifndef USERPROG_SYSCALL_H
+#define USERPROG_SYSCALL_H
+
+#include <list.h>
+
+struct mmap_region
+{
+  int fd;
+  void * start_addr;
+  void * end_addr;
+  // mapid_t mapID;
+  struct list_elem mmap_elem;
+};
+
+void syscall_init (void);
+
+void isUseraddr(int argnum, int pointer_index,struct intr_frame *);
+struct file * fd2file(int fd);
+#endif /* userprog/syscall.h */

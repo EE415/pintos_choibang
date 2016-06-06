@@ -1,0 +1,44 @@
+Copying tests/vm/mmap-shuffle into /tmp/q7JE0CZL91.dsk...
+Writing command line to /tmp/McUIc8Wg9l.dsk...
+qemu -hda /tmp/McUIc8Wg9l.dsk -hdb /tmp/bi61yaFRtY.dsk -hdc /tmp/q7JE0CZL91.dsk -hdd /tmp/haSv1pfL11.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put mmap-shuffle run mmap-shuffle
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  157,081,600 loops/s.
+hd0:0: detected 161 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 82 sector (41 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-shuffle' into the file system...
+Executing 'mmap-shuffle':
+(mmap-shuffle) begin
+(mmap-shuffle) create "buffer"
+(mmap-shuffle) open "buffer"
+(mmap-shuffle) mmap "buffer"
+(mmap-shuffle) init: cksum=3115322833
+(mmap-shuffle) shuffle 0: cksum=1691062564
+(mmap-shuffle) shuffle 1: cksum=1973575879
+(mmap-shuffle) shuffle 2: cksum=1647619479
+(mmap-shuffle) shuffle 3: cksum=96566261
+(mmap-shuffle) shuffle 4: cksum=3885786467
+(mmap-shuffle) shuffle 5: cksum=3022003332
+(mmap-shuffle) shuffle 6: cksum=3614934266
+(mmap-shuffle) shuffle 7: cksum=2704001777
+(mmap-shuffle) shuffle 8: cksum=735775156
+(mmap-shuffle) shuffle 9: cksum=1864109763
+(mmap-shuffle) end
+mmap-shuffle: exit(0)
+Execution of 'mmap-shuffle' complete.
+Timer: 86 ticks
+Thread: 30 idle ticks, 25 kernel ticks, 31 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 351 reads, 688 writes
+hd1:0: 82 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1483 characters output
+Keyboard: 0 keys pressed
+Exception: 37 page faults
+Powering off...

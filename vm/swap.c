@@ -1,0 +1,99 @@
+#include "vm/frame.h"
+#include "vm/page.h"
+#include "vm/swap.h"
+#include "threads/palloc.h"
+#include "threads/malloc.h"
+#include "threads/thread.h"
+#include "threads/vaddr.h"
+#include "threads/pte.h"
+#include "threads/synch.h"
+#include "userprog/pagedir.h"
+#include <stdio.h>
+#include <list.h>
+#include "devices/disk.h"
+
+struct disk *swap_disk;
+struct list free_swap_list;
+disk_sector_t slot_max;
+disk_sector_t slot_count;
+struct lock swap_lock;
+#define PAGE_SECTOR_NUM (PGSIZE/DISK_SECTOR_SIZE)		/* number of sectors in one page */
+
+/*initialize the swap */
+void
+swap_init(void)
+{
+	list_init(&free_swap_list);
+	swap_disk = disk_get(1,1); /* disk for swap: (1,1) */
+	slot_max = disk_size(swap_disk);
+	slot_count = 0;
+	lock_init(&swap_lock);
+}
+
+/*Get the free space of disk */
+struct swap_slot *
+get_free_slot()
+{
+	struct swap_slot *ss;
+	if(list_empty(&free_swap_list))
+	{
+		if((slot_count + PAGE_SECTOR_NUM) > slot_max)
+		{
+			return NULL;
+		}
+		ss = (struct swap_slot *)malloc(sizeof(struct swap_slot));
+		ss->sec_no = slot_count;
+		slot_count += PAGE_SECTOR_NUM;
+	}
+	else
+		ss = list_entry(list_pop_front(&free_swap_list), struct swap_slot, elem);
+	return ss;
+}
+/*push back the free swap slot to the list */
+void
+set_free_slot(struct swap_slot *ss)
+{
+	list_push_back(&free_swap_list, &ss->elem);
+}
+/*swap out */
+struct swap_slot *
+swap_out(void *buffer)
+{
+	void *sec_buff = malloc(DISK_SECTOR_SIZE);
+	ASSERT(sec_buff != NULL);
+	lock_acquire(&swap_lock);
+	struct swap_slot *ss = get_free_slot();
+	if(ss == NULL)
+	{
+		lock_release(&swap_lock);
+		return NULL;
+	}
+	disk_sector_t sec_no = ss->sec_no;
+	int i;
+	for(i = 0; i<PAGE_SECTOR_NUM; i++)
+	{
+		memcpy(sec_buff, (uint8_t *)((uint32_t)buffer + DISK_SECTOR_SIZE*i),DISK_SECTOR_SIZE);
+		disk_write(swap_disk, (disk_sector_t)(sec_no + i), sec_buff);
+	}
+	free(sec_buff);
+	lock_release(&swap_lock);
+	return ss;
+}
+/*swap in */
+void
+swap_in(void *buffer, struct swap_slot *ss)
+{
+	void *sec_buff = malloc(DISK_SECTOR_SIZE);
+	ASSERT(sec_buff != NULL);
+	lock_acquire(&swap_lock);
+	disk_sector_t sec_no = ss->sec_no;
+	int i;
+	for(i = 0; i<PAGE_SECTOR_NUM; i++)
+	{
+		disk_read(swap_disk, (disk_sector_t)(sec_no + i), sec_buff);
+		memcpy((uint8_t *)((uint32_t)buffer + DISK_SECTOR_SIZE*i), sec_buff, DISK_SECTOR_SIZE);
+	}
+	set_free_slot(ss);
+	free(sec_buff);
+	lock_release(&swap_lock);
+}
